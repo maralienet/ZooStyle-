@@ -243,25 +243,35 @@
                         </div>
 
                         <div class="form-group input-container">
-                            <select class="formSelect">
-                                <option class='formOption'>gfdd</option>
-                                <option>gfdd</option>
-                                <option>gfdd</option>
-                                <option>gfdd</option>
+                            <select class="formSelect types">
+                                <?php
+                                require("code/conn.php");
+                                $sql = "SELECT petType FROM Services GROUP BY petType";
+                                $result = $conn->query($sql);
+                                if ($result->num_rows > 0)
+                                    while ($row = $result->fetch_assoc())
+                                        echo "<option id='servNames' value='" . $row["petType"] . "'>" . $row["petType"] . "</option>";
+                                $conn->close();
+                                ?>
                             </select>
                         </div>
 
-                        <div class="form-group mb-3 input-container">
-                            <input class="form-control form-input" id="phonenum" type="text" required />
-                            <label for='phonenum'>Номер телефона</label>
+                        <div class="form-group input-container servDIV">
+                            <select class="formSelect" id='services'>
+                            </select>
                         </div>
 
                         <div class="form-group input-container">
-                            <select class="formSelect">
-                                <option class='formOption'>reter</option>
-                                <option>ergee</option>
-                                <option>ergre</option>
-                                <option>ergre</option>
+                            <select class="formSelect addresses">
+                                <?php
+                                require("code/conn.php");
+                                $sql = "SELECT address FROM Saloons";
+                                $result = $conn->query($sql);
+                                if ($result->num_rows > 0)
+                                    while ($row = $result->fetch_assoc())
+                                        echo "<option id='address' value='" . $row["address"] . "'>" . $row["address"] . "</option>";
+                                $conn->close();
+                                ?>
                             </select>
                         </div>
 
@@ -339,6 +349,7 @@
     <script src="../bootstrap/js/bootstrap.min.js"></script>
 
     <script src="../js/checkRegister.js"></script>
+    <script src="../js/chooseType.js"></script>
 </body>
 
 </html>
