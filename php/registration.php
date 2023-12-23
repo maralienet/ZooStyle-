@@ -91,23 +91,26 @@
                         <h3><b>Регистрация</b></h3>
                         <div class="form-group input-container">
                             <input class="form-input" id="name" name='name' type="text" required />
-                            <label htmlFor="name">Имя</label>
+                            <label for="name">Имя</label>
                         </div>
 
                         <div class="form-group input-container">
-                            <input class="form-input" id="phonenum" name='phonenum' type="text" required />
-                            <label htmlFor="phonenum">Номер телефона</label>
+                            <input class="form-input" id="phonenum" name='phonenum' type="tel" required />
+                            <label for="phonenum">Номер телефона</label>
                         </div>
+                        <span class="sayError" id="sayErrorPhone"></span>
 
                         <div class="form-group input-container">
                             <input class="form-input" id="pass" name='pass' type="password" required />
-                            <label htmlFor="name">Пароль</label>
+                            <label for="pass">Пароль</label>
                         </div>
+                        <span class="sayError" id="sayErrorPass"></span>
 
                         <div class="form-group input-container">
                             <input class="form-input" id="passAg" name='passAg' type="password" required />
-                            <label htmlFor="name">Повтор пароля</label>
+                            <label for="passAg">Повтор пароля</label>
                         </div>
+                        <span class="sayError" id="sayErrorPassAg"></span>
 
                         <div class="already">
                             <p>

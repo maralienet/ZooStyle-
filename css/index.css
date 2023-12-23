@@ -12,11 +12,11 @@
     color: black;
 }
 
-html{
+html {
     scroll-behavior: smooth;
 }
 
-button{
+button {
     cursor: pointer;
 }
 
@@ -362,7 +362,8 @@ svg {
     border-bottom: 0.5px black solid !important;
     border-radius: 0 !important;
 }
-.form-input:focus{
+
+.form-input:focus {
     outline: none !important;
 }
 
@@ -583,6 +584,7 @@ footer .unvislogo {
     width: 50%;
     padding: 15px 30px;
 }
+
 .service4 .prices .pris {
     display: flex;
     flex-direction: row;
@@ -788,6 +790,7 @@ center {
     border-radius: 100%;
     margin: 0 5px !important;
 }
+
 .carousel-indicators li.active {
     background-color: var(--darkpurp) !important;
 }
@@ -817,18 +820,21 @@ center {
     width: 100%;
     height: auto;
 }
+
 .photoItem {
     border-radius: 20px;
 }
 
-.photoFilter b:hover{
+.photoFilter b:hover {
     color: var(--purp);
 }
-.photoFilter{
+
+.photoFilter {
     cursor: pointer;
     transition: 0.3s;
 }
-.photoFilter .active{
+
+.photoFilter .active {
     color: var(--purp);
 }
 
@@ -900,6 +906,18 @@ center {
     width: 20%;
 }
 
+.auth1 #sayError {
+    width: 300px;
+}
+
+.reg1 .sayError {
+    width: 300px;
+}
+
+.sayError {
+    color: rgb(170, 0, 0);
+}
+
 .edits {
     display: flex;
     flex-direction: column;
@@ -915,29 +933,33 @@ center {
     padding: 8px 0;
     transition: 0.3s;
 }
+
 .managements .edits button {
     width: 25%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 .managements .edits {
     width: 100%;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
 }
-.edits button span{
+
+.edits button span {
     transition: 0.3s;
 }
 
-/* %%!!!!!СДЕЛАТЬ ИЗМЕНЕНИЕ ЦВЕТА ТЕКСТА НА ХОВЕР */
 .edits button:hover {
     border: 1px var(--darkpurp) solid;
 }
-.edits button:hover span{
+
+.edits button:hover span {
     color: var(--purp);
 }
+
 .nede {
     margin-top: 50px;
 }
@@ -984,6 +1006,7 @@ center {
     font-size: 1.2em;
     cursor: pointer;
 }
+
 .managements .manageItem1 {
     padding: 5px 0;
     font-size: 1.2em;
@@ -1008,6 +1031,7 @@ center {
 .infoTableDIV .infoTable tr {
     height: 50px;
 }
+
 .infoTableDIV .infoTable tr:hover {
     background-color: #6356a46e !important;
 }
@@ -1254,6 +1278,10 @@ center {
         width: 250px !important;
     }
 
+    .reg1 .sayError {
+        width: 250px;
+    }
+
     .blobsF1 {
         margin-left: -500px;
     }
@@ -1309,7 +1337,8 @@ center {
     .nede {
         margin-top: 0;
     }
-    .infoTableDIV{
+
+    .infoTableDIV {
         margin-top: 20px;
 
     }
@@ -1689,10 +1718,19 @@ center {
         width: 100%;
     }
 
+
     .reg1 form .input-container,
     .auth1 form .input-container {
         width: 80%;
     }
+    .reg1 .sayError {
+        width: 80%;
+    }
+
+    .auth1 #sayError {
+        width: 80%;
+    }
+
 
     .reg1 form .input-container input,
     .auth1 form .input-container input {

@@ -83,7 +83,7 @@
                         </svg>
                     </div>
 
-                    <form>
+                    <form id='adding'>
                         <h3><b>Авторизация</b></h3>
                         <div class="form-group input-container">
                             <input class="form-input" id="phonenum" name='phonenum' type="text" required />
@@ -94,6 +94,8 @@
                             <input class="form-input" id="pass" name='pass' type="password" required />
                             <label for="name">Пароль</label>
                         </div>
+
+                        <span id="sayError"></span>
 
                         <button class="btnSimp" type="submit">
                             Авторизация
@@ -169,6 +171,7 @@
     <script src="../bootstrap/js/bootstrap.min.js"></script>
 
     <script src="../js/checkRegister.js"></script>
+    <script src="../js/authoriz.js"></script>
 </body>
 
 </html>

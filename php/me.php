@@ -104,6 +104,7 @@
                 <div class="nede edits">
                     <button><span>Редактировать</span><img src='../pics/me/pencil.png' /></button>
                     <button><span>Удалить</span><img src='../pics/me/trash.png' /></button>
+                    <button onclick="exit()"><span>Выйти</span><img src='../pics/me/exit.png' /></button>
                 </div>
             </div>
         </div>
