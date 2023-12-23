@@ -6,8 +6,8 @@ if (isset($_POST['name']) && isset($_POST['phonenum']) && isset($_POST['pass']))
     $phonenum = $_POST['phonenum'];
     $pass = $_POST['pass'];
 
-    $sql1 = "INSERT INTO `Users`(`password`, `role`) VALUES 
-    ('$pass','Заказчик')";
+    $sql1 = "INSERT INTO `Users`(`password`, `phone`, `role`) VALUES 
+    ('$pass','$phonenum','Заказчик')";
 
     $res = $conn->query($sql1);
 
@@ -18,15 +18,10 @@ if (isset($_POST['name']) && isset($_POST['phonenum']) && isset($_POST['pass']))
         while ($row = $result->fetch_assoc())
             $uid = $row['uid'];
 
-    $sql1 = "INSERT INTO `Customers`(`custName`, `phone`, `userId`) VALUES 
-    ('$name','$phonenum',$uid)";
+    $sql1 = "INSERT INTO `Customers`(`custName`, `userId`) VALUES 
+    ('$name',$uid)";
 
     if($conn->query($sql1)){
-        $_SESSION['name']=$name;
-        $_SESSION['phonenum']=$phonenum;
-        $_SESSION['sale']=0;
+        $conn->close();
     }
-
-    $conn->close();
-    session_write_close();
 }

@@ -93,14 +93,13 @@
             </div>
 
             <?php
-            session_start();
-            if (isset($_SESSION['name']) && isset($_SESSION['phonenum']) && isset($_SESSION['sale'])) {
+            if (isset($_POST['name']) && isset($_POST['phonenum']) && isset($_POST['sale'])) {
                 echo '
                 <div class="col-lg-4 col-md-6 col-sm-6 col-9">
                 <div class="nede persInfo">
-                    <h2>' . $_SESSION['name'] . '</h2>
-                    <h5>' . $_SESSION['phonenum'] . '</h5>
-                    <h5>Персональная скидка: ' . $_SESSION['sale'] . '%</h5>
+                    <h2>' . $_POST['name'] . '</h2>
+                    <h5>' . $_POST['phonenum'] . '</h5>
+                    <h5>Персональная скидка: ' . $_POST['sale'] . '%</h5>
                 </div>
             </div>
                 ';

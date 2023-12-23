@@ -14,6 +14,15 @@ $("#adding").on('submit', function (e) {
         },
         success:function(){
             window.location.replace('me.php');
+            $.ajax({
+                url: 'me.php',
+                method: 'post',
+                data: {
+                    name: name,
+                    phonenum: phonenum,
+                    sale: 0
+                }
+            });
         }
     });
 });
