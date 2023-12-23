@@ -1,0 +1,1738 @@
+:root {
+    --purp: #A899F2;
+    --green: #C2E7DA;
+    --brightgreen: #a5e0cc;
+    --halfgreen: rgba(194, 231, 218, 0.271);
+    --brigthpurp: #bfb5ef;
+    --darkpurp: #5d548e;
+}
+
+* {
+    font-family: 'PT Sans', sans-serif;
+    color: black;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+button{
+    cursor: pointer;
+}
+
+.container,
+.container-fluid {
+    margin-top: 2em;
+}
+
+.main1 {
+    margin-top: 0;
+}
+
+.logo {
+    color: black;
+    text-decoration: none;
+}
+
+.logo img {
+    width: 40px;
+    height: auto;
+    cursor: pointer;
+}
+
+.user-icon {
+    width: 40px;
+    height: 40px;
+}
+
+.navcolp {
+    justify-content: space-between;
+    font-size: clamp(1em, 18px, 2em);
+    color: red;
+}
+
+.nav-item {
+    padding-left: 15px;
+    padding-right: 15px;
+    cursor: pointer;
+}
+
+.navbar-nav .active a {
+    color: var(--purp) !important;
+}
+
+.account button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.mr-auto {
+    width: 50%;
+    justify-content: space-around;
+}
+
+.margin0 {
+    margin: 0.5em;
+}
+
+.headAddr {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.headAddr div {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px 15px;
+}
+
+.address img {
+    height: 32px;
+    width: auto;
+}
+
+.phones img {
+    height: 26px;
+    width: auto;
+    padding-right: 15px;
+}
+
+.nav-link:hover {
+    color: var(--purp) !important;
+}
+
+.nav-link:active {
+    color: var(--purp) !important;
+}
+
+.DieAbout {
+    z-index: 10;
+    background-color: white;
+    border-radius: 2em;
+    border: 3px solid var(--green);
+    width: 27em;
+    height: auto;
+    padding: 2em 1em;
+    font-size: clamp(1em, 1.25em, 1.5em);
+}
+
+.DieAbout p {
+    font-size: clamp(0.5em, 1em, 1.1em);
+}
+
+.DieAbout h3 {
+    font-weight: bold;
+}
+
+.btnSimp {
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 3em;
+    width: 10em;
+    height: 2.5em;
+    transition: 0.4s ease-in-out;
+}
+
+.btnSimp:hover {
+    background-color: rgb(38, 38, 38);
+    border: none;
+}
+
+.btnPurp {
+    background-color: var(--purp);
+    color: black;
+    font-weight: bold;
+    border: none;
+    border-radius: 3em;
+    width: 10em;
+    height: 2.5em;
+    transition: 0.4s ease-in-out;
+}
+
+.btnPurp:hover {
+    background-color: var(--brigthpurp);
+    border: none;
+}
+
+svg {
+    width: 100%;
+    height: auto;
+}
+
+.dogimg {
+    z-index: 9;
+    width: 37em;
+    height: 37em;
+    border-radius: 100%;
+    margin-left: 7em;
+    margin-top: 4em;
+    background-image: url('../pics/main/dog.jpg');
+    background-position: 50% 50%;
+    object-fit: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.main1 {
+    margin-left: -5%;
+    display: grid;
+    justify-items: center;
+    align-items: end;
+}
+
+.main1 * {
+    grid-area: 1 / 1;
+}
+
+.main1 .DieAbout {
+    margin-left: 40%;
+}
+
+.blobs {
+    margin-top: 2em;
+    display: grid;
+}
+
+.blobs * {
+    grid-area: 1 / 1;
+}
+
+.blobs :nth-last-child(2) {
+    z-index: -1;
+    transform: scale(1.1);
+    margin-left: 4em;
+    margin-top: 5em;
+}
+
+.main2 {
+    font-size: 1.25em;
+    padding-top: 2em;
+}
+
+.main2 p {
+    width: 40%;
+}
+
+.ServiceCard {
+    background-color: white;
+    border-radius: 2em;
+    width: 24vw;
+    padding: 2em 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.ServiceCard h2 {
+    padding-top: 0.5em;
+}
+
+.ServiceCard img {
+    height: 5.5em;
+    width: auto;
+}
+
+.box * {
+    display: flex;
+    justify-content: center;
+}
+
+.box>* {
+    margin: 1.5em 0;
+}
+
+.cont {
+    max-width: 80% !important;
+}
+
+.toright {
+    display: flex;
+    justify-content: end;
+}
+
+.toleft {
+    justify-content: start;
+}
+
+.blobs1 {
+    display: grid;
+    justify-items: end;
+}
+
+.blobs1 * {
+    grid-area: 1 / 1;
+}
+
+.blobs1 svg {
+    width: 80%;
+    height: auto;
+}
+
+.main3 {
+    font-size: 1.25em;
+    margin-bottom: -1em !important;
+}
+
+.main3 p {
+    font-size: 1.1em;
+    padding: 1em 0;
+}
+
+.greenBcgd {
+    background-color: var(--green);
+}
+
+.dog2 {
+    z-index: 10;
+    height: 16em;
+    width: 16em;
+    border-radius: 100%;
+    object-fit: cover;
+}
+
+.blobs2-1 {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
+.blobs2-1 * {
+    grid-area: 1 / 1;
+}
+
+.main4 .DieAbout {
+    padding: 3em 2.5em;
+    width: 100%;
+}
+
+.main4 .container {
+    padding: 2em 0;
+}
+
+.main3 {
+    margin-bottom: 2em;
+}
+
+.main5 form,
+.reg1 form,
+.auth1 form {
+    margin: auto;
+}
+
+.main5 form,
+.reg1 form,
+.auth1 form {
+    border: 2px var(--green) solid;
+    background-color: white;
+    border-radius: 2em;
+    padding: 2em 2em;
+    width: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.auth1 form {
+    width: 600px;
+    padding: 4em 2em;
+}
+
+.main5 form h4 {
+    text-align: center;
+    padding-bottom: 1em;
+}
+
+.main5 form>div,
+.reg1 form>div,
+.auth1 form>div {
+    margin: 10px 0;
+}
+
+.form-input {
+    width: 300px !important;
+    border: none !important;
+    border-bottom: 0.5px black solid !important;
+    border-radius: 0 !important;
+}
+.form-input:focus{
+    outline: none !important;
+}
+
+.main5 form .btnSimp,
+.reg1 form .btnSimp,
+.auth1 form .btnSimp {
+    width: 50%;
+    margin-top: 20px;
+}
+
+.reg1 form .btnSimp,
+.auth1 form .btnSimp {
+    height: auto;
+    padding: 10px 20px;
+    font-size: 1em;
+}
+
+.input-container {
+    position: relative;
+}
+
+.input-container label {
+    position: absolute;
+    top: 5px;
+    left: 0px;
+    font-size: 1em;
+    color: #535353;
+    transition: all 0.2s ease-in-out;
+}
+
+.input-container input {
+    border: 0;
+    border-bottom: 1px solid black;
+    background: transparent;
+    width: 300px;
+    padding: 8px 0 5px 0;
+    font-size: 16px;
+    color: black;
+}
+
+.input-container input:focus~label,
+.input-container input:valid~label {
+    top: -10px;
+    font-size: 0.8em;
+}
+
+.form-control:focus {
+    border-color: none !important;
+    box-shadow: 0 0 0 0 !important;
+}
+
+
+footer div>* {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer {
+    margin: 5em 0 1em 0;
+}
+
+.horLine {
+    border-top: 2px black solid;
+    opacity: 0.35;
+    margin: 3em 0;
+}
+
+footer .socials,
+.texts .socials {
+    width: 15em;
+    justify-content: space-around;
+    margin: 0 0 2em 0;
+}
+
+.texts .socials {
+    width: 10em;
+    justify-content: space-between;
+}
+
+.socials .s-item * {
+    width: 3em;
+    height: auto;
+}
+
+footer .end {
+    opacity: 0.5;
+}
+
+footer a {
+    text-decoration: none;
+    color: black;
+}
+
+footer a:hover {
+    text-decoration: none;
+    color: var(--purp);
+}
+
+footer .unvislogo {
+    display: none;
+}
+
+.blobsF1 {
+    position: absolute;
+    z-index: -1;
+    margin-left: -700px;
+    margin-top: -170px;
+}
+
+.blobsF1 svg {
+    height: 300px !important;
+}
+
+.formBlobs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.formSelect {
+    height: 38px;
+    width: 300px;
+    border: none;
+    border-bottom: 1px solid black;
+    border-radius: 0;
+    cursor: pointer;
+}
+
+.formSelect:focus {
+    box-shadow: 0 0 0 1px transparent;
+    outline: none;
+}
+
+.blobsF2 {
+    position: absolute;
+    z-index: -1;
+    margin-left: 700px;
+    margin-top: 280px;
+}
+
+.blobsF2 svg {
+    height: 350px !important;
+}
+
+.service1 img {
+    position: absolute;
+    border-radius: 100%;
+    margin-left: -20%;
+    width: 600px;
+    height: auto;
+}
+
+.service1>div {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
+.service1>div * {
+    grid-area: 1/1;
+}
+
+.service1 .blobsS1 {
+    margin-left: -20%;
+}
+
+.service1 .blobsS2 {
+    position: absolute;
+    margin-top: 15%;
+    z-index: -1;
+}
+
+.service1 .DieAbout {
+    width: 420px;
+    padding: 2em 2em;
+    position: absolute;
+    z-index: 10;
+    margin: 900px;
+    margin-left: 1200px;
+    margin-top: 1400px;
+}
+
+.service1 .DieAbout h3 {
+    font-size: 1.7em;
+}
+
+.service1 {
+    margin-bottom: 100px;
+}
+
+.service4 .row {
+    text-align: center;
+    justify-content: center;
+}
+
+.service4 .serv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px 0;
+}
+
+.service4 .serv>p {
+    width: 60%;
+}
+
+.service4 .prices {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: white;
+    border: 2px solid var(--green);
+    border-radius: 30px;
+    width: 50%;
+    padding: 15px 30px;
+}
+.service4 .prices .pris {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 90%;
+}
+
+
+.service4 .prices .dots {
+    width: 100%;
+    height: 1px;
+    border-top: 2px black dotted;
+}
+
+.service4 .imgs {
+    display: flex;
+    justify-content: space-around;
+    width: 60%;
+    margin: 30px 0;
+}
+
+.service4 .imgs img {
+    width: 300px;
+    border-radius: 20px;
+    height: auto;
+}
+
+.about1>div {
+    display: grid;
+    justify-items: center;
+    align-items: start;
+}
+
+.about1>div * {
+    grid-area: 1/1;
+}
+
+.about1 img {
+    border-radius: 100%;
+    width: 650px;
+    height: 650px;
+}
+
+.blobsA1 {
+    position: absolute;
+    z-index: -2;
+}
+
+.blobsA2 {
+    position: absolute;
+    margin-top: 10%;
+    margin-left: 5%;
+    z-index: -1;
+}
+
+.about1 .DieAbout {
+    width: 400px;
+    text-align: center;
+    padding: 40px;
+    position: absolute;
+    margin-top: 45vh;
+    margin-left: -20%;
+}
+
+.about2 {
+    margin-top: 200px;
+    padding: 50px 0;
+}
+
+.tocenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.coworker {
+    width: 90%;
+    height: 457px;
+    border-radius: 30px;
+    border: 3px solid #C2E7DA;
+    text-align: center;
+    background: #FFF;
+    margin: 15px 0;
+}
+
+.coworker .photo {
+    position: relative;
+    width: auto;
+    height: 305px;
+    border-top-left-radius: 29px;
+    border-top-right-radius: 29px;
+    overflow: hidden;
+}
+
+.coworker .photo::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(194, 231, 218, 0.00) 89.04%, #C2E7DA 100%);
+}
+
+.coworker .photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.coworker .texts {
+    padding: 20px 0;
+}
+
+.coworker .texts h4 {
+    font-weight: bold;
+    font-size: 1.7em;
+}
+
+.coworker .texts p {
+    font-size: 1.3em;
+    color: #585858;
+}
+
+.mapDiv {
+    position: relative;
+    overflow: hidden;
+}
+
+.mapDiv .address {
+    color: #eee;
+    font-size: 12px;
+    position: absolute;
+    top: 14px;
+}
+
+.mapDiv .city {
+    color: #eee;
+    font-size: 12px;
+    position: absolute;
+    top: 0px;
+}
+
+.mapDiv iframe {
+    position: relative;
+}
+
+.cont1 {
+    margin-top: 3%;
+}
+
+.map {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.map>* {
+    grid-area: 1/1;
+}
+
+.map .blobsC1 {
+    position: relative;
+    width: auto;
+    top: -60px;
+    left: -80px;
+}
+
+.map .blobsC1 svg {
+    width: 55%;
+    height: auto;
+}
+
+.map .blobsC2 svg {
+    width: 50% !important;
+    height: auto;
+    position: relative;
+    top: 120px;
+    left: 55%;
+    z-index: -2;
+}
+
+.texts>div {
+    display: flex;
+}
+
+.cont1 .row {
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-indicators li {
+    background-color: var(--purp) !important;
+    width: 12px !important;
+    height: 12px !important;
+    border-radius: 100%;
+    margin: 0 5px !important;
+}
+.carousel-indicators li.active {
+    background-color: var(--darkpurp) !important;
+}
+
+.carousel-inner {
+    border-radius: 30px;
+}
+
+.carousel-item {
+    object-fit: cover;
+    height: 700px;
+}
+
+.carousel-item img {
+    width: 100%;
+}
+
+.photoItem {
+    margin: 5px;
+    overflow: hidden;
+    object-fit: cover;
+    width: 100%;
+    height: 300px;
+}
+
+.photoItem img {
+    width: 100%;
+    height: auto;
+}
+.photoItem {
+    border-radius: 20px;
+}
+
+.photoFilter b:hover{
+    color: var(--purp);
+}
+.photoFilter{
+    cursor: pointer;
+    transition: 0.3s;
+}
+.photoFilter .active{
+    color: var(--purp);
+}
+
+.reg1 {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
+.reg1>* {
+    grid-area: 1/1;
+}
+
+.reg1 form {
+    z-index: 100;
+}
+
+.reg1 form a {
+    text-decoration: none;
+    color: var(--darkpurp);
+}
+
+.reg1 form a:hover {
+    text-decoration: none;
+    color: var(--purp);
+}
+
+.reg1 form .already {
+    width: 300px;
+    display: flex;
+    justify-content: start;
+    margin: 0;
+}
+
+.reg1 .blobsC1 {
+    width: 25%;
+    margin-left: -45%;
+    margin-bottom: 15%;
+}
+
+.reg1 .blobsC2 {
+    margin-left: 33%;
+    margin-top: 20%;
+}
+
+.auth1 {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
+.auth1>* {
+    grid-area: 1/1;
+}
+
+.auth1 form {
+    z-index: 100;
+}
+
+.auth1 .blobsC1 {
+    margin-left: -45%;
+    margin-bottom: 13%;
+    width: 20%;
+}
+
+.auth1 .blobsC2 {
+    margin-left: 42%;
+    margin-top: 22%;
+    width: 20%;
+}
+
+.edits {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.edits button {
+    border: 1px black solid;
+    border-radius: 100px;
+    background: transparent;
+    margin: 10px 0;
+    width: 50%;
+    padding: 8px 0;
+    transition: 0.3s;
+}
+.managements .edits button {
+    width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.managements .edits {
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+.edits button span{
+    transition: 0.3s;
+}
+
+/* %%!!!!!СДЕЛАТЬ ИЗМЕНЕНИЕ ЦВЕТА ТЕКСТА НА ХОВЕР */
+.edits button:hover {
+    border: 1px var(--darkpurp) solid;
+}
+.edits button:hover span{
+    color: var(--purp);
+}
+.nede {
+    margin-top: 50px;
+}
+
+.edits img {
+    display: none;
+    width: 25px;
+    height: auto;
+}
+
+.managements .edits img {
+    display: flex;
+    width: 25px;
+    height: auto;
+}
+
+.myRecordsDIV {
+    border: 1px solid black;
+    border-radius: 30px;
+    padding: 20px 30px;
+    overflow: scroll;
+    text-align: center;
+    height: 250px;
+}
+
+.myRecordsDIV .myRecords {
+    width: 100%;
+}
+
+.myRecordsDIV .myRecords tr {
+    height: 50px;
+}
+
+.managements {
+    border: var(--purp) 2px solid;
+    border-radius: 40px;
+    padding: 30px 35px;
+    height: 100%;
+}
+
+
+.managements .manageItem {
+    padding: 5px 0;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+.managements .manageItem1 {
+    padding: 5px 0;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+.managements .manageItem p:hover {
+    color: var(--purp);
+}
+
+.infoTableDIV {
+    border: var(--purp) 2px solid;
+    height: 520px;
+    overflow: scroll;
+    text-align: center;
+}
+
+.infoTableDIV .infoTable {
+    width: 100%;
+}
+
+.infoTableDIV .infoTable tr {
+    height: 50px;
+}
+.infoTableDIV .infoTable tr:hover {
+    background-color: #6356a46e !important;
+}
+
+.infoTableDIV .infoTable th {
+    background: var(--purp);
+    color: white;
+    font-size: 1.2em;
+}
+
+.infoTableDIV .infoTable tr:nth-child(odd) {
+    background: #a899f24d;
+}
+
+.manageItemHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.manageItemHeader .manageItem p {
+    color: var(--purp);
+    font-size: 1.3em;
+}
+
+.manageItemHeader .cancel {
+    cursor: pointer
+}
+
+.searchInput {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 18px 18px;
+    background-position: 95% center;
+    background-color: transparent;
+    border: 2px solid var(--purp);
+    border-radius: 100px;
+    padding: 0 13px;
+    width: 100%;
+    height: 35px;
+}
+
+.fset legend {
+    font-size: 1.1em;
+    margin-top: 10px;
+}
+
+.fset input[type='radio'] {
+    display: none;
+}
+
+.fset label {
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    padding-left: 25px;
+    margin-right: 0;
+    line-height: 18px;
+    user-select: none;
+}
+
+.fset label:before {
+    content: "";
+    display: inline-block;
+    width: 17px;
+    height: 18px;
+    position: absolute;
+    left: 0;
+    bottom: 1px;
+    background: url(../pics/manage/radio-1.png) 0 0 no-repeat;
+    background-size: 17px;
+}
+
+.fset input[type=radio]:checked+label:before {
+    background: url(../pics/manage/radio-2.png) 0 0 no-repeat;
+    background-size: 17px;
+}
+
+.fset label:hover:before {
+    filter: brightness(120%);
+}
+
+.managements .btnPurp {
+    width: 100%;
+    margin-top: 20px;
+}
+
+
+@media (max-width: 1400px) {
+    .auth1 .blobsC1 {
+        width: 25%;
+    }
+
+    .auth1 .blobsC2 {
+        width: 25%;
+    }
+}
+
+@media (max-width:1200px) {
+    .reg1 .blobsC1 {
+        margin-left: -65%;
+        margin-bottom: 25%;
+    }
+
+    .reg1 .blobsC2 {
+        margin-left: 45%;
+        margin-top: 25%;
+    }
+
+    .auth1 .blobsC1 {
+        margin-left: -55%;
+        margin-bottom: 17%;
+    }
+
+    .auth1 .blobsC2 {
+        margin-left: 50%;
+        margin-top: 27%;
+    }
+
+    .mePhoto {
+        width: 60%;
+        height: auto;
+    }
+
+    .me .blobs2 {
+        margin-left: -5%;
+    }
+}
+
+@media (max-width: 1141px) {
+    .ServiceCard {
+        width: 30vw;
+    }
+
+    .photos .toright {
+        justify-content: end !important;
+    }
+
+    .toright {
+        justify-content: center;
+    }
+
+    .toleft {
+        justify-content: center;
+    }
+
+    .main2 p {
+        width: 80%;
+    }
+
+    .main3 {
+        margin-bottom: 1em !important;
+    }
+
+    .service1 img {
+        margin-left: -10%;
+        width: 450px;
+    }
+
+    .service1 svg {
+        width: 80%;
+    }
+
+    .service1 .blobsS1 {
+        margin-left: -5%;
+    }
+
+    .service1 .blobsS2 {
+        margin-top: 15%;
+        margin-left: 10%;
+    }
+
+    .service1 .DieAbout {
+        grid-area: 1/2;
+        margin: auto;
+        margin-top: 600px;
+    }
+
+    .service1 {
+        margin-bottom: 150px;
+    }
+
+    .about1 img {
+        border-radius: 100%;
+        width: 550px;
+        height: 550px;
+    }
+
+    .about1 .DieAbout {
+        margin-top: 50vh;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .about2 .DieAbout {
+        width: 100%;
+    }
+
+    .map .blobsC1 {
+        top: -80px;
+        left: -50px;
+    }
+
+    .map .blobsC1 svg {
+        width: 50%;
+        height: auto;
+    }
+
+    .map .blobsC2 svg {
+        top: 120px;
+        left: 55%;
+    }
+
+    .mapDiv iframe {
+        width: 400px;
+        height: 300px;
+    }
+}
+
+@media (max-width:992px) {
+    .main3 .col {
+        text-align: center;
+    }
+
+    .bloobs {
+        display: none;
+    }
+
+    .main4 {
+        text-align: center;
+    }
+
+    .main4 .col {
+        display: flex;
+        justify-content: center;
+    }
+
+    .main5 form {
+        width: 500px;
+    }
+
+    .form-input,
+    .Select__control {
+        width: 250px !important;
+    }
+
+    .blobsF1 {
+        margin-left: -500px;
+    }
+
+    .blobsF2 {
+        margin-left: 500px;
+    }
+
+    .texts>div {
+        display: flex;
+    }
+
+    .mapDiv iframe {
+        width: 500px;
+        height: 400px;
+    }
+
+    .cont1 .texts {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 50px;
+    }
+
+    .reg1 .blobsC1 {
+        width: 30%;
+        margin-left: -90%;
+        margin-bottom: 45%;
+    }
+
+    .reg1 .blobsC2 {
+        width: 45%;
+        margin-left: 65%;
+        margin-top: 45%;
+    }
+
+    .auth1 .blobsC1 {
+        margin-left: -75%;
+        margin-bottom: 25%;
+        width: 30%;
+    }
+
+    .auth1 .blobsC2 {
+        margin-left: 70%;
+        margin-top: 40%;
+        width: 30%;
+    }
+
+    .mePhoto {
+        width: 40%;
+    }
+
+    .nede {
+        margin-top: 0;
+    }
+    .infoTableDIV{
+        margin-top: 20px;
+
+    }
+}
+
+@media (max-width: 835px) {
+    svg {
+        width: 80%;
+        height: auto;
+    }
+
+    .dogimg {
+        width: 30em;
+        height: 30em;
+    }
+
+    .main1 .DieAbout {
+        width: 27em;
+        height: 40%;
+        padding: 2em 1em;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 5em;
+    }
+
+    .main1 {
+        margin-left: 0;
+    }
+
+    .blobs2-1 img {
+        width: 13em;
+        height: auto;
+    }
+
+    .main3 p {
+        font-size: 1em;
+    }
+
+    .main4 svg {
+        width: 100%;
+        height: auto;
+    }
+
+    .service1 img {
+        margin-left: -10%;
+        width: 300px;
+    }
+
+    .service1 svg {
+        width: 70%;
+        height: auto;
+    }
+
+    .service1 .blobsS1 {
+        margin-left: 15%;
+    }
+
+    .service1 .blobsS2 {
+        margin-top: 25%;
+        margin-left: 35%;
+    }
+
+    .service1 .DieAbout {
+        grid-area: 1/2;
+        width: 350px;
+        padding: 2em 2em;
+        margin: auto;
+        margin-top: 450px;
+    }
+
+    .service1 {
+        margin-bottom: 150px;
+    }
+
+    .service1 .DieAbout h3 {
+        font-size: 1.3em;
+    }
+
+    .about1 img {
+        border-radius: 100%;
+        width: 450px;
+        height: 450px;
+    }
+
+    .about1 svg {
+        width: 100%;
+        height: 100%;
+    }
+
+    .about1 .DieAbout {
+        margin-top: 40vh;
+    }
+
+    .about1 .blobsA2 {
+        margin-top: 0%;
+    }
+
+    .about2 .blobs2-1 img {
+        width: 250px;
+        height: 250px;
+    }
+
+    .reg1 form {
+        width: 500px;
+    }
+
+    .reg1 .blobsC1 {
+        width: 40%;
+        margin-left: -50%;
+        margin-bottom: 40%;
+    }
+
+    .reg1 .blobsC2 {
+        width: 45%;
+        margin-left: 60%;
+        margin-top: 50%;
+    }
+
+    .auth1 .blobsC1 {
+        margin-left: -65%;
+        margin-bottom: 25%;
+        width: 35%;
+    }
+
+    .auth1 .blobsC2 {
+        margin-left: 70%;
+        margin-top: 35%;
+        width: 40%;
+    }
+
+    .me .blobs2 {
+        margin-left: 10%;
+    }
+
+    .mePhoto {
+        width: 60%;
+    }
+
+    .edits button {
+        width: 80%;
+    }
+}
+
+@media (max-width: 771px) {
+    .container {
+        max-width: 90% !important;
+    }
+
+    .headAddr div {
+        text-align: end;
+        padding: 10px 5px;
+    }
+
+    .ServiceCard {
+        width: 100vw;
+    }
+
+    .ServiceCard img {
+        width: 5em;
+        height: auto;
+    }
+
+    .main1 .DieAbout {
+        width: 80%;
+        height: auto;
+    }
+
+    .main5 form {
+        width: 80%;
+    }
+
+    .blobsF1 {
+        display: none;
+    }
+
+    .blobsF2 {
+        display: none;
+    }
+
+    .about1 svg {
+        width: 90%;
+        height: 90%;
+    }
+}
+
+@media (max-width: 690px) {
+    .continer {
+        max-width: 95% !important;
+    }
+
+    .headAddr {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-end;
+    }
+
+    .headAddr div {
+        padding: 5px 10px;
+    }
+
+    .main5 form .btnSimp {
+        width: 80%;
+    }
+
+    .reg1 .blobsC1 {
+        margin-left: -60%;
+        margin-bottom: 55%;
+    }
+
+    .reg1 .blobsC2 {
+        width: 45%;
+        margin-left: 67%;
+        margin-top: 63%;
+    }
+}
+
+@media (max-width: 635px) {
+    svg {
+        width: 70%;
+        height: auto;
+    }
+
+    .dogimg {
+        width: 20em;
+        height: 20em;
+    }
+
+    .main1 .DieAbout {
+        margin-top: -5em;
+        grid-area: 2/ 1;
+    }
+
+    footer .unvislogo {
+        display: block;
+        padding-bottom: 10px;
+    }
+
+    footer .vislogo {
+        display: none;
+    }
+
+    footer .coltorows {
+        flex-direction: column;
+    }
+
+    footer .coltorows * {
+        margin: 17px 0;
+    }
+
+    .horLine {
+        margin: 25px 0;
+    }
+
+    .service1 img {
+        width: 220px;
+    }
+
+    .service1 svg {
+        width: 80%;
+        height: auto;
+    }
+
+    .service1 .DieAbout {
+        grid-area: 1/2;
+        width: 280px;
+        padding: 1em 1.5em;
+        margin: auto;
+        margin-top: 350px;
+    }
+
+    .service1 {
+        margin-bottom: 150px;
+    }
+
+    .service1 .DieAbout h3 {
+        font-size: 1.1em;
+    }
+
+    .about1 img {
+        border-radius: 100%;
+        width: 350px;
+        height: 350px;
+    }
+
+    .about1 .DieAbout {
+        margin-top: 30vh;
+        width: 70%;
+    }
+
+    .mapDiv iframe {
+        width: 100vw;
+        height: 300px;
+    }
+
+    .blobsC1,
+    .blobsC2 {
+        display: none;
+    }
+
+    .reg1 form .btnSimp,
+    .auth1 form .btnSimp {
+        width: 80%
+    }
+
+    .edits button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: auto;
+        padding: 10px;
+    }
+
+    .edits img {
+        display: block;
+    }
+
+    .edits span {
+        display: none;
+    }
+
+    .persInfo p {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 535px) {
+    svg {
+        width: 70%;
+        height: auto;
+    }
+
+    .dogimg {
+        width: 15em;
+        height: 15em;
+        margin: auto auto;
+    }
+
+    .main {
+        align-items: center;
+    }
+
+    .main1 {
+        margin-top: -3em !important;
+    }
+
+    .DieAbout p,
+    .DieAbout button,
+    .main2 p,
+    .main3 p,
+    .btnSimp,
+    .btnPurp {
+        font-size: 0.85em;
+    }
+
+    .ServiceCard h3 {
+        font-size: calc(1.2rem + .6vw);
+    }
+
+    .form-input,
+    .Select__control {
+        width: 200px !important;
+    }
+
+    .about2 .blobs2-1 img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .about2 .blobs2-1 svg {
+        width: 100%;
+        height: 300px;
+    }
+
+    .reg1 form,
+    .auth1 form {
+        width: 100%;
+    }
+
+    .reg1 form .input-container,
+    .auth1 form .input-container {
+        width: 80%;
+    }
+
+    .reg1 form .input-container input,
+    .auth1 form .input-container input {
+        width: 100% !important;
+    }
+
+    .reg1 form .already {
+        width: 80%;
+    }
+}
+
+@media (max-width:420px) {
+    .service1 img {
+        width: 70%;
+    }
+
+    .service1 svg {
+        width: 90%;
+    }
+
+    .service1 .blobsS1 {
+        margin-left: 0%;
+    }
+
+    .service1 .blobsS2 {
+        margin-top: 15%;
+    }
+
+    .about1 .DieAbout {
+        margin-top: 25vh;
+        padding: 25px;
+    }
+
+    .about1 .DieAbout h3 {
+        font-size: calc(1.1rem + .6vw);
+    }
+
+    .about1 img {
+        border-radius: 100%;
+        width: 250px;
+        height: 250px;
+    }
+}
