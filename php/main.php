@@ -56,9 +56,9 @@
                     </ul>
                 </div>
                 <div class='account'>
-                    <button><a href='registration.php'>
-                            <img class="user-icon" src='../pics/main/user.png' alt="User menu" />
-                        </a></button>
+                    <button onclick="checkRegCookie()">
+                        <img class="user-icon" src='../pics/main/user.png' alt="User menu" />
+                    </button>
                 </div>
             </nav>
         </div>
@@ -149,7 +149,7 @@
             <div class="col">
                 <h1><b>Груминг на дому</b></h1>
                 <p>Это удобная и комфортная услуга для вас и вашего питомца. Вы не нуждаетесь в транспортировке животного в салон, а грумер приезжает к вам на дом с необходимым оборудованием и расходными материалами. Грумер на дому может выполнить все виды ухода за животным: стрижку, мытье, расчесывание, обработку когтей, ушей и зубов.</p>
-                
+
                 <a href='#formHere'><button class='btnPurp'>Записаться</button></a>
             </div>
             <div class="col">
@@ -210,7 +210,7 @@
                     <div class='DieAbout'>
                         <h3>Подберём уникальный стиль для вашего питомца</h3>
                         <p>Подбор уникального стиля для питомца - это не только способ выразить свою любовь и заботу, но и повысить настроение вашего четвероногого друга. Специалисты салона помогут вам определиться с лучшим вариантом, учитывая индивидуальные особенности и характер вашего животного.</p>
-                        
+
                         <a href='#formHere'><button class='btnSimp'>Записаться</button></a>
                     </div>
                 </div>
@@ -337,6 +337,8 @@
     <script src="../js/jquery-3.6.4.min.js"></script>
     <script src="../js/popper.min.js"></script>
     <script src="../bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="../js/checkRegister.js"></script>
 </body>
 
 </html>

@@ -17,9 +17,9 @@
 </head>
 
 <body>
-<?php
-require("code/register.php");
-?>
+    <?php
+    require("code/register.php");
+    ?>
 
     <header>
         <div class="container">
@@ -61,9 +61,9 @@ require("code/register.php");
                     </ul>
                 </div>
                 <div class='account'>
-                    <button><a href='registration.php'>
-                            <img class="user-icon" src='../pics/main/user.png' alt="User menu" />
-                        </a></button>
+                    <button onclick="checkRegCookie()">
+                        <img class="user-icon" src='../pics/main/user.png' alt="User menu" />
+                    </button>
                 </div>
             </nav>
         </div>
@@ -188,8 +188,9 @@ require("code/register.php");
     <script src="../js/jquery-3.6.4.min.js"></script>
     <script src="../js/popper.min.js"></script>
     <script src="../bootstrap/js/bootstrap.min.js"></script>
-    
+
     <script src="../js/register.js"></script>
+    <script src="../js/checkRegister.js"></script>
 </body>
 
 </html>

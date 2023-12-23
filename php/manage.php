@@ -57,9 +57,9 @@
                     </ul>
                 </div>
                 <div class='account'>
-                    <button><a href='registration.php'>
-                            <img class="user-icon" src='../pics/main/user.png' alt="User menu" />
-                        </a></button>
+                    <button onclick="checkRegCookie()">
+                        <img class="user-icon" src='../pics/main/user.png' alt="User menu" />
+                    </button>
                 </div>
             </nav>
         </div>
@@ -123,180 +123,180 @@
                         <div class="edits">
                             <button><img src='../pics/manage/add.png' /></button>
                             <button><img src='../pics/me/trash.png' /></button>
+                        </div>
+                        <button type="submit" class="btnPurp">Найти</button>
                     </div>
-                    <button type="submit" class="btnPurp">Найти</button>
-                </div>
 
 
-                <div class="manageItem" onclick="show('Услуги')">
-                    <p>Услуги</p>
-                </div>
-
-
-                <div id="invisSERVICE" style="display:none;">
-                    <div class="manageItemHeader">
-                        <div class="manageItem1">
-                            <p>Услуги</p>
-                        </div>
-                        <div class="cancel" onClick="show('')">
-                            <img src='../pics/manage/cancel.png' />
-                        </div>
+                    <div class="manageItem" onclick="show('Услуги')">
+                        <p>Услуги</p>
                     </div>
-                    <input type="text" class="searchInput" />
 
-                    <fieldset class="fset">
-                        <legend>Тип</legend>
 
-                        <div>
-                            <input type="radio" id="type1" name="type" value="Кошки" />
-                            <label for="type1">Кошки</label>
+                    <div id="invisSERVICE" style="display:none;">
+                        <div class="manageItemHeader">
+                            <div class="manageItem1">
+                                <p>Услуги</p>
+                            </div>
+                            <div class="cancel" onClick="show('')">
+                                <img src='../pics/manage/cancel.png' />
+                            </div>
                         </div>
+                        <input type="text" class="searchInput" />
 
-                        <div>
-                            <input type="radio" id="type2" name="type" value="Собаки" />
-                            <label for="type2">Собаки</label>
-                        </div>
-                    </fieldset>
-                    <fieldset class="fset">
-                        <legend>Цена</legend>
+                        <fieldset class="fset">
+                            <legend>Тип</legend>
 
-                        <div>
-                            <input type="radio" id="price1" name="price" value="20" />
-                            <label for="price1">До 20р</label>
-                        </div>
+                            <div>
+                                <input type="radio" id="type1" name="type" value="Кошки" />
+                                <label for="type1">Кошки</label>
+                            </div>
 
-                        <div>
-                            <input type="radio" id="price2" name="price" value="40" />
-                            <label for="price2">До 40р</label>
+                            <div>
+                                <input type="radio" id="type2" name="type" value="Собаки" />
+                                <label for="type2">Собаки</label>
+                            </div>
+                        </fieldset>
+                        <fieldset class="fset">
+                            <legend>Цена</legend>
+
+                            <div>
+                                <input type="radio" id="price1" name="price" value="20" />
+                                <label for="price1">До 20р</label>
+                            </div>
+
+                            <div>
+                                <input type="radio" id="price2" name="price" value="40" />
+                                <label for="price2">До 40р</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="price3" name="price" value="60" />
+                                <label for="price3">До 60р</label>
+                            </div>
+                        </fieldset>
+                        <fieldset class="fset">
+                            <legend>Активность</legend>
+
+                            <div>
+                                <input type="radio" id="active3" name="active" value="true" />
+                                <label for="active3">Да</label>
+                            </div>
+
+                            <div>
+                                <input type="radio" id="active4" name="active" value="false" />
+                                <label for="active4">Нет</label>
+                            </div>
+                        </fieldset>
+                        <button type="submit" class="btnPurp">Найти</button>
+                    </div>
+
+                    <div class="manageItem" onclick="show('Заявки')">
+                        <p>Заявки</p>
+                    </div>
+
+
+                    <div id="invisORDER" style="display:none;">
+                        <div class="manageItemHeader">
+                            <div class="manageItem1">
+                                <p>Заявки</p>
+                            </div>
+                            <div class="cancel" onClick="show('')">
+                                <img src='../pics/manage/cancel.png' />
+                            </div>
                         </div>
-                        <div>
-                            <input type="radio" id="price3" name="price" value="60" />
-                            <label for="price3">До 60р</label>
-                        </div>
-                    </fieldset>
-                    <fieldset class="fset">
+                        <input type="text" class="searchInput" />
+
                         <legend>Активность</legend>
 
                         <div>
-                            <input type="radio" id="active3" name="active" value="true" />
-                            <label for="active3">Да</label>
+                            <input type="radio" id="active5" name="active" value="true" />
+                            <label for="active5">Да</label>
                         </div>
 
                         <div>
-                            <input type="radio" id="active4" name="active" value="false" />
-                            <label for="active4">Нет</label>
+                            <input type="radio" id="active6" name="active" value="false" />
+                            <label for="active6">Нет</label>
                         </div>
-                    </fieldset>
-                    <button type="submit" class="btnPurp">Найти</button>
+                        </fieldset>
+                        <button type="submit" class="btnPurp">Найти</button>
+                    </div>
+
+
+                    <div class="manageItem" onclick="show('Салоны')">
+                        <p>Салоны</p>
+                    </div>
+
+
+                    <div id="invisSALON" style="display:none;">
+                        <div class="manageItemHeader">
+                            <div class="manageItem1">
+                                <p>Салоны</p>
+                            </div>
+                            <div class="cancel" onClick="show('')">
+                                <img src='../pics/manage/cancel.png' />
+                            </div>
+                        </div>
+                        <input type="text" class="searchInput" />
+
+                        <legend>Активность</legend>
+
+                        <div>
+                            <input type="radio" id="active5" name="active" value="true" />
+                            <label for="active5">Да</label>
+                        </div>
+
+                        <div>
+                            <input type="radio" id="active6" name="active" value="false" />
+                            <label for="active6">Нет</label>
+                        </div>
+                        </fieldset>
+                        <button type="submit" class="btnPurp">Найти</button>
+                    </div>
                 </div>
-
-                <div class="manageItem" onclick="show('Заявки')">
-                    <p>Заявки</p>
-                </div>
-
-
-                <div id="invisORDER" style="display:none;">
-                    <div class="manageItemHeader">
-                        <div class="manageItem1">
-                            <p>Заявки</p>
-                        </div>
-                        <div class="cancel" onClick="show('')">
-                            <img src='../pics/manage/cancel.png' />
-                        </div>
-                    </div>
-                    <input type="text" class="searchInput" />
-
-                    <legend>Активность</legend>
-
-                    <div>
-                        <input type="radio" id="active5" name="active" value="true" />
-                        <label for="active5">Да</label>
-                    </div>
-
-                    <div>
-                        <input type="radio" id="active6" name="active" value="false" />
-                        <label for="active6">Нет</label>
-                    </div>
-                    </fieldset>
-                    <button type="submit" class="btnPurp">Найти</button>
-                </div>
-
-
-                <div class="manageItem" onclick="show('Салоны')">
-                    <p>Салоны</p>
-                </div>
-
-
-                <div id="invisSALON" style="display:none;">
-                    <div class="manageItemHeader">
-                        <div class="manageItem1">
-                            <p>Салоны</p>
-                        </div>
-                        <div class="cancel" onClick="show('')">
-                            <img src='../pics/manage/cancel.png' />
-                        </div>
-                    </div>
-                    <input type="text" class="searchInput" />
-
-                    <legend>Активность</legend>
-
-                    <div>
-                        <input type="radio" id="active5" name="active" value="true" />
-                        <label for="active5">Да</label>
-                    </div>
-
-                    <div>
-                        <input type="radio" id="active6" name="active" value="false" />
-                        <label for="active6">Нет</label>
-                    </div>
-                    </fieldset>
-                    <button type="submit" class="btnPurp">Найти</button>
+            </div>
+            <div class="col-lg-9 col-md-12 col-sm-12">
+                <div class="infoTableDIV">
+                    <table class="infoTable">
+                        <tr>
+                            <th>id</th>
+                            <th>Name</th>
+                            <th>Descr</th>
+                            <th>Price</th>
+                        </tr>
+                        <tr>
+                            <td>id</td>
+                            <td>Name</td>
+                            <td>Descr</td>
+                            <td>Price</td>
+                        </tr>
+                        <tr>
+                            <td>id</td>
+                            <td>Name</td>
+                            <td>Descr</td>
+                            <td>Price</td>
+                        </tr>
+                        <tr>
+                            <td>id</td>
+                            <td>Name</td>
+                            <td>Descr</td>
+                            <td>Price</td>
+                        </tr>
+                        <tr>
+                            <td>id</td>
+                            <td>Name</td>
+                            <td>Descr</td>
+                            <td>Price</td>
+                        </tr>
+                        <tr>
+                            <td>id</td>
+                            <td>Name</td>
+                            <td>Descr</td>
+                            <td>Price</td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
-        <div class="col-lg-9 col-md-12 col-sm-12">
-            <div class="infoTableDIV">
-                <table class="infoTable">
-                    <tr>
-                        <th>id</th>
-                        <th>Name</th>
-                        <th>Descr</th>
-                        <th>Price</th>
-                    </tr>
-                    <tr>
-                        <td>id</td>
-                        <td>Name</td>
-                        <td>Descr</td>
-                        <td>Price</td>
-                    </tr>
-                    <tr>
-                        <td>id</td>
-                        <td>Name</td>
-                        <td>Descr</td>
-                        <td>Price</td>
-                    </tr>
-                    <tr>
-                        <td>id</td>
-                        <td>Name</td>
-                        <td>Descr</td>
-                        <td>Price</td>
-                    </tr>
-                    <tr>
-                        <td>id</td>
-                        <td>Name</td>
-                        <td>Descr</td>
-                        <td>Price</td>
-                    </tr>
-                    <tr>
-                        <td>id</td>
-                        <td>Name</td>
-                        <td>Descr</td>
-                        <td>Price</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    </div>
     </div>
 
 
@@ -350,6 +350,8 @@
     <script src="../js/popper.min.js"></script>
     <script src="../js/showManagements.js"></script>
     <script src="../bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="../js/checkRegister.js"></script>
 </body>
 
 </html>

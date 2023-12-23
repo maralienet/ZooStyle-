@@ -13,18 +13,12 @@ $("#adding").on('submit', function (e) {
             pass: pass
         },
         success: function () {
-            $.ajax({
-                url: 'code/showMe.php',
-                method: 'post',
-                data: {
-                    name1: name,
-                    phonenum1: phonenum,
-                    sale: 0
-                },
-                success: function () {
-                    window.location.replace('me.php');
-                }
-            });
+            setTimeout(()=>{
+                window.location.replace('me.php')
+            }, 1000)            
         }
-    });
-});
+    })
+})
+
+
+function check

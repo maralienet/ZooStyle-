@@ -1,8 +1,8 @@
 <?php
-$servername = "sql200.hostingem.ru";
-$username = "gnioo_35645704"; 
-$password = "174285396z"; 
-$db = "gnioo_35645704_ZooStyle";
+$servername = "localhost";
+$username = "root"; 
+$password = ""; 
+$db = "ZooStyle";
 
 $conn = new mysqli($servername, $username, $password, $db);
 $conn->set_charset('utf8mb4');

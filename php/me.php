@@ -57,9 +57,9 @@
                     </ul>
                 </div>
                 <div class='account'>
-                    <button><a href='registration.php'>
-                            <img class="user-icon" src='../pics/main/user.png' alt="User menu" />
-                        </a></button>
+                    <button onclick="checkRegCookie()">
+                        <img class="user-icon" src='../pics/main/user.png' alt="User menu" />
+                    </button>
                 </div>
             </nav>
         </div>
@@ -75,7 +75,9 @@
         <div class="row me" style="margin-top: 20px">
             <div class="col-lg-4 col-md-12 col-sm-12">
                 <div class="blobs2-1 toright">
-                    <img src='../pics/services/dog.jpg' alt='dog' class='img-fluid dog2 mePhoto' />
+                <?php
+                require('code/showMeAvatar.php');
+                ?>
 
                     <div class='blobs2'>
                         <svg viewBox="0 0 498 516" width="498" height="416" xmlns="http://www.w3.org/2000/svg">
@@ -93,9 +95,9 @@
             </div>
 
             <div class="col-lg-4 col-md-6 col-sm-6 col-9">
-            <?php
-            require('code/showMe.php');
-            ?>
+                <?php
+                require('code/showMe.php');
+                ?>
             </div>
 
             <div class="col-lg-4 col-md-6 col-sm-6 col-3">
@@ -207,6 +209,8 @@
     <script src="../js/jquery-3.6.4.min.js"></script>
     <script src="../js/popper.min.js"></script>
     <script src="../bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="../js/checkRegister.js"></script>
 </body>
 
 </html>

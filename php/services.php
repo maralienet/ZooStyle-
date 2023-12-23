@@ -57,9 +57,9 @@
                     </ul>
                 </div>
                 <div class='account'>
-                    <button><a href='registration.php'>
-                            <img class="user-icon" src='../pics/main/user.png' alt="User menu" />
-                        </a></button>
+                    <button onclick="checkRegCookie()">
+                        <img class="user-icon" src='../pics/main/user.png' alt="User menu" />
+                    </button>
                 </div>
             </nav>
         </div>
@@ -253,7 +253,8 @@
                         <p>ssss</p>
                         <div class="dots"></div>
                         <p>aaaa</p>
-                    </div><div class="type">
+                    </div>
+                    <div class="type">
                         <div style="text-align:center">
                             <p><b>тимсч</b></p>
                         </div><br />
@@ -318,6 +319,8 @@
     <script src="../js/jquery-3.6.4.min.js"></script>
     <script src="../js/popper.min.js"></script>
     <script src="../bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="../js/checkRegister.js"></script>
 </body>
 
 </html>

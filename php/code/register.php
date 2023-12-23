@@ -20,7 +20,8 @@ if (isset($_POST['name']) && isset($_POST['phonenum']) && isset($_POST['pass']))
     $sql1 = "INSERT INTO `Customers`(`custName`, `userId`) VALUES 
     ('$name',$uid)";
 
-    if($conn->query($sql1)){
+    if ($conn->query($sql1)) {
+        setcookie('id', $uid, time() + (3600),"/");
         $conn->close();
     }
 }
