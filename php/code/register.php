@@ -28,4 +28,5 @@ if (isset($_POST['name']) && isset($_POST['phonenum']) && isset($_POST['pass']))
     }
 
     $conn->close();
+    session_write_close();
 }

@@ -93,6 +93,7 @@
             </div>
 
             <?php
+            session_start();
             if (isset($_SESSION['name']) && isset($_SESSION['phonenum']) && isset($_SESSION['sale'])) {
                 echo '
                 <div class="col-lg-4 col-md-6 col-sm-6 col-9">
