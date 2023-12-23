@@ -14,7 +14,7 @@ $("#adding").on('submit', function (e) {
         },
         success: function () {
             $.ajax({
-                url: 'me.php',
+                url: 'code/showMe.php',
                 method: 'post',
                 data: {
                     name1: name,

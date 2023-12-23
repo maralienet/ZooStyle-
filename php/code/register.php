@@ -1,7 +1,6 @@
 <?php
 require("conn.php");
 if (isset($_POST['name']) && isset($_POST['phonenum']) && isset($_POST['pass'])) {
-    session_start();
     $name = $_POST['name'];
     $phonenum = $_POST['phonenum'];
     $pass = $_POST['pass'];
