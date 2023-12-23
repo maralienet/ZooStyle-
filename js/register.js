@@ -12,15 +12,17 @@ $("#adding").on('submit', function (e) {
             phonenum: phonenum,
             pass: pass
         },
-        success:function(){
-            window.location.replace('me.php');
+        success: function () {
             $.ajax({
                 url: 'me.php',
                 method: 'post',
                 data: {
-                    name: name,
-                    phonenum: phonenum,
+                    name1: name,
+                    phonenum1: phonenum,
                     sale: 0
+                },
+                success: function () {
+                    window.location.replace('me.php');
                 }
             });
         }

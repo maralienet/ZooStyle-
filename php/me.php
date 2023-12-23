@@ -93,12 +93,12 @@
             </div>
 
             <?php
-            if (isset($_POST['name']) && isset($_POST['phonenum']) && isset($_POST['sale'])) {
+            if (isset($_POST['name1']) && isset($_POST['phonenum1']) && isset($_POST['sale'])) {
                 echo '
                 <div class="col-lg-4 col-md-6 col-sm-6 col-9">
                 <div class="nede persInfo">
-                    <h2>' . $_POST['name'] . '</h2>
-                    <h5>' . $_POST['phonenum'] . '</h5>
+                    <h2>' . $_POST['name1'] . '</h2>
+                    <h5>' . $_POST['phonenum1'] . '</h5>
                     <h5>Персональная скидка: ' . $_POST['sale'] . '%</h5>
                 </div>
             </div>
