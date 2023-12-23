@@ -12,5 +12,4 @@ if (isset($_POST["type"])) {
             $data .= "<option id='servNames' value='" . $row["servtName"] . ". " . $row["servName"] . "'>" . $row["servtName"] . ". " . $row["servName"] . "</option>";
     echo $data;
     $conn->close();
-} else
-    echo 111;
+}

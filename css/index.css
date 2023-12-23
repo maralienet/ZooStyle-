@@ -354,6 +354,7 @@ svg {
 .reg1 form>div,
 .auth1 form>div {
     margin: 10px 0;
+    margin-top: 0;
 }
 
 .form-input {
@@ -482,6 +483,12 @@ footer .unvislogo {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.formBlobs span{
+    width: 300px;
+    margin-top: 10px;
+    color: #535353;
 }
 
 .formSelect {

@@ -1,6 +1,4 @@
 var phoneOK = false, passOK = false, passAgOK = false;
-
-
 $("#adding").on('submit', function (e) {
     e.preventDefault()
     let name = checkName()

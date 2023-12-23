@@ -235,13 +235,14 @@
                         </svg>
                     </div>
 
-                    <form>
+                    <form method='post' id='adding'>
                         <h4><b>Вы хотите записаться к нам?<br />Оставьте заявку!</b></h4>
                         <div class="form-group mb-3 input-container">
                             <input class="form-control form-input" id="name" type="text" required />
                             <label for='name'>Имя</label>
                         </div>
 
+                        <span>Тип животного</span>
                         <div class="form-group input-container">
                             <select class="formSelect types">
                                 <?php
@@ -256,11 +257,12 @@
                             </select>
                         </div>
 
+                        <span>Услуга</span>
                         <div class="form-group input-container servDIV">
-                            <select class="formSelect" id='services'>
-                            </select>
+                            <select class="formSelect" id='services'></select>
                         </div>
 
+                        <span>Адрес салона</span>
                         <div class="form-group input-container">
                             <select class="formSelect addresses">
                                 <?php
@@ -350,6 +352,7 @@
 
     <script src="../js/checkRegister.js"></script>
     <script src="../js/chooseType.js"></script>
+    <script src="../js/orderAdd.js"></script>
 </body>
 
 </html>
