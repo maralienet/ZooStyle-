@@ -13,22 +13,25 @@ $('.types').on('change', function () {
 
 $("#adding").on('submit', function (e) {
     e.preventDefault()
-    let petType = petType
+    let pType = petType
     let type = service.split('. ')[0]
     let serv = service.split('. ')[1]
-    let address = address
+    let adr = address
     if (isEmpty()) {
         $.ajax({
             url: 'code/orderAdd.php',
             method: 'post',
             data: {
-                petType: petType,
+                petType: pType,
                 type: type,
                 serv: serv,
-                address: address
+                address: adr
             },
-            success: function () {
-
+            success: function (rp) {
+                console.log(rp)
+            },
+            error:function(){
+                alert('aaaaaaaaaa')
             }
         })
     }
