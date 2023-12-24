@@ -218,14 +218,14 @@
         </div>
     </div>
 
-<div class="notifyWindow accepted align-items-center" style="display: none;">
-    <h2>Заявка отправлена!</h2>
-    <button onclick="closeWindow('accepted')">OK</button>
-</div>
-<div class="notifyWindow canceled align-items-center" style="display: none;">
-    <h2>Вы не вошли в аккаунт!</h2>
-    <button onclick="closeWindow('canceled')">Войти</button>
-</div>
+    <div class="notifyWindow accepted align-items-center" style="display: none;">
+        <h2>Заявка отправлена!</h2>
+        <button onclick="closeWindow('accepted')">OK</button>
+    </div>
+    <div class="notifyWindow canceled align-items-center" style="display: none;">
+        <h2>Вы не вошли в аккаунт!</h2>
+        <button onclick="closeWindow('canceled')">Войти</button>
+    </div>
 
     <div class="container main5" id='formHere'>
         <div class="row">

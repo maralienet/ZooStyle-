@@ -19,6 +19,9 @@ html {
 button {
     cursor: pointer;
 }
+button:focus{
+    outline: none;
+}
 
 .container,
 .container-fluid {
@@ -620,11 +623,11 @@ footer .unvislogo {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-top: 20px 0;
+    margin-top: 20px;
 }
 
 .service4 .serv>p {
-    width: 60%;
+    width: 700px;
 }
 
 .service4 .prices {
@@ -636,7 +639,7 @@ footer .unvislogo {
     background-color: white;
     border: 2px solid var(--green);
     border-radius: 30px;
-    width: 50%;
+    width: 550px;
     padding: 15px 30px;
 }
 
@@ -651,9 +654,12 @@ footer .unvislogo {
 
 
 .service4 .prices .dots {
-    width: 100%;
+    width:80%;
     height: 1px;
     border-top: 2px black dotted;
+}
+.service4 .prices .pris .cost {
+    width:15%;
 }
 
 .service4 .imgs {
@@ -969,7 +975,7 @@ center {
     width: 300px;
 }
 
-.sayError {
+.sayError,#sayError {
     color: rgb(170, 0, 0);
 }
 
@@ -1586,6 +1592,10 @@ center {
     .main3 .groom{
         text-align: center;
     }
+    .service4 .serv>p {
+        width: 500px;
+    }
+    
 }
 
 @media (max-width: 690px) {
@@ -1809,6 +1819,21 @@ center {
 
     .reg1 form .already,.auth1 form .already {
         width: 80%;
+    }
+    
+    .service4 .serv>p {
+        width: 90%;
+    }
+    
+    .service4 .prices {
+        width: 90%;
+        padding: 15px 10px;
+    }
+    .service4 .prices .dots {
+        width: 75%;
+    }
+    .service4 .prices .pris .cost {
+        width: 25%;
     }
 }
 

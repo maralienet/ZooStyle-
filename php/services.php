@@ -149,6 +149,15 @@
         </div>
     </div>
 
+    <div class="notifyWindow accepted align-items-center" style="display: none;">
+        <h2>Заявка отправлена!</h2>
+        <button onclick="closeWindow('accepted')">OK</button>
+    </div>
+    <div class="notifyWindow canceled align-items-center" style="display: none;">
+        <h2>Вы не вошли в аккаунт!</h2>
+        <button onclick="closeWindow('canceled')">Войти</button>
+    </div>
+
     <div class="container main5">
         <div class="row">
             <div class="col">
@@ -166,41 +175,37 @@
                         </svg>
                     </div>
 
-                    <form>
+                    <form method='post' id='adding'>
                         <h4><b>Вы хотите записаться к нам?<br />Оставьте заявку!</b></h4>
                         <div class="form-group mb-3 input-container">
                             <input class="form-control form-input" id="name" type="text" required />
                             <label for='name'>Имя</label>
                         </div>
 
+                        <span>Тип животного</span>
                         <div class="form-group input-container">
-                            <select class="formSelect">
-                                <option class='formOption'>gfdd</option>
-                                <option>gfdd</option>
-                                <option>gfdd</option>
-                                <option>gfdd</option>
+                            <select class="formSelect Select__control" id='petType'>
+                                <?php
+                                require("code/conn.php");
+                                $sql = "SELECT petType FROM Services GROUP BY petType";
+                                $result = $conn->query($sql);
+                                if ($result->num_rows > 0)
+                                    while ($row = $result->fetch_assoc())
+                                        echo "<option id='servNames' value='" . $row["petType"] . "'>" . $row["petType"] . "</option>";
+                                $conn->close();
+                                ?>
                             </select>
                         </div>
 
-                        <div class="form-group mb-3 input-container">
-                            <input class="form-control form-input" id="phonenum" type="text" required />
-                            <label for='phonenum'>Номер телефона</label>
-                        </div>
-
-                        <div class="form-group input-container">
-                            <select class="formSelect">
-                                <option class='formOption'>reter</option>
-                                <option>ergee</option>
-                                <option>ergre</option>
-                                <option>ergre</option>
-                            </select>
+                        <span>Услуга</span>
+                        <div class="form-group input-container servDIV">
+                            <select class="formSelect Select__control" id='services'></select>
                         </div>
 
                         <button class="btnSimp" type="submit">
                             Отправить
-                        </button>
+                        </button class="btnSimp" type="submit">
                     </form>
-
                     <div class='blobsF2'>
                         <svg viewBox="0 0 248 480" width="248" height="380" xmlns="http://www.w3.org/2000/svg">
                             <g>
@@ -223,50 +228,24 @@
             <h1><b>Цены</b></h1>
             <br />
         </div>
-        <div class="row">
-            <div class="col serv">
-                <h3><b>Обрезание когтей</b></h3>
+        <?php
+        require("code/showPrices.php");
+        ?>
+        <!-- <h3><b>Обрезание когтей</b></h3>
                 <p>Длинные когти могут травмировать окружающие поверхности, такие как диваны, ковры или обои. Мы можем помочь это предотвратить</p>
 
                 <div class="prices">
                     <div class="type">
                         <div style="text-align:center">
-                            <p><b>тимсч</b></p>
+                            <p><b>Коты</b></p>
                         </div><br />
                     </div>
                     <div class="pris">
-                        <p>ssss</p>
+                        <p>Умывание</p>
                         <div class="dots"></div>
-                        <p>aaaa</p>
+                        <p>от 5р.</p>
                     </div>
-                    <div class="pris">
-                        <p>ssss</p>
-                        <div class="dots"></div>
-                        <p>aaaa</p>
-                    </div>
-                    <div class="pris">
-                        <p>ssss</p>
-                        <div class="dots"></div>
-                        <p>aaaa</p>
-                    </div>
-                    <div class="pris">
-                        <p>ssss</p>
-                        <div class="dots"></div>
-                        <p>aaaa</p>
-                    </div>
-                    <div class="type">
-                        <div style="text-align:center">
-                            <p><b>тимсч</b></p>
-                        </div><br />
-                    </div>
-                    <div class="pris">
-                        <p>ssss</p>
-                        <div class="dots"></div>
-                        <p>aaaa</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+                </div> -->
     </div>
 
 
@@ -321,6 +300,8 @@
     <script src="../bootstrap/js/bootstrap.min.js"></script>
 
     <script src="../js/checkRegister.js"></script>
+    <script src="../js/chooseType.js"></script>
+    <script src="../js/orderAdd.js"></script>
 </body>
 
 </html>

@@ -75,9 +75,9 @@
         <div class="row me" style="margin-top: 20px">
             <div class="col-lg-4 col-md-12 col-sm-12">
                 <div class="blobs2-1 toright">
-                <?php
-                require('code/showMeAvatar.php');
-                ?>
+                    <?php
+                    require('code/showMeAvatar.php');
+                    ?>
 
                     <div class='blobs2'>
                         <svg viewBox="0 0 498 516" width="498" height="416" xmlns="http://www.w3.org/2000/svg">
@@ -113,48 +113,9 @@
             <div class="col-lg-8 col-md-12 col-sm-12">
                 <h2>Мои записи</h2>
                 <div class="myRecordsDIV">
-                    <table class="myRecords">
-                        <tr>
-                            <th>Услуга</th>
-                            <th>Адрес</th>
-                            <th>Дата</th>
-                        </tr>
-                        <tr>
-                            <td>Услуга</td>
-                            <td>Адрес</td>
-                            <td>Дата</td>
-                        </tr>
-                        <tr>
-                            <td>Услуга</td>
-                            <td>Адрес</td>
-                            <td>Дата</td>
-                        </tr>
-                        <tr>
-                            <td>Услуга</td>
-                            <td>Адрес</td>
-                            <td>Дата</td>
-                        </tr>
-                        <tr>
-                            <td>Услуга</td>
-                            <td>Адрес</td>
-                            <td>Дата</td>
-                        </tr>
-                        <tr>
-                            <td>Услуга</td>
-                            <td>Адрес</td>
-                            <td>Дата</td>
-                        </tr>
-                        <tr>
-                            <td>Услуга</td>
-                            <td>Адрес</td>
-                            <td>Дата</td>
-                        </tr>
-                        <tr>
-                            <td>Услуга</td>
-                            <td>Адрес</td>
-                            <td>Дата</td>
-                        </tr>
-                    </table>
+                    <?php
+                    require('code/showMeTable.php');
+                    ?>
                 </div>
             </div>
         </div>

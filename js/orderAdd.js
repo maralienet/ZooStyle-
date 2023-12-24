@@ -50,7 +50,7 @@ function closeWindow(btn) {
         window.location.replace('authorization.php')
     if (btn === 'accepted') {
         $('#name').val('')
-        document.getElementById("petType").selectedIndex = "-1";
-        document.getElementById("services").selectedIndex = "-1";
+        document.getElementById("petType").selectedIndex = "0";
+        document.getElementById("services").selectedIndex = "0";
     }
 }
