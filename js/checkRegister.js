@@ -23,7 +23,31 @@ function checkRegCookie() {
   }
 }
 
-function exit(){
+function exit() {
   document.cookie = "id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
   window.location.replace('main.php')
+}
+
+function deleteAccount(agreed = false) {
+  $('.delete').show();
+  if (agreed) {
+    $.ajax({
+      url: 'code/deleteAccount.php',
+      method: 'post',
+      data: {
+        id: getCookie("id")
+      },
+      success: function () {
+        window.location.replace('authorization.php')
+        $('.delete').hide();
+      },
+      error: function () {
+        console.log('error!')
+      }
+    })
+  }
+}
+
+function hideWindow(){
+  $('.delete').hide();
 }

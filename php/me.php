@@ -66,6 +66,14 @@
     </header>
 
 
+    <div class="notifyWindow delete notifyWindowDel align-items-center" style="display: none; text-align:center;">
+        <h3>Вы уверены, что хотите удалить аккаунт?</h3>
+        <div class="btns">
+            <button onclick="deleteAccount(true)">Да</button>
+            <button onclick="hideWindow()">Нет</button>
+        </div>
+    </div>
+
     <div class="container">
         <div class="row">
             <center>
@@ -103,7 +111,7 @@
             <div class="col-lg-4 col-md-6 col-sm-6 col-3">
                 <div class="nede edits">
                     <button><span>Редактировать</span><img src='../pics/me/pencil.png' /></button>
-                    <button><span>Удалить</span><img src='../pics/me/trash.png' /></button>
+                    <button onclick="deleteAccount()"><span>Удалить</span><img src='../pics/me/trash.png' /></button>
                     <button onclick="exit()"><span>Выйти</span><img src='../pics/me/exit.png' /></button>
                 </div>
             </div>

@@ -282,6 +282,17 @@ svg {
 .notifyWindow  button:hover{
     background: var(--brightgreen);
 }
+.notifyWindow .btns{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+.notifyWindow .btns button{
+    width: 25%;
+    height: 35px;
+    margin: 0 5px;
+}
 
 .toright {
     display: flex;
