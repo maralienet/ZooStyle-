@@ -57,7 +57,5 @@ if ($result->num_rows > 0) {
             </div>
         </div>';
     }
-}
-
-echo $conn->error;
+} else echo $conn->error;
 $conn->close();

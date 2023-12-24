@@ -141,62 +141,9 @@
             </center>
         </div>
         <div class="row tocenter">
-            <div class="col-lg-4 col-md-6 col-sm-12 tocenter">
-                <div class="coworker">
-                    <div class="photo">
-                        <img src='../pics/about/maria.jpeg' />
-                    </div>
-                    <div class="texts">
-                        <h4>Мария Трубецкая</h4>
-                        <p>Директор</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12 tocenter">
-                <div class="coworker">
-                    <div class="photo">
-                        <img src='../pics/about/maria.jpeg' />
-                    </div>
-                    <div class="texts">
-                        <h4>Мария Трубецкая</h4>
-                        <p>Директор</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12 tocenter">
-                <div class="coworker">
-                    <div class="photo">
-                        <img src='../pics/about/maria.jpeg' />
-                    </div>
-                    <div class="texts">
-                        <h4>Мария Трубецкая</h4>
-                        <p>Директор</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12 tocenter">
-                <div class="coworker">
-                    <div class="photo">
-                        <img src='../pics/about/maria.jpeg' />
-                    </div>
-                    <div class="texts">
-                        <h4>Мария Трубецкая</h4>
-                        <p>Директор</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12 tocenter">
-                <div class="coworker">
-                    <div class="photo">
-                        <img src='../pics/about/maria.jpeg' />
-                    </div>
-                    <div class="texts">
-                        <h4>Мария Трубецкая</h4>
-                        <p>Директор</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <?php
+        require('code/showMasters.php');
+        ?>
     </div>
 
 

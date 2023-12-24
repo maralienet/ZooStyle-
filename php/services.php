@@ -231,21 +231,6 @@
         <?php
         require("code/showPrices.php");
         ?>
-        <!-- <h3><b>Обрезание когтей</b></h3>
-                <p>Длинные когти могут травмировать окружающие поверхности, такие как диваны, ковры или обои. Мы можем помочь это предотвратить</p>
-
-                <div class="prices">
-                    <div class="type">
-                        <div style="text-align:center">
-                            <p><b>Коты</b></p>
-                        </div><br />
-                    </div>
-                    <div class="pris">
-                        <p>Умывание</p>
-                        <div class="dots"></div>
-                        <p>от 5р.</p>
-                    </div>
-                </div> -->
     </div>
 
 
