@@ -75,22 +75,9 @@
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                    </ol>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img class="d-block w-100" src='../pics/services/dog.jpg' alt="First slide">
-                        </div>
-                        <div class="carousel-item">
-                            <img class="d-block w-100" src='../pics/services/dog.jpg' alt="Second slide">
-                        </div>
-                        <div class="carousel-item">
-                            <img class="d-block w-100" src='../pics/services/dog.jpg' alt="Third slide">
-                        </div>
-                    </div>
+                    <?php
+                    require("code/showGalleryBest.php");
+                    ?>
                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="sr-only">Previous</span>
@@ -108,43 +95,18 @@
             </center>
         </div>
         <div class="row photos">
-            <div class="col-lg-6 col-md-6 col-sm-6 toright">
-                <div>
-                    <h3 class="photoFilter active"><b>Коты</b></h3>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6 toright">
+                <div onclick='sendType("Коты")'>
+                    <h3 class="photoFilter"><b class="active">Коты</b></h3>
                 </div>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-6">
-                <div>
-                    <h3 class="photoFilter"><b class="active">Собаки</b></h3>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                <div onclick='sendType("Собаки")'>
+                    <h3 class="photoFilter"><b>Собаки</b></h3>
                 </div>
             </div>
         </div>
-        <div class="row tocenter">
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <div class="photoItem">
-                    <img src='../pics/services/dog.jpg' />
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <div class="photoItem">
-                    <img src='../pics/services/dog.jpg' />
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <div class="photoItem">
-                    <img src='../pics/services/dog.jpg' />
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <div class="photoItem">
-                    <img src='../pics/services/dog.jpg' />
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <div class="photoItem">
-                    <img src='../pics/services/dog.jpg' />
-                </div>
-            </div>
+        <div class="row tocenter" id='photoArr'>
         </div>
     </div>
 
@@ -200,6 +162,7 @@
     <script src="../bootstrap/js/bootstrap.min.js"></script>
 
     <script src="../js/checkRegister.js"></script>
+    <script src="../js/galleryType.js"></script>
 </body>
 
 </html>

@@ -844,6 +844,12 @@ center {
     align-items: center;
 }
 
+.carousel-control-next-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%235d548e' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
+}
+.carousel-control-prev-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%235d548e' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
+}
 .carousel-indicators li {
     background-color: var(--purp) !important;
     width: 12px !important;
@@ -870,7 +876,7 @@ center {
 }
 
 .photoItem {
-    margin: 5px;
+    margin: 13px;
     overflow: hidden;
     object-fit: cover;
     width: 100%;
@@ -879,7 +885,8 @@ center {
 
 .photoItem img {
     width: 100%;
-    height: auto;
+    height: 300px;
+    object-fit: cover;
 }
 
 .photoItem {
