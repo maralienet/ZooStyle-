@@ -94,8 +94,13 @@
                             <input class="form-input" id="pass" name='pass' type="password" required />
                             <label for="name">Пароль</label>
                         </div>
-
                         <span id="sayError"></span>
+
+                        <div class="already">
+                            <p>
+                                Ещё не зарегистрированы? <a href="registration.php">Регистрация</a>
+                            </p>
+                        </div>
 
                         <button class="btnSimp" type="submit">
                             Авторизация

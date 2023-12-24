@@ -109,32 +109,32 @@
             </center>
         </div>
         <div class="container cont">
-            <div class="row box">
-                <div class="col">
+            <div class="row box justify-content-center">
+                <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class='ServiceCard'>
                         <img src='../pics/main/claws.png' alt='Обрезание когтей' />
                         <h3><b>Обрезание когтей</b></h3>
                     </div>
                 </div>
-                <div class="col">
+                <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class='ServiceCard'>
                         <img src='../pics/main/wash.png' alt='Мытьё' />
                         <h3><b>Мытьё</b></h3>
                     </div>
                 </div>
-                <div class="col">
+                <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class='ServiceCard'>
                         <img src='../pics/main/groom.png' alt='Груминг' />
                         <h3><b>Груминг</b></h3>
                     </div>
                 </div>
-                <div class="col toright">
+                <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class='ServiceCard'>
                         <img src='../pics/main/walk.png' alt='Выгул' />
                         <h3><b>Выгул</b></h3>
                     </div>
                 </div>
-                <div class="col toleft">
+                <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class='ServiceCard'>
                         <img src='../pics/main/diet.png' alt='Диетолог' />
                         <h3><b>Диетолог</b></h3>
@@ -146,13 +146,13 @@
 
     <div class="container main3">
         <div class="row">
-            <div class="col">
+            <div class="col-lg-6 col-md-6 col-sm-12 groom">
                 <h1><b>Груминг на дому</b></h1>
                 <p>Это удобная и комфортная услуга для вас и вашего питомца. Вы не нуждаетесь в транспортировке животного в салон, а грумер приезжает к вам на дом с необходимым оборудованием и расходными материалами. Грумер на дому может выполнить все виды ухода за животным: стрижку, мытье, расчесывание, обработку когтей, ушей и зубов.</p>
 
                 <a href='#formHere'><button class='btnPurp'>Записаться</button></a>
             </div>
-            <div class="col">
+            <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class='blobs1'>
                     <svg id="visual" viewBox="0 0 609 662" width="700" height="700" xmlns="http://www.w3.org/2000/svg">
                         <g>
@@ -218,6 +218,15 @@
         </div>
     </div>
 
+<div class="notifyWindow accepted align-items-center" style="display: none;">
+    <h2>Заявка отправлена!</h2>
+    <button onclick="closeWindow('accepted')">OK</button>
+</div>
+<div class="notifyWindow canceled align-items-center" style="display: none;">
+    <h2>Вы не вошли в аккаунт!</h2>
+    <button onclick="closeWindow('canceled')">Войти</button>
+</div>
+
     <div class="container main5" id='formHere'>
         <div class="row">
             <div class="col">
@@ -244,7 +253,7 @@
 
                         <span>Тип животного</span>
                         <div class="form-group input-container">
-                            <select class="formSelect types">
+                            <select class="formSelect Select__control" id='petType'>
                                 <?php
                                 require("code/conn.php");
                                 $sql = "SELECT petType FROM Services GROUP BY petType";
@@ -259,22 +268,7 @@
 
                         <span>Услуга</span>
                         <div class="form-group input-container servDIV">
-                            <select class="formSelect" id='services'></select>
-                        </div>
-
-                        <span>Адрес салона</span>
-                        <div class="form-group input-container">
-                            <select class="formSelect addresses">
-                                <?php
-                                require("code/conn.php");
-                                $sql = "SELECT address FROM Saloons";
-                                $result = $conn->query($sql);
-                                if ($result->num_rows > 0)
-                                    while ($row = $result->fetch_assoc())
-                                        echo "<option id='address' value='" . $row["address"] . "'>" . $row["address"] . "</option>";
-                                $conn->close();
-                                ?>
-                            </select>
+                            <select class="formSelect Select__control" id='services'></select>
                         </div>
 
                         <button class="btnSimp" type="submit">

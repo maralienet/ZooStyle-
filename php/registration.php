@@ -118,7 +118,6 @@
                             </p>
                         </div>
 
-
                         <button class="btnSimp" type="submit">
                             Регистрация
                         </button>

@@ -3,7 +3,6 @@ $("#adding").on('submit', function (e) {
     e.preventDefault()
     let name = checkName()
     let phonenum = $('#phonenum').val()
-    phonenum = checkPhone(phonenum)
     let pass = $('#passAg').val()
     console.log(OK())
     if (OK()) {
@@ -98,17 +97,15 @@ function checkPhone(phonenum) {
     if (phonenum.length !== 13) {
         error.innerHTML = ('Номер в неверном формате')
         phoneOK = false
-        return ''
     }
     else {
         error.innerHTML = ''
         phoneOK = true
-        return `${phonenum.slice(0, 4)} (${phonenum.slice(4, 6)}) ${phonenum.slice(6, 9)}-${phonenum.slice(9, 11)}-${phonenum.slice(11, 13)}`
-    }
+        }
 }
 
 function OK() {
-    let a = checkPhone($('#phonenum').val())
+   checkPhone($('#phonenum').val())
     checkPassAg($('#pass').val(), $('#passAg').val())
 
     if (phoneOK && passOK && passAgOK)

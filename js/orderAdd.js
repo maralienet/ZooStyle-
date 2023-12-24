@@ -1,13 +1,9 @@
 let service = ''
-let address = ''
 let petType = ''
 $('#services').on('change', function () {
     service = this.value
 })
-$('.addresses').on('change', function () {
-    address = this.value
-})
-$('.types').on('change', function () {
+$('#petType').on('change', function () {
     petType = this.value
 })
 
@@ -16,7 +12,6 @@ $("#adding").on('submit', function (e) {
     let pType = petType
     let type = service.split('. ')[0]
     let serv = service.split('. ')[1]
-    let adr = address
     if (isEmpty()) {
         $.ajax({
             url: 'code/orderAdd.php',
@@ -24,19 +19,30 @@ $("#adding").on('submit', function (e) {
             data: {
                 petType: pType,
                 type: type,
-                serv: serv,
-                address: adr
+                serv: serv
             },
             success: function (rp) {
                 console.log(rp)
-            },
-            error:function(){
-                alert('aaaaaaaaaa')
+                if (rp === 'OK')
+                    $('.accepted').show()
+                else if (rp === 'acc err')
+                    $('.canceled').show()
             }
         })
     }
 })
 
 function isEmpty() {
-    return (service !== '' && address !== '' && petType !== '')
+    return (service !== '' && petType !== '')
+}
+
+function closeWindow(btn) {
+    $(`.${btn}`).hide()
+    if (btn === 'canceled')
+        window.location.replace('registration.php')
+    if (btn === 'accepted') {
+        $('#name').val('')
+        document.getElementById("petType").selectedIndex = "-1";
+        document.getElementById("services").selectedIndex = "-1";
+    }
 }

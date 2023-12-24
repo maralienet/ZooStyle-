@@ -1,12 +1,10 @@
 <?php
 require("conn.php");
-if (isset($_COOKIE['id']) && isset($_POST['type']) && isset($_POST['serv']) && isset($_POST['address']) && isset($_POST['petType'])) {
+if (isset($_COOKIE['id']) && isset($_POST['type']) && isset($_POST['serv']) && isset($_POST['petType'])) {
     $uid = $_COOKIE['id'];
     $petType = $_POST['petType'];
     $type = $_POST['type'];
     $serv = $_POST['serv'];
-    $address = $_POST['address'];
-
 
     $sql = "SELECT custId  FROM Customers where userId=$uid";
     $res = $conn->query($sql);
@@ -45,7 +43,7 @@ if (isset($_COOKIE['id']) && isset($_POST['type']) && isset($_POST['serv']) && i
             $servtId = $row['servtId'];
 
 
-    $sql = "SELECT * FROM `Masters` WHERE `servtId` = $servtId AND `saloonId` = $saloonId";
+    $sql = "SELECT * FROM `Masters` WHERE `servtId` = $servtId";
     $res = $conn->query($sql);
     $mastId = null;
     if ($res->num_rows > 0) {
@@ -54,17 +52,19 @@ if (isset($_COOKIE['id']) && isset($_POST['type']) && isset($_POST['serv']) && i
         $mastId = $randomMaster['mastId'];
     }
 
-    if (isReady($servId, $saloonId, $servtId, $mastId)) {
-        $sql = 'INSERT INTO `Orders`(`custId`, `mastId`, `servId`, `saloonId`) VALUES 
-        (' . $custId . ',' . $mastId . ',' . $servId . ',' . $saloonId . ')';
-        if ($conn->query($sql)) {
-            echo '(' . $custId . ',' . $mastId . ',' . $servId . ',' . $saloonId . ')';
-            $conn->close();
-        } else echo 'ERROR sql' . $conn->error;
+    if (isReady($servId, $servtId, $mastId)) {
+        $sql = 'INSERT INTO `Orders`(`custId`, `mastId`, `servId`) VALUES 
+        (' . $custId . ',' . $mastId . ',' . $servId . ')';
+        if ($conn->query($sql))
+            echo 'OK';
+        else 
+            echo 'ERROR sql' . $conn->error;
     }
-}
+} else if (!isset($_COOKIE['id']))
+    echo 'acc err';
 
-function isReady($sid, $soid, $stid, $mid)
+$conn->close();
+function isReady($sid, $stid, $mid)
 {
-    return ($sid != null && $soid != null && $stid != null && $mid != null);
+    return ($sid != null && $stid != null && $mid != null);
 }

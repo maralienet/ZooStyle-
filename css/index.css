@@ -253,6 +253,33 @@ svg {
     max-width: 80% !important;
 }
 
+.notifyWindow {
+    height: 200px;
+    width: 350px;
+    background: white;
+    border: var(--green) 3px solid;
+    border-radius: 30px;
+    flex-direction: column;
+    justify-content: space-evenly;
+    position: fixed;
+    top:50vh;
+    left: 50vw;
+    transform: translate(-50%,-50%);
+    z-index: 1000;
+    display: flex;
+}
+.notifyWindow  button{
+    background: var(--green);
+    border: none;
+    border-radius: 100px;
+    width: 50%;
+    height: 20%;
+    transition: 0.3s;
+}
+.notifyWindow  button:hover{
+    background: var(--brightgreen);
+}
+
 .toright {
     display: flex;
     justify-content: end;
@@ -859,7 +886,7 @@ center {
     z-index: 100;
 }
 
-.reg1 form a {
+.reg1 form a,.auth1 form a {
     text-decoration: none;
     color: var(--darkpurp);
 }
@@ -869,7 +896,7 @@ center {
     color: var(--purp);
 }
 
-.reg1 form .already {
+.reg1 form .already,.auth1 form .already {
     width: 300px;
     display: flex;
     justify-content: start;
@@ -1284,6 +1311,9 @@ center {
     .Select__control {
         width: 250px !important;
     }
+    .formBlobs span {
+        width: 250px;
+    }
 
     .reg1 .sayError {
         width: 250px;
@@ -1529,6 +1559,12 @@ center {
         width: 90%;
         height: 90%;
     }
+    .main3 .blobs1{
+        display: none;
+    }
+    .main3 .groom{
+        text-align: center;
+    }
 }
 
 @media (max-width: 690px) {
@@ -1670,6 +1706,10 @@ center {
     .persInfo p {
         font-size: 14px;
     }
+
+    .main5 form {
+        width: 95%;
+    }
 }
 
 @media (max-width: 535px) {
@@ -1705,9 +1745,11 @@ center {
         font-size: calc(1.2rem + .6vw);
     }
 
-    .form-input,
-    .Select__control {
-        width: 200px !important;
+    .form-input, .Select__control {
+        width: 230px !important;
+    }
+    .formBlobs span {
+        width: 230px;
     }
 
     .about2 .blobs2-1 img {
@@ -1744,7 +1786,7 @@ center {
         width: 100% !important;
     }
 
-    .reg1 form .already {
+    .reg1 form .already,.auth1 form .already {
         width: 80%;
     }
 }
