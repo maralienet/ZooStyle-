@@ -10,7 +10,7 @@ $.ajax({
     }
 })
 
-$('.types').on('change', function () {
+$('#petType').on('change', function () {
     type = this.value
     $.ajax({
         url: 'code/servicesSelect.php',

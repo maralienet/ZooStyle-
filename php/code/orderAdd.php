@@ -60,6 +60,8 @@ if (isset($_COOKIE['id']) && isset($_POST['type']) && isset($_POST['serv']) && i
         else 
             echo 'ERROR sql' . $conn->error;
     }
+    else 
+        echo 'ERROR Ready';
 } else if (!isset($_COOKIE['id']))
     echo 'acc err';
 

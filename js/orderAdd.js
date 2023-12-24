@@ -1,10 +1,15 @@
-let service = ''
-let petType = ''
+let petType = 'Коты'
+let service = 'Обрезание когтей. Коты'
+
 $('#services').on('change', function () {
     service = this.value
 })
 $('#petType').on('change', function () {
     petType = this.value
+    if (petType === 'Коты')
+        service = 'Обрезание когтей. Коты'
+    else if (petType === 'Собаки')
+        service = 'Обрезание когтей. Собаки'
 })
 
 $("#adding").on('submit', function (e) {
@@ -27,6 +32,9 @@ $("#adding").on('submit', function (e) {
                     $('.accepted').show()
                 else if (rp === 'acc err')
                     $('.canceled').show()
+            },
+            error: function () {
+                console.log('error!')
             }
         })
     }
@@ -39,7 +47,7 @@ function isEmpty() {
 function closeWindow(btn) {
     $(`.${btn}`).hide()
     if (btn === 'canceled')
-        window.location.replace('registration.php')
+        window.location.replace('authorization.php')
     if (btn === 'accepted') {
         $('#name').val('')
         document.getElementById("petType").selectedIndex = "-1";

@@ -152,13 +152,13 @@
                 <div class="col">
                     <div class="socials">
                         <div class="s-item">
-                            <img src='../pics/main/facebook.png'></img>
+                            <div class="fb"></div>
                         </div>
                         <div class="s-item">
-                            <img src='../pics/main/instagram.png'></img>
+                            <div class="inst"></div>
                         </div>
                         <div class="s-item">
-                            <img src='../pics/main/tiktok.png'></img>
+                            <div class="tt"></div>
                         </div>
                     </div>
                 </div>

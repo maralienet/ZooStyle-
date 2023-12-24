@@ -108,18 +108,21 @@
                 <h1><b>Мы всегда рады<br />новым клиентам!</b></h1>
                 <div class="adresses">
                     <p>
-                        <b>Адреса:</b><br />
+                        <b>Адрес:</b><br />
                         г. Минск, пр-т Дзержинского, д. 15, пом. 858<br />
+                    </p>
+                </div>
+                <div class="adresses">
+                    <p>
+                        <b>Адрес офиса:</b><br />
                         г. Минск, пр-т Пушкина, д. 13<br />
-                        г. Минск, ул. Ландера, д. 18, пом. 311
                     </p>
                 </div>
                 <div class="phones">
                     <p>
                         <b>Телефоны:</b><br />
-                        +375 (29) 151-00-75<br />
-                        +375 (44) 151-65-55<br />
-                        +375 (33) 151-11-75
+                        +375 (29) 151-00-75 (салон)<br />
+                        +375 (33) 151-11-75 (офис)
                     </p>
                 </div>
                 <div class="hours">
@@ -134,13 +137,13 @@
                 </p>
                 <div class="socials">
                     <div class="s-item">
-                        <img src='../pics/main/facebook.png'></img>
+                        <div class="fb"></div>
                     </div>
                     <div class="s-item">
-                        <img src='../pics/main/instagram.png'></img>
+                        <div class="inst"></div>
                     </div>
                     <div class="s-item">
-                        <img src='../pics/main/tiktok.png'></img>
+                        <div class="tt"></div>
                     </div>
                 </div>
             </div>
@@ -175,13 +178,13 @@
                 <div class="col">
                     <div class="socials">
                         <div class="s-item">
-                            <img src='../pics/main/facebook.png'></img>
+                            <div class="fb"></div>
                         </div>
                         <div class="s-item">
-                            <img src='../pics/main/instagram.png'></img>
+                            <div class="inst"></div>
                         </div>
                         <div class="s-item">
-                            <img src='../pics/main/tiktok.png'></img>
+                            <div class="tt"></div>
                         </div>
                     </div>
                 </div>

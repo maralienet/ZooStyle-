@@ -466,6 +466,24 @@ footer .socials,
     justify-content: space-around;
     margin: 0 0 2em 0;
 }
+.socials .fb{
+    background-image: url('../pics/main/facebook.png');
+}
+.socials .fb:hover{
+    background-image: url('../pics/main/fb_hover.png');
+}
+.socials .inst{
+    background-image: url('../pics/main/instagram.png');
+}
+.socials .inst:hover{
+    background-image: url('../pics/main/inst_hover.png');
+}
+.socials .tt{
+    background-image: url('../pics/main/tiktok.png');
+}
+.socials .tt:hover{
+    background-image: url('../pics/main/tt_hover.png');
+}
 
 .texts .socials {
     width: 10em;
@@ -474,7 +492,10 @@ footer .socials,
 
 .socials .s-item * {
     width: 3em;
-    height: auto;
+    height: 3em;
+    transition: 0.3s;
+    background-size: 3em 3em;
+    cursor: pointer;
 }
 
 footer .end {
