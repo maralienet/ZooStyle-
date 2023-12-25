@@ -12,11 +12,22 @@ $('#petType').on('change', function () {
         service = 'Обрезание когтей. Собаки'
 })
 
+function setMinDate() {
+    let today = new Date()
+    let dd = String(today.getDate()).padStart(2, '0')
+    let mm = String(today.getMonth() + 1).padStart(2, '0')
+    let yyyy = today.getFullYear()
+
+    today = yyyy + '-' + mm + '-' + dd
+    $('#orderDate').attr('min', today)
+}
+setMinDate();
 $("#adding").on('submit', function (e) {
     e.preventDefault()
     let pType = petType
     let type = service.split('. ')[0]
     let serv = service.split('. ')[1]
+    let orderDate = $('#orderDate').val()
     if (isEmpty()) {
         $.ajax({
             url: 'code/orderAdd.php',
@@ -24,7 +35,8 @@ $("#adding").on('submit', function (e) {
             data: {
                 petType: pType,
                 type: type,
-                serv: serv
+                serv: serv,
+                orderDate: orderDate
             },
             success: function (rp) {
                 console.log(rp)

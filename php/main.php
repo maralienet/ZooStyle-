@@ -271,9 +271,14 @@
                             <select class="formSelect Select__control" id='services'></select>
                         </div>
 
+                        <span>Дата</span>
+                        <div class="form-group input-container servDIV">
+                            <input type='date' id='orderDate'/>
+                        </div>
+
                         <button class="btnSimp" type="submit">
                             Отправить
-                        </button>
+                        </button class="btnSimp" type="submit">
                     </form>
 
                     <div class='blobsF2'>

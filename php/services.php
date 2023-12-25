@@ -202,6 +202,11 @@
                             <select class="formSelect Select__control" id='services'></select>
                         </div>
 
+                        <span>Дата</span>
+                        <div class="form-group input-container">
+                            <input type='date' id='orderDate'/>
+                        </div>
+
                         <button class="btnSimp" type="submit">
                             Отправить
                         </button class="btnSimp" type="submit">

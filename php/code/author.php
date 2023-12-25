@@ -18,5 +18,5 @@ if (isset($_POST['phonenum']) && isset($_POST['pass'])) {
             setcookie('id', $uid, time() + (3600), "/");
         $conn->close();
     } else
-        echo 'Неверный логин или пароль';
+        echo 'Неверный номер тлефона или пароль';
 }

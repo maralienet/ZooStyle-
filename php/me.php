@@ -89,11 +89,11 @@
     <div class="editWindow confirm align-items-center" style="display: none; text-align:center;">
         <h3>Подтверждение</h3>
         <form class="controls">
-        <div class="form-group input-container">
-            <input class="form-input" id="pass" name="pass" type="password" required />
-            <label for="pass">Подтвердите ваш пароль</label>
-        </div>
-        <span class="sayError" id="sayErrorPass"></span>
+            <div class="form-group input-container">
+                <input class="form-input" id="confPass" name="confPass" type="password" required />
+                <label for="confPass">Подтвердите ваш пароль</label>
+            </div>
+            <span class="sayError" id="sayErrorConfPass"></span>
         </form>
         <div class="btns">
             <button onclick="editAccount(true)" class="btnSimp">Подтвердить</button>

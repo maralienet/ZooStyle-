@@ -308,6 +308,9 @@ svg {
     z-index: 1000;
     display: flex;
 }
+.editWindow .btns{
+    margin-top: 20px;
+}
 .confirm{
     z-index: 1001;
 }

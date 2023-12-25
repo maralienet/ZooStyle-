@@ -1,22 +1,23 @@
 function getCookie(cname) {
-  let name = cname + "=";
-  let ca = document.cookie.split(';');
+  let name = cname + "="
+  let ca = document.cookie.split('')
   for (let i = 0; i < ca.length; i++) {
-    let c = ca[i];
+    let c = ca[i]
     while (c.charAt(0) == ' ') {
-      c = c.substring(1);
+      c = c.substring(1)
     }
     if (c.indexOf(name) == 0) {
-      return c.substring(name.length, c.length);
+      return c.substring(name.length, c.length)
     }
   }
-  return "";
+  return ""
 }
 
 function checkRegCookie() {
   let user = getCookie("id")
+  console.log
   if (user != "") {
-    window.location.replace('../php/me.php')
+    window.location.replace('me.php')
   }
   else {
     window.location.replace('registration.php')
@@ -24,12 +25,12 @@ function checkRegCookie() {
 }
 
 function exit() {
-  document.cookie = "id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+  document.cookie = "id= expires=Thu, 01 Jan 1970 00:00:00 UTC path=/"
   window.location.replace('main.php')
 }
 
 function deleteAccount(agreed = false) {
-  $('.delete').show();
+  $('.delete').show()
   if (agreed) {
     $.ajax({
       url: 'code/deleteAccount.php',
@@ -63,25 +64,29 @@ function showEditWin(agreed = false) {
 }
 function editAccount(agreed) {
   if (agreed) {
-    let canEdit=false;
     let name = $('#name').val()
     let phonenum = $('#phonenum').val()
     let pass = $('#pass').val()
-    let photo = $('#name').val()
-    if(canEdit){
+
+    let data = {
+      id: getCookie("id")
+    }
+
+    if (name) data.name = name
+    if (phonenum) data.phonenum = phonenum
+    if (pass) data.pass = pass
+    if (confirmPass()) {
       $.ajax({
-      url: 'code/editAccount.php',
+        url: 'code/editAccount.php',
         method: 'post',
-        data: {
-          id: getCookie("id")
-        },
+        data: data,
         success: function (rp) {
           if (rp === 'OK') {
-            location.reload();
-            $('.edit').hide();
+            location.reload()
+            $('.edit').hide()
           }
           else {
-  
+
           }
         },
         error: function () {
@@ -90,4 +95,23 @@ function editAccount(agreed) {
       })
     }
   }
+}
+
+function confirmPass() {
+  let confPass = $('#confPass').val()
+  $.ajax({
+    url: 'code/editAccount.php',
+    method: 'post',
+    data: {
+      functionname: 'confirmation',
+      confPass: confPass
+    },
+    success: function (rp) {
+      if (rp === 'OK')
+        return true
+      else
+        document.getElementById('sayErrorConfPass').innerHTML = rp;
+    }
+  })
+  return false
 }
