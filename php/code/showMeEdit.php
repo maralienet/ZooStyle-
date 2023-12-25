@@ -15,18 +15,18 @@ function showEditWindow()
             while ($row = $res->fetch_assoc()) {
                 echo '
                 <div class="form-group input-container">
-                    <input class="form-input" id="name" name="name" type="text" value="' . $row['custName'] . '" />
+                    <input class="form-input" id="name" name="name" autocomplete="off" type="text" value="' . $row['custName'] . '" />
                     <label for="name">Имя</label>
                 </div>
 
                 <div class="form-group input-container">
-                    <input class="form-input" id="phonenum" name="phonenum" type="tel" maxlength="13" value="' . $row['phone'] . '" />
+                    <input class="form-input" id="phonenum" name="phonenum" autocomplete="off" type="tel" maxlength="13" value="' . $row['phone'] . '" />
                     <label for="phonenum">Номер телефона</label>
                 </div>
                 <span class="sayError" id="sayErrorPhone"></span>
 
                 <div class="form-group input-container">
-                    <input class="form-input" id="pass" name="pass" type="password" />
+                    <input class="form-input" id="pass" name="pass" autocomplete="off" type="password" />
                     <label for="pass">Пароль</label>
                 </div>
                 <span class="sayError" id="sayErrorPass"></span>

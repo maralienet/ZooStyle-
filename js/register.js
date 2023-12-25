@@ -52,14 +52,15 @@ $('#pass').on('input', function (e) {
     let error = document.getElementById('sayErrorPass')
     let password = this.value;
     let hasNumber = /\d/.test(password)
+    let hasLetter = /[a-zA-Z][а-яА-ЯёЁ]/.test(password);
     let hasSpecialChar = /[!@#$%^&*_+=-`~]/.test(password)
 
     if (password.length < 6) {
         error.innerHTML = 'Пароль должен быть длиннее 6 символов'
         passOK = false
     }
-    else if (!hasNumber || !hasSpecialChar) {
-        error.innerHTML = 'Пароль должен содержать хотя бы одну цифру и спец. символ'
+    else if (!hasNumber || !hasSpecialChar || !hasLetter) {
+        error.innerHTML = 'Пароль должен содержать хотя бы одну букву, цифру и спец. символ'
         passOK = false
     }
     else if (password.length >= 6 && hasNumber && hasSpecialChar) {
@@ -116,8 +117,3 @@ function OK() {
         return true
     return false
 }
-
-$('.input-file input[type=file]').on('change', function(){
-	let file = this.files[0];
-	$(this).next().html(file.name);
-});

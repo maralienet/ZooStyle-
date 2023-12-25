@@ -38,15 +38,20 @@ function deleteAccount(agreed = false) {
   }
 }
 
-function hideWindow(edit=false) {
-  $('.delete').hide()
-  if(edit){
-    $('#name').val('');
-    $('#phonenum').val('');
-    $('#pass').val('');
-    $('input[type="file"]').val(null);
+const nameSaved = $('#name').val()
+const phoneSaved = $('#phonenum').val()
 
-    $('.edit').hide();
+function hideWindow(edit = false) {
+  $('.delete').hide()
+  if (edit) {
+    $('#name').val(nameSaved)
+    $('#phonenum').val(phoneSaved)
+    $('#pass').val('')
+    $('input[type="file"]').val(null)
+    $('#sayErrorPhone').text('')
+    $('#sayErrorPass').text('')
+
+    $('.edit').hide()
   }
 }
 function unconfirm() {
@@ -55,9 +60,15 @@ function unconfirm() {
 
 function showEditWin(agreed = false) {
   $('.edit').show()
-  if (agreed)
+  if (agreed && document.getElementById('sayErrorPhone').innerHTML==='')
     $('.confirm').show()
 }
+
+let file = '';
+$('.input-file input[type=file]').on('change', function () {
+  file = this.files[0];
+  $(this).next().html(file.name);
+});
 
 function confirmPass() {
   let confPass = $('#confPass').val()
@@ -76,25 +87,27 @@ function confirmPass() {
         let phonenum = $('#phonenum').val()
         let pass = $('#pass').val()
 
-        let data = {
-          id: getCookie("id")
-        }
-
-        if (name) data.name = name
-        if (phonenum) data.phonenum = phonenum
-        if (pass) data.pass = pass
-        data.functionname = 'editing'
+        var formData = new FormData()
+        formData.append('id', getCookie("id"))
+        if (name) formData.append('name', name)
+        if (phonenum) formData.append('phonenum', phonenum)
+        if (pass) formData.append('pass', pass)
+        if (file) formData.append('file', file)
+        formData.append('functionname', 'editing')
 
         $.ajax({
           url: 'code/editAccount.php',
           method: 'post',
-          data: data,
+          data: formData,
+          processData: false,
+          contentType: false,
           success: function (rp) {
             if (rp === 'OK') {
               location.reload()
               $('.edit').hide()
             }
             else {
+              console.log(rp)
             }
           },
           error: function () {
@@ -115,13 +128,13 @@ function checkName() {
 }
 
 function checkPhone(phonenum) {
-    let error = document.getElementById('sayErrorPhone')
-    if (phonenum.length !== 13) {
-        error.innerHTML = ('Номер в неверном формате')
-        phoneOK = false
-    }
-    else {
-        error.innerHTML = ''
-        phoneOK = true
-    }
+  let error = document.getElementById('sayErrorPhone')
+  if (phonenum.length !== 13) {
+    error.innerHTML = ('Номер в неверном формате')
+    return false
+  }
+  else {
+    error.innerHTML = ''
+    return true
+  }
 }

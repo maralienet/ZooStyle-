@@ -37,6 +37,7 @@ function editing()
         $name = isset($_POST["name"]) ? $_POST["name"] : null;
         $phonenum = isset($_POST["phonenum"]) ? $_POST["phonenum"] : null;
         $pass = isset($_POST["pass"]) ? $_POST["pass"] : null;
+        $file = isset($_FILES["file"]) ? $_FILES["file"] : null;
 
         $changed = 0;
 
@@ -45,18 +46,35 @@ function editing()
             $result = $conn->query($sql);
             $changed++;
         }
-        if($phonenum){
+        if ($phonenum) {
             $sql = "UPDATE `Users` SET `phone`='$phonenum' where userId=$id";
             $result = $conn->query($sql);
             $changed++;
         }
-        if($pass){
+        if ($pass) {
             $sql = "UPDATE `Users` SET `password`='$pass' where userId=$id";
             $result = $conn->query($sql);
             $changed++;
         }
+        if ($file) {
+            $filename = $_FILES["file"]["name"];
+            $tempname = $_FILES["file"]["tmp_name"];
+            $folder = "../../pics/customers/" . $filename;
 
-        if($changed>0)
+            if (!file_exists(dirname($folder))) {
+                mkdir(dirname($folder), 0777, true);
+            }
+
+            if (move_uploaded_file($tempname, $folder)) {
+                $sql = "UPDATE `Customers` SET `photo`='$folder' where userId=$id";
+                $result = $conn->query($sql);
+                $changed++;
+            } else {
+                echo "files are NOT uploaded";
+            }
+        }
+
+        if ($changed > 0)
             echo 'OK';
     }
     $conn->close();

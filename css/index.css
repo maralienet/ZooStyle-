@@ -316,6 +316,10 @@ svg {
     text-align: start;
     width: 300px;
 }
+.editWindow .form-group {
+    margin-bottom: 0 !important;
+    margin-top: 10px;
+}
 .confirm{
     z-index: 1001;
 }
