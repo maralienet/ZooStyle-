@@ -3,7 +3,7 @@ require("conn.php");
 if (isset($_COOKIE['id'])) {
     $id = urldecode($_COOKIE['id']);
 
-    $sql = "SELECT servName,servtName,mastName,petType, mastSurname,orderDate FROM Orders
+    $sql = "SELECT servName,servtName,mastName,petType, mastSurname,orderDate,status FROM Orders
     join Masters on Masters.mastId=Orders.mastId
     join Services on Services.servId=Orders.servId
     join ServicesTypes on ServicesTypes.servtId=Services.servtId 

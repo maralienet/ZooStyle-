@@ -204,7 +204,7 @@
 
                         <span>Дата</span>
                         <div class="form-group input-container">
-                            <input type='date' id='orderDate'/>
+                            <input type='date' id='orderDate' required/>
                         </div>
 
                         <button class="btnSimp" type="submit">

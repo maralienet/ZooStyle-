@@ -8,7 +8,6 @@ if (isset($_COOKIE['id'])) {
     where Customers.userId=$id";
 
     $res = $conn->query($sql);
-
     if ($res->num_rows > 0) {
         while ($row = $res->fetch_assoc()) {
             echo '

@@ -273,7 +273,7 @@
 
                         <span>Дата</span>
                         <div class="form-group input-container servDIV">
-                            <input type='date' id='orderDate'/>
+                            <input type='date' id='orderDate' required/>
                         </div>
 
                         <button class="btnSimp" type="submit">

@@ -22,6 +22,7 @@ function setMinDate() {
     $('#orderDate').attr('min', today)
 }
 setMinDate();
+
 $("#adding").on('submit', function (e) {
     e.preventDefault()
     let pType = petType
