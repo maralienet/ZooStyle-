@@ -52,41 +52,6 @@ function showEditWin(agreed = false) {
     $('.confirm').show()
 }
 
-function editAccount(agreed) {
-  if (agreed) {
-    let name = $('#name').val()
-    let phonenum = $('#phonenum').val()
-    let pass = $('#pass').val()
-
-    let data = {
-      id: getCookie("id")
-    }
-
-    if (name) data.name = name
-    if (phonenum) data.phonenum = phonenum
-    if (pass) data.pass = pass
-    if (confirmPass()) {
-      $.ajax({
-        url: 'code/editAccount.php',
-        method: 'post',
-        data: data,
-        success: function (rp) {
-          if (rp === 'OK') {
-            location.reload()
-            $('.edit').hide()
-          }
-          else {
-
-          }
-        },
-        error: function () {
-          console.log('error!')
-        }
-      })
-    }
-  }
-}
-
 function confirmPass() {
   let confPass = $('#confPass').val()
   $.ajax({
@@ -97,11 +62,42 @@ function confirmPass() {
       confPass: confPass
     },
     success: function (rp) {
-      if (rp === 'OK')
-        return true
+      if (rp === 'OK') {
+        document.getElementById('sayErrorConfPass').innerHTML = ''
+
+        let name = $('#name').val()
+        let phonenum = $('#phonenum').val()
+        let pass = $('#pass').val()
+
+        let data = {
+          id: getCookie("id")
+        }
+
+        if (name) data.name = name
+        if (phonenum) data.phonenum = phonenum
+        if (pass) data.pass = pass
+        data.functionname = 'editing'
+
+        $.ajax({
+          url: 'code/editAccount.php',
+          method: 'post',
+          data: data,
+          success: function (rp) {
+            if (rp === 'OK') {
+              location.reload()
+              $('.edit').hide()
+            }
+            else {
+            }
+          },
+          error: function () {
+            console.log('error!')
+          }
+        })
+
+      }
       else
-        document.getElementById('sayErrorConfPass').innerHTML = rp;
+        document.getElementById('sayErrorConfPass').innerHTML = rp
     }
   })
-  return false
 }

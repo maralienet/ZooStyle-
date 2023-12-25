@@ -75,7 +75,7 @@
     </div>
     <div class="editWindow edit align-items-center" style="display: none; text-align:center;">
         <h3>Изменить аккаунт</h3>
-        <form class="controls" enctype="multipart/form-data">
+        <form enctype="multipart/form-data">
             <?php
             require('code/showMeEdit.php');
             showEditWindow();
@@ -96,7 +96,7 @@
             <span class="sayError" id="sayErrorConfPass"></span>
         </form>
         <div class="btns">
-            <button onclick="editAccount(true)" class="btnSimp">Подтвердить</button>
+            <button onclick="confirmPass()" class="btnSimp">Подтвердить</button>
             <button onclick="unconfirm()" class="btnSimp">Отмена</button>
         </div>
     </div>
@@ -208,6 +208,7 @@
     <script src="../bootstrap/js/bootstrap.min.js"></script>
 
     <script src="../js/checkRegister.js"></script>
+    <script src="../js/register.js"></script>
 </body>
 
 </html>
