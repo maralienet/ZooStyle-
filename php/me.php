@@ -83,7 +83,7 @@
         </form>
         <div class="btns">
             <button onclick="showEditWin(true)" class="btnSimp">Изменить</button>
-            <button onclick="hideWindow()" class="btnSimp">Отмена</button>
+            <button onclick="hideWindow(true)" class="btnSimp">Отмена</button>
         </div>
     </div>
     <div class="editWindow confirm align-items-center" style="display: none; text-align:center;">

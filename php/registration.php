@@ -95,7 +95,7 @@
                         </div>
 
                         <div class="form-group input-container">
-                            <input class="form-input" id="phonenum" name='phonenum' type="tel" required />
+                            <input class="form-input" id="phonenum" name='phonenum' maxlength="13" type="tel" required />
                             <label for="phonenum">Номер телефона</label>
                         </div>
                         <span class="sayError" id="sayErrorPhone"></span>

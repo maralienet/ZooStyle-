@@ -38,9 +38,16 @@ function deleteAccount(agreed = false) {
   }
 }
 
-function hideWindow() {
+function hideWindow(edit=false) {
   $('.delete').hide()
-  $('.edit').hide()
+  if(edit){
+    $('#name').val('');
+    $('#phonenum').val('');
+    $('#pass').val('');
+    $('input[type="file"]').val(null);
+
+    $('.edit').hide();
+  }
 }
 function unconfirm() {
   $('.confirm').hide()
@@ -65,7 +72,7 @@ function confirmPass() {
       if (rp === 'OK') {
         document.getElementById('sayErrorConfPass').innerHTML = ''
 
-        let name = $('#name').val()
+        let name = checkName()
         let phonenum = $('#phonenum').val()
         let pass = $('#pass').val()
 
@@ -100,4 +107,21 @@ function confirmPass() {
         document.getElementById('sayErrorConfPass').innerHTML = rp
     }
   })
+}
+
+//!!!!!!!!!!!!!!!!СКОПИРОВАННЫЕ ФУНКЦИИ. НЕ В ЛИСТИНГ!!!!!!!!!!!!!!!!
+function checkName() {
+  return $('#name').val()[0].toUpperCase() + $('#name').val().slice(1)
+}
+
+function checkPhone(phonenum) {
+    let error = document.getElementById('sayErrorPhone')
+    if (phonenum.length !== 13) {
+        error.innerHTML = ('Номер в неверном формате')
+        phoneOK = false
+    }
+    else {
+        error.innerHTML = ''
+        phoneOK = true
+    }
 }

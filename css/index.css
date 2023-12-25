@@ -311,6 +311,11 @@ svg {
 .editWindow .btns{
     margin-top: 20px;
 }
+.editWindow .sayError {
+    display: block;
+    text-align: start;
+    width: 300px;
+}
 .confirm{
     z-index: 1001;
 }

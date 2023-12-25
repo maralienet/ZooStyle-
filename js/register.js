@@ -92,7 +92,6 @@ function checkPassAg(p1, p2) {
     }
 }
 
-
 function checkName() {
     return $('#name').val()[0].toUpperCase() + $('#name').val().slice(1)
 }
@@ -117,3 +116,8 @@ function OK() {
         return true
     return false
 }
+
+$('.input-file input[type=file]').on('change', function(){
+	let file = this.files[0];
+	$(this).next().html(file.name);
+});

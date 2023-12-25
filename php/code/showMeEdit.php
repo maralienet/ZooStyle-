@@ -20,7 +20,7 @@ function showEditWindow()
                 </div>
 
                 <div class="form-group input-container">
-                    <input class="form-input" id="phonenum" name="phonenum" type="tel" value="' . $row['phone'] . '" />
+                    <input class="form-input" id="phonenum" name="phonenum" type="tel" maxlength="13" value="' . $row['phone'] . '" />
                     <label for="phonenum">Номер телефона</label>
                 </div>
                 <span class="sayError" id="sayErrorPhone"></span>
