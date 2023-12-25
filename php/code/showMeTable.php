@@ -17,13 +17,19 @@ if (isset($_COOKIE['id'])) {
                 <th scope='col'>Услуга</th>
                 <th scope='col'>Мастер</th>
                 <th scope='col'>Дата</th>
+                <th scope='col'>Статус</th>
             </tr>";
         while ($row = $result->fetch_assoc()) {
+            $status = 'Не принят';
+            if($row['status']==1){
+                $status = 'Принят';
+            }
             if($row["servName"]!=$row["petType"]){
                 echo "<tr>
                     <td headers='Услуга'>" . $row["petType"] . " " . $row["servName"] . ". " . $row["servtName"] . "</td>
                     <td headers='Мастер'>" . $row["mastName"] . " " . $row["mastSurname"] . "</td>
                     <td headers='Дата'>" . $row["orderDate"] . "</td>
+                    <td headers='Статус'>" . $status . "</td>
                 </tr>";
             }
             else{
@@ -31,6 +37,7 @@ if (isset($_COOKIE['id'])) {
                     <td headers='Услуга'>" . $row["servName"] . ". " . $row["servtName"] . "</td>
                     <td headers='Мастер'>" . $row["mastName"] . " " . $row["mastSurname"] . "</td>
                     <td headers='Дата'>" . $row["orderDate"] . "</td>
+                    <td headers='Статус'>" . $status . "</td>
                 </tr>";
             }
         }

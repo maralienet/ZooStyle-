@@ -293,6 +293,24 @@ svg {
     height: 35px;
     margin: 0 5px;
 }
+.editWindow{
+    height: 450px;
+    width: 550px;
+    background: white;
+    border: var(--green) 3px solid;
+    border-radius: 30px;
+    flex-direction: column;
+    justify-content: space-evenly;
+    position: fixed;
+    top:50vh;
+    left: 50vw;
+    transform: translate(-50%,-50%);
+    z-index: 1000;
+    display: flex;
+}
+.confirm{
+    z-index: 1001;
+}
 
 .toright {
     display: flex;
@@ -455,6 +473,48 @@ svg {
 .form-control:focus {
     border-color: none !important;
     box-shadow: 0 0 0 0 !important;
+}
+
+
+.input-file {
+	position: relative;
+	display: inline-block;
+}
+.input-file span {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+	outline: none;
+	text-decoration: none;
+	font-size: 14px;
+	vertical-align: middle;
+	text-align: center;
+	border-radius: 4px;
+	background-color: var(--green);
+	line-height: 22px;
+	height: 40px;
+    width: 300px;
+	padding: 10px 20px;
+	box-sizing: border-box;
+	border: none;
+	margin: 0;
+	transition: background-color 0.2s;
+}
+.input-file input[type=file] {
+	position: absolute;
+	z-index: -1;
+	opacity: 0;
+	display: block;
+	width: 0;
+	height: 0;
+}
+ 
+/* Hover/active */
+.input-file:hover span {
+	background-color: var(--brightgreen);
+}
+.input-file:active span {
+	background-color: var(--brightgreen);;
 }
 
 
@@ -984,13 +1044,18 @@ center {
     margin-top: 22%;
     width: 20%;
 }
-
+.avatar{
+    display: block;
+    width: 300px;
+    text-align: start;
+}
 .auth1 #sayError {
     width: 300px;
 }
 
 .reg1 .sayError {
     width: 300px;
+    margin-bottom: 10px;
 }
 
 .sayError,#sayError {

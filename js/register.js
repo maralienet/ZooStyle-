@@ -14,10 +14,15 @@ $("#adding").on('submit', function (e) {
                 phonenum: phonenum,
                 pass: pass
             },
-            success: function () {
-                setTimeout(() => {
-                    window.location.replace('me.php')
-                }, 1000)
+            success: function (rp) {
+                if (rp === 'OK')
+                    setTimeout(() => {
+                        window.location.replace('me.php')
+                    }, 1000)
+                else {
+                    let error = document.getElementById('sayErrorPhone')
+                    error.innerHTML = (rp)
+                }
             }
         })
     }
@@ -77,7 +82,7 @@ $('#passAg').on('input', function (e) {
 function checkPassAg(p1, p2) {
     let error = document.getElementById('sayErrorPassAg')
 
-    if (p1 !== p2){
+    if (p1 !== p2) {
         error.innerHTML = 'Пароли не совпадают'
         passAgOK = false
     }
@@ -101,11 +106,11 @@ function checkPhone(phonenum) {
     else {
         error.innerHTML = ''
         phoneOK = true
-        }
+    }
 }
 
 function OK() {
-   checkPhone($('#phonenum').val())
+    checkPhone($('#phonenum').val())
     checkPassAg($('#pass').val(), $('#passAg').val())
 
     if (phoneOK && passOK && passAgOK)

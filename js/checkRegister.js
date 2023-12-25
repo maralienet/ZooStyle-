@@ -39,7 +39,7 @@ function deleteAccount(agreed = false) {
       },
       success: function () {
         window.location.replace('authorization.php')
-        $('.delete').hide();
+        $('.delete').hide()
       },
       error: function () {
         console.log('error!')
@@ -48,6 +48,46 @@ function deleteAccount(agreed = false) {
   }
 }
 
-function hideWindow(){
-  $('.delete').hide();
+function hideWindow() {
+  $('.delete').hide()
+  $('.edit').hide()
+}
+function unconfirm() {
+  $('.confirm').hide()
+}
+
+function showEditWin(agreed = false) {
+  $('.edit').show()
+  if (agreed)
+    $('.confirm').show()
+}
+function editAccount(agreed) {
+  if (agreed) {
+    let canEdit=false;
+    let name = $('#name').val()
+    let phonenum = $('#phonenum').val()
+    let pass = $('#pass').val()
+    let photo = $('#name').val()
+    if(canEdit){
+      $.ajax({
+      url: 'code/editAccount.php',
+        method: 'post',
+        data: {
+          id: getCookie("id")
+        },
+        success: function (rp) {
+          if (rp === 'OK') {
+            location.reload();
+            $('.edit').hide();
+          }
+          else {
+  
+          }
+        },
+        error: function () {
+          console.log('error!')
+        }
+      })
+    }
+  }
 }

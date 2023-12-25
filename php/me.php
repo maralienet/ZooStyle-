@@ -73,6 +73,33 @@
             <button onclick="hideWindow()">Нет</button>
         </div>
     </div>
+    <div class="editWindow edit align-items-center" style="display: none; text-align:center;">
+        <h3>Изменить аккаунт</h3>
+        <form class="controls" enctype="multipart/form-data">
+            <?php
+            require('code/showMeEdit.php');
+            showEditWindow();
+            ?>
+        </form>
+        <div class="btns">
+            <button onclick="showEditWin(true)" class="btnSimp">Изменить</button>
+            <button onclick="hideWindow()" class="btnSimp">Отмена</button>
+        </div>
+    </div>
+    <div class="editWindow confirm align-items-center" style="display: none; text-align:center;">
+        <h3>Подтверждение</h3>
+        <form class="controls">
+        <div class="form-group input-container">
+            <input class="form-input" id="pass" name="pass" type="password" required />
+            <label for="pass">Подтвердите ваш пароль</label>
+        </div>
+        <span class="sayError" id="sayErrorPass"></span>
+        </form>
+        <div class="btns">
+            <button onclick="editAccount(true)" class="btnSimp">Подтвердить</button>
+            <button onclick="unconfirm()" class="btnSimp">Отмена</button>
+        </div>
+    </div>
 
     <div class="container">
         <div class="row">
@@ -110,7 +137,7 @@
 
             <div class="col-lg-4 col-md-6 col-sm-6 col-3">
                 <div class="nede edits">
-                    <button><span>Редактировать</span><img src='../pics/me/pencil.png' /></button>
+                    <button onclick="showEditWin()"><span>Редактировать</span><img src='../pics/me/pencil.png' /></button>
                     <button onclick="deleteAccount()"><span>Удалить</span><img src='../pics/me/trash.png' /></button>
                     <button onclick="exit()"><span>Выйти</span><img src='../pics/me/exit.png' /></button>
                 </div>

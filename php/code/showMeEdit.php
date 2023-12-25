@@ -1,0 +1,44 @@
+<?php
+function showEditWindow()
+{
+    require("conn.php");
+    if (isset($_COOKIE["id"])) {
+        $id = urldecode($_COOKIE["id"]);
+
+        $sql = "SELECT photo,custName,phone,password FROM Customers
+            join Users on Users.userId=Customers.userId
+            where Customers.userId=$id";
+
+        $res = $conn->query($sql);
+
+        if ($res->num_rows > 0) {
+            while ($row = $res->fetch_assoc()) {
+                echo '
+                <div class="form-group input-container">
+                    <input class="form-input" id="name" name="name" type="text" value="' . $row['custName'] . '" required />
+                    <label for="name">Имя</label>
+                </div>
+
+                <div class="form-group input-container">
+                    <input class="form-input" id="phonenum" name="phonenum" type="tel" value="' . $row['phone'] . '" required />
+                    <label for="phonenum">Номер телефона</label>
+                </div>
+                <span class="sayError" id="sayErrorPhone"></span>
+
+                <div class="form-group input-container">
+                    <input class="form-input" id="pass" name="pass" type="password" required />
+                    <label for="pass">Пароль</label>
+                </div>
+                <span class="sayError" id="sayErrorPass"></span>
+
+                <span class="avatar">Выберите фото профиля</span>
+                <label class="input-file">
+                    <input type="file" name="file" accept="image/*">		
+                    <span>Выберите файл</span>
+                </label>
+            ';
+            }
+        }
+    }
+    $conn->close();
+}
