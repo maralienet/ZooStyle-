@@ -2,8 +2,9 @@
 if (isset($_POST['phonenum']) && isset($_POST['pass']))
     authorization();
 
-function authorization(){
-require("conn.php");
+function authorization()
+{
+    require("conn.php");
     $phonenum = $_POST['phonenum'];
     $pass = $_POST['pass'];
 
@@ -12,7 +13,7 @@ require("conn.php");
     if ($result->num_rows > 0) {
         $uid = null;
         while ($row = $result->fetch_assoc()) {
-            if ($row['active']==1) {
+            if ($row['active'] == 1) {
                 echo 'OK';
                 $uid = $row['uid'];
             } else echo 'Аккаунт не существует';

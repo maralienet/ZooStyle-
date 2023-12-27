@@ -7,12 +7,29 @@ function getCookie(cname) {
 
 function checkRegCookie() {
   let user = getCookie("id")
-  if (user !== undefined){
+  if (user !== undefined) {
     $.ajax({
       url: 'code/meRoute.php',
       method: 'post',
       data: {
         id: getCookie("id")
+      },
+      success: function (rp) {
+        confirm(rp)
+        switch (rp) {
+          case 'Администратор': {
+            window.location.replace('manage.php');
+            break;
+          }
+          case 'Мастер': {
+            window.location.replace('meMaster.php');
+            break;
+          }
+          case 'Заказчик': {
+            window.location.replace('me.php');
+            break;
+          }
+        }
       }
     })
   }
@@ -67,7 +84,7 @@ function unconfirm() {
 
 function showEditWin(agreed = false) {
   $('.edit').show()
-  if (agreed && document.getElementById('sayErrorPhone').innerHTML==='')
+  if (agreed && document.getElementById('sayErrorPhone').innerHTML === '')
     $('.confirm').show()
 }
 
@@ -77,38 +94,38 @@ $('.input-file input[type=file]').on('change', function () {
   $(this).next().html(file.name);
 })
 
-function sendEditInfo(){
+function sendEditInfo() {
   let name = checkName()
-        let phonenum = $('#phonenum').val()
-        let pass = $('#pass').val()
+  let phonenum = $('#phonenum').val()
+  let pass = $('#pass').val()
 
-        var formData = new FormData()
-        formData.append('id', getCookie("id"))
-        if (name) formData.append('name', name)
-        if (phonenum) formData.append('phonenum', phonenum)
-        if (pass) formData.append('pass', pass)
-        if (file) formData.append('file', file)
-        formData.append('functionname', 'editing')
+  var formData = new FormData()
+  formData.append('id', getCookie("id"))
+  if (name) formData.append('name', name)
+  if (phonenum) formData.append('phonenum', phonenum)
+  if (pass) formData.append('pass', pass)
+  if (file) formData.append('file', file)
+  formData.append('functionname', 'editing')
 
-        $.ajax({
-          url: 'code/editAccount.php',
-          method: 'post',
-          data: formData,
-          processData: false,
-          contentType: false,
-          success: function (rp) {
-            if (rp === 'OK') {
-              location.reload()
-              $('.edit').hide()
-            }
-            else {
-              console.log(rp)
-            }
-          },
-          error: function () {
-            console.log('error!')
-          }
-        })
+  $.ajax({
+    url: 'code/editAccount.php',
+    method: 'post',
+    data: formData,
+    processData: false,
+    contentType: false,
+    success: function (rp) {
+      if (rp === 'OK') {
+        location.reload()
+        $('.edit').hide()
+      }
+      else {
+        console.log(rp)
+      }
+    },
+    error: function () {
+      console.log('error!')
+    }
+  })
 }
 
 function confirmPass() {
@@ -123,7 +140,7 @@ function confirmPass() {
     success: function (rp) {
       if (rp === 'OK') {
         document.getElementById('sayErrorConfPass').innerHTML = ''
-        sendEditInfo()     
+        sendEditInfo()
       }
       else
         document.getElementById('sayErrorConfPass').innerHTML = rp

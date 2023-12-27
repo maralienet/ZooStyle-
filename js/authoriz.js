@@ -11,12 +11,38 @@ $("#adding").on('submit', function (e) {
         },
         success: function (resp) {
             console.log(resp)
-            if(resp=='OK'){
-                setTimeout(()=>{
-                    window.location.replace('me.php')
-                }, 1000)            
+            if (resp == 'OK') {
+                let user = getCookie("id")
+                if (user !== undefined) {
+                    $.ajax({
+                        url: 'code/meRoute.php',
+                        method: 'post',
+                        data: {
+                            id: getCookie("id")
+                        },
+                        success: function (rp) {
+                            confirm(rp)
+                            switch (rp) {
+                                case 'Администратор': {
+                                    window.location.replace('manage.php');
+                                    break;
+                                }
+                                case 'Мастер': {
+                                    window.location.replace('meMaster.php');
+                                    break;
+                                }
+                                case 'Заказчик': {
+                                    window.location.replace('me.php');
+                                    break;
+                                }
+                            }
+                        }
+                    })
+                }
+                else
+                    window.location.replace('registration.php')
             }
-            else{
+            else {
                 sayError(resp)
             }
         }
@@ -24,7 +50,14 @@ $("#adding").on('submit', function (e) {
 })
 
 
-function sayError(err){
+function sayError(err) {
     let sayError = document.getElementById('sayError')
-    sayError.innerHTML=(err)
+    sayError.innerHTML = (err)
+}
+
+function getCookie(cname) {
+    let matches = document.cookie.match(new RegExp(
+        "(?:^|; )" + cname.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+    ));
+    return matches ? decodeURIComponent(matches[1]) : undefined;
 }
