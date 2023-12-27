@@ -19,7 +19,8 @@ html {
 button {
     cursor: pointer;
 }
-button:focus{
+
+button:focus {
     outline: none;
 }
 
@@ -265,13 +266,14 @@ svg {
     flex-direction: column;
     justify-content: space-evenly;
     position: fixed;
-    top:50vh;
+    top: 50vh;
     left: 50vw;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     z-index: 1000;
     display: flex;
 }
-.notifyWindow  button{
+
+.notifyWindow button {
     background: var(--green);
     border: none;
     border-radius: 100px;
@@ -279,21 +281,25 @@ svg {
     height: 20%;
     transition: 0.3s;
 }
-.notifyWindow  button:hover{
+
+.notifyWindow button:hover {
     background: var(--brightgreen);
 }
-.notifyWindow .btns{
+
+.notifyWindow .btns {
     display: flex;
     flex-direction: row;
     justify-content: center;
     width: 100%;
 }
-.notifyWindow .btns button{
+
+.notifyWindow .btns button {
     width: 25%;
     height: 35px;
     margin: 0 5px;
 }
-.editWindow{
+
+.editWindow {
     height: 450px;
     width: 550px;
     background: white;
@@ -302,25 +308,29 @@ svg {
     flex-direction: column;
     justify-content: space-evenly;
     position: fixed;
-    top:50vh;
+    top: 50vh;
     left: 50vw;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     z-index: 1000;
     display: flex;
 }
-.editWindow .btns{
+
+.editWindow .btns {
     margin-top: 20px;
 }
+
 .editWindow .sayError {
     display: block;
     text-align: start;
     width: 300px;
 }
+
 .editWindow .form-group {
     margin-bottom: 0 !important;
     margin-top: 10px;
 }
-.confirm{
+
+.confirm {
     z-index: 1001;
 }
 
@@ -489,44 +499,48 @@ svg {
 
 
 .input-file {
-	position: relative;
-	display: inline-block;
+    position: relative;
+    display: inline-block;
 }
+
 .input-file span {
-	position: relative;
-	display: inline-block;
-	cursor: pointer;
-	outline: none;
-	text-decoration: none;
-	font-size: 14px;
-	vertical-align: middle;
-	text-align: center;
-	border-radius: 4px;
-	background-color: var(--green);
-	line-height: 22px;
-	height: 40px;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
+    font-size: 14px;
+    vertical-align: middle;
+    text-align: center;
+    border-radius: 4px;
+    background-color: var(--green);
+    line-height: 22px;
+    height: 40px;
     width: 300px;
-	padding: 10px 20px;
-	box-sizing: border-box;
-	border: none;
-	margin: 0;
-	transition: background-color 0.2s;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    border: none;
+    margin: 0;
+    transition: background-color 0.2s;
 }
+
 .input-file input[type=file] {
-	position: absolute;
-	z-index: -1;
-	opacity: 0;
-	display: block;
-	width: 0;
-	height: 0;
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+    display: block;
+    width: 0;
+    height: 0;
 }
- 
+
 /* Hover/active */
 .input-file:hover span {
-	background-color: var(--brightgreen);
+    background-color: var(--brightgreen);
 }
+
 .input-file:active span {
-	background-color: var(--brightgreen);;
+    background-color: var(--brightgreen);
+    ;
 }
 
 
@@ -552,22 +566,28 @@ footer .socials,
     justify-content: space-around;
     margin: 0 0 2em 0;
 }
-.socials .fb{
+
+.socials .fb {
     background-image: url('../pics/main/facebook.png');
 }
-.socials .fb:hover{
+
+.socials .fb:hover {
     background-image: url('../pics/main/fb_hover.png');
 }
-.socials .inst{
+
+.socials .inst {
     background-image: url('../pics/main/instagram.png');
 }
-.socials .inst:hover{
+
+.socials .inst:hover {
     background-image: url('../pics/main/inst_hover.png');
 }
-.socials .tt{
+
+.socials .tt {
     background-image: url('../pics/main/tiktok.png');
 }
-.socials .tt:hover{
+
+.socials .tt:hover {
     background-image: url('../pics/main/tt_hover.png');
 }
 
@@ -619,7 +639,7 @@ footer .unvislogo {
     justify-content: center;
 }
 
-.formBlobs span{
+.formBlobs span {
     width: 300px;
     margin-top: 10px;
     color: #535353;
@@ -737,12 +757,13 @@ footer .unvislogo {
 
 
 .service4 .prices .dots {
-    width:80%;
+    width: 80%;
     height: 1px;
     border-top: 2px black dotted;
 }
+
 .service4 .prices .pris .cost {
-    width:15%;
+    width: 15%;
 }
 
 .service4 .imgs {
@@ -930,9 +951,11 @@ center {
 .carousel-control-next-icon {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%235d548e' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
 }
+
 .carousel-control-prev-icon {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%235d548e' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
 }
+
 .carousel-indicators li {
     background-color: var(--purp) !important;
     width: 12px !important;
@@ -1003,7 +1026,8 @@ center {
     z-index: 100;
 }
 
-.reg1 form a,.auth1 form a {
+.reg1 form a,
+.auth1 form a {
     text-decoration: none;
     color: var(--darkpurp);
 }
@@ -1013,7 +1037,8 @@ center {
     color: var(--purp);
 }
 
-.reg1 form .already,.auth1 form .already {
+.reg1 form .already,
+.auth1 form .already {
     width: 300px;
     display: flex;
     justify-content: start;
@@ -1056,11 +1081,13 @@ center {
     margin-top: 22%;
     width: 20%;
 }
-.avatar{
+
+.avatar {
     display: block;
     width: 300px;
     text-align: start;
 }
+
 .auth1 #sayError {
     width: 300px;
 }
@@ -1070,7 +1097,8 @@ center {
     margin-bottom: 10px;
 }
 
-.sayError,#sayError {
+.sayError,
+#sayError {
     color: rgb(170, 0, 0);
 }
 
@@ -1383,7 +1411,7 @@ center {
     }
 
     .about2 .DieAbout {
-        width: 100%;
+        width: 90%;
     }
 
     .map .blobsC1 {
@@ -1404,6 +1432,10 @@ center {
     .mapDiv iframe {
         width: 400px;
         height: 300px;
+    }
+
+    .blobsA1 {
+        width: 90vw;
     }
 }
 
@@ -1433,6 +1465,7 @@ center {
     .Select__control {
         width: 250px !important;
     }
+
     .formBlobs span {
         width: 250px;
     }
@@ -1500,6 +1533,15 @@ center {
     .infoTableDIV {
         margin-top: 20px;
 
+    }
+
+    .carousel-inner {
+        height: 50vh;
+    }
+    .md-tocenter{
+        display: flex;
+        justify-content: center;
+        text-align: center;
     }
 }
 
@@ -1681,16 +1723,26 @@ center {
         width: 90%;
         height: 90%;
     }
-    .main3 .blobs1{
+
+    .main3 .blobs1 {
         display: none;
     }
-    .main3 .groom{
+
+    .main3 .groom {
         text-align: center;
     }
+
     .service4 .serv>p {
         width: 500px;
     }
-    
+
+    .carousel-inner {
+        height: auto;
+    }
+
+    .carousel-item {
+        height: 75%;
+    }
 }
 
 @media (max-width: 690px) {
@@ -1871,9 +1923,11 @@ center {
         font-size: calc(1.2rem + .6vw);
     }
 
-    .form-input, .Select__control {
+    .form-input,
+    .Select__control {
         width: 230px !important;
     }
+
     .formBlobs span {
         width: 230px;
     }
@@ -1898,6 +1952,7 @@ center {
     .auth1 form .input-container {
         width: 80%;
     }
+
     .reg1 .sayError {
         width: 80%;
     }
@@ -1912,21 +1967,24 @@ center {
         width: 100% !important;
     }
 
-    .reg1 form .already,.auth1 form .already {
+    .reg1 form .already,
+    .auth1 form .already {
         width: 80%;
     }
-    
+
     .service4 .serv>p {
         width: 90%;
     }
-    
+
     .service4 .prices {
         width: 90%;
         padding: 15px 10px;
     }
+
     .service4 .prices .dots {
         width: 75%;
     }
+
     .service4 .prices .pris .cost {
         width: 25%;
     }

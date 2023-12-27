@@ -1,6 +1,9 @@
 <?php
+if (isset($_POST['phonenum']) && isset($_POST['pass']))
+    authorization();
+
+function authorization(){
 require("conn.php");
-if (isset($_POST['phonenum']) && isset($_POST['pass'])) {
     $phonenum = $_POST['phonenum'];
     $pass = $_POST['pass'];
 

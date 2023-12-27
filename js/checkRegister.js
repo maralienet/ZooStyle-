@@ -7,8 +7,15 @@ function getCookie(cname) {
 
 function checkRegCookie() {
   let user = getCookie("id")
-  if (user !== undefined)
-    window.location.replace('me.php')
+  if (user !== undefined){
+    $.ajax({
+      url: 'code/meRoute.php',
+      method: 'post',
+      data: {
+        id: getCookie("id")
+      }
+    })
+  }
   else
     window.location.replace('registration.php')
 }
@@ -68,22 +75,10 @@ let file = '';
 $('.input-file input[type=file]').on('change', function () {
   file = this.files[0];
   $(this).next().html(file.name);
-});
+})
 
-function confirmPass() {
-  let confPass = $('#confPass').val()
-  $.ajax({
-    url: 'code/editAccount.php',
-    method: 'post',
-    data: {
-      functionname: 'confirmation',
-      confPass: confPass
-    },
-    success: function (rp) {
-      if (rp === 'OK') {
-        document.getElementById('sayErrorConfPass').innerHTML = ''
-
-        let name = checkName()
+function sendEditInfo(){
+  let name = checkName()
         let phonenum = $('#phonenum').val()
         let pass = $('#pass').val()
 
@@ -114,13 +109,28 @@ function confirmPass() {
             console.log('error!')
           }
         })
+}
 
+function confirmPass() {
+  let confPass = $('#confPass').val()
+  $.ajax({
+    url: 'code/editAccount.php',
+    method: 'post',
+    data: {
+      functionname: 'confirmation',
+      confPass: confPass
+    },
+    success: function (rp) {
+      if (rp === 'OK') {
+        document.getElementById('sayErrorConfPass').innerHTML = ''
+        sendEditInfo()     
       }
       else
         document.getElementById('sayErrorConfPass').innerHTML = rp
     }
   })
 }
+
 
 //!!!!!!!!!!!!!!!!СКОПИРОВАННЫЕ ФУНКЦИИ. НЕ В ЛИСТИНГ!!!!!!!!!!!!!!!!
 function checkName() {

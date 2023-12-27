@@ -1,6 +1,13 @@
 <?php
-require("conn.php");
-if (isset($_COOKIE['id']) && isset($_POST['type']) && isset($_POST['serv']) && isset($_POST['petType']) && isset($_POST['orderDate'])) {
+if (isset($_COOKIE['id']) && isset($_POST['type']) && isset($_POST['serv']) && isset($_POST['petType']) && isset($_POST['orderDate']))
+    orderAdd();
+else if (!isset($_COOKIE['id']))
+    echo 'acc err';
+
+
+function orderAdd()
+{
+    require("conn.php");
     $uid = $_COOKIE['id'];
     $petType = $_POST['petType'];
     $type = $_POST['type'];
@@ -48,15 +55,12 @@ if (isset($_COOKIE['id']) && isset($_POST['type']) && isset($_POST['serv']) && i
         (' . $custId . ',' . $mastId . ',' . $servId . ',"' . $orderDate . '")';
         if ($conn->query($sql))
             echo 'OK';
-        else 
+        else
             echo 'ERROR sql' . $conn->error;
-    }
-    else 
+    } else
         echo 'ERROR Ready';
-} else if (!isset($_COOKIE['id']))
-    echo 'acc err';
-
-$conn->close();
+    $conn->close();
+}
 function isReady($sid, $stid, $mid)
 {
     return ($sid != null && $stid != null && $mid != null);

@@ -1,6 +1,10 @@
 <?php
-require("conn.php");
-if (isset($_POST['id'])) {
+if (isset($_POST['id']))
+    deleteAccount();
+
+function deleteAccount()
+{
+    require("conn.php");
     $id = $_POST['id'];
     $sql = "UPDATE Users SET active=0 WHERE `userId`=$id";
     $result = $conn->query($sql);

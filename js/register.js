@@ -1,32 +1,35 @@
-var phoneOK = false, passOK = false, passAgOK = false;
-$("#adding").on('submit', function (e) {
-    e.preventDefault()
-    let name = checkName()
-    let phonenum = $('#phonenum').val()
-    let pass = $('#passAg').val()
-    console.log(OK())
-    if (OK()) {
-        $.ajax({
-            url: 'code/register.php',
-            method: 'post',
-            data: {
-                name: name,
-                phonenum: phonenum,
-                pass: pass
-            },
-            success: function (rp) {
-                if (rp === 'OK')
-                    setTimeout(() => {
-                        window.location.replace('me.php')
-                    }, 1000)
-                else {
-                    let error = document.getElementById('sayErrorPhone')
-                    error.innerHTML = (rp)
+let phoneOK = false, passOK = false, passAgOK = false;
+$(document).ready(function () {
+    $("#adding").on('submit', function (e) {
+        e.preventDefault()
+        let name = checkName()
+        let phonenum = $('#phonenum').val()
+        let pass = $('#passAg').val()
+        console.log(OK())
+        if (OK()) {
+            $.ajax({
+                url: 'code/register.php',
+                method: 'post',
+                data: {
+                    name: name,
+                    phonenum: phonenum,
+                    pass: pass
+                },
+                success: function (rp) {
+                    if (rp === 'OK')
+                        setTimeout(() => {
+                            window.location.replace('me.php')
+                        }, 1000)
+                    else {
+                        let error = document.getElementById('sayErrorPhone')
+                        error.innerHTML = (rp)
+                    }
                 }
-            }
-        })
-    }
-})
+            })
+        }
+    })
+});
+
 function isNumber(value) {
     return typeof value === 'number'
 }
@@ -52,7 +55,7 @@ $('#pass').on('input', function (e) {
     let error = document.getElementById('sayErrorPass')
     let password = this.value;
     let hasNumber = /\d/.test(password)
-    let hasLetter = /[a-zA-Z][а-яА-ЯёЁ]/.test(password);
+    let hasLetter = /[a-zA-Z]/.test(password);
     let hasSpecialChar = /[!@#$%^&*_+=-`~]/.test(password)
 
     if (password.length < 6) {
@@ -63,7 +66,7 @@ $('#pass').on('input', function (e) {
         error.innerHTML = 'Пароль должен содержать хотя бы одну букву, цифру и спец. символ'
         passOK = false
     }
-    else if (password.length >= 6 && hasNumber && hasSpecialChar) {
+    else if (password.length >= 6 && hasNumber && hasSpecialChar && hasLetter) {
         error.innerHTML = ''
         passOK = true
     }
@@ -109,11 +112,23 @@ function checkPhone(phonenum) {
     }
 }
 
+
 function OK() {
-    checkPhone($('#phonenum').val())
+    phonenum=($('#phonenum').val())
+    let error = document.getElementById('sayErrorPhone')
+    if (phonenum.length !== 13) {
+        error.innerHTML = ('Номер в неверном формате')
+        phoneOK = false
+    }
+    else {
+        error.innerHTML = ''
+        phoneOK = true
+    }
     checkPassAg($('#pass').val(), $('#passAg').val())
 
-    if (phoneOK && passOK && passAgOK)
+    console.log(`phoneOK: ${phoneOK}\npassOK: ${passOK}\npassAgOK: ${passAgOK}`)
+    if (phoneOK && passOK && passAgOK) {
         return true
+    }
     return false
 }
