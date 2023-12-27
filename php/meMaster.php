@@ -111,7 +111,7 @@
             <div class="col-lg-4 col-md-12 col-sm-12">
                 <div class="blobs2-1 toright">
                     <?php
-                    require('code/showMeAvatar.php');
+                    require('code/showMeAvatarMaster.php');
                     ?>
 
                     <div class='blobs2'>
@@ -131,7 +131,7 @@
 
             <div class="col-lg-4 col-md-6 col-sm-6 col-9">
                 <?php
-                require('code/showMe.php');
+                require('code/showMeMaster.php');
                 ?>
             </div>
 
@@ -143,7 +143,7 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-lg-4 col-md-0 col-sm-0"></div>
             <div class="col-lg-8 col-md-12 col-sm-12">
                 <h2>Мои записи</h2>
@@ -153,7 +153,7 @@
                     ?>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 
     <footer>

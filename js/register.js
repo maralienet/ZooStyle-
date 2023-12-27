@@ -16,10 +16,34 @@ $(document).ready(function () {
                     pass: pass
                 },
                 success: function (rp) {
-                    if (rp === 'OK')
-                        setTimeout(() => {
-                            window.location.replace('me.php')
-                        }, 1000)
+                    if (rp === 'OK') {
+                        let user = getCookie("id")
+                        if (user !== undefined) {
+                            $.ajax({
+                                url: 'code/meRoute.php',
+                                method: 'post',
+                                data: {
+                                    id: getCookie("id")
+                                },
+                                success: function (rp) {
+                                    switch (rp) {
+                                        case 'Администратор': {
+                                            window.location.replace('manage.php');
+                                            break;
+                                        }
+                                        case 'Мастер': {
+                                            window.location.replace('meMaster.php');
+                                            break;
+                                        }
+                                        case 'Заказчик': {
+                                            window.location.replace('me.php');
+                                            break;
+                                        }
+                                    }
+                                }
+                            })
+                        }
+                    }
                     else {
                         let error = document.getElementById('sayErrorPhone')
                         error.innerHTML = (rp)
@@ -114,7 +138,7 @@ function checkPhone(phonenum) {
 
 
 function OK() {
-    phonenum=($('#phonenum').val())
+    phonenum = ($('#phonenum').val())
     let error = document.getElementById('sayErrorPhone')
     if (phonenum.length !== 13) {
         error.innerHTML = ('Номер в неверном формате')

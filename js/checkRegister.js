@@ -15,7 +15,6 @@ function checkRegCookie() {
         id: getCookie("id")
       },
       success: function (rp) {
-        confirm(rp)
         switch (rp) {
           case 'Администратор': {
             window.location.replace('manage.php');
