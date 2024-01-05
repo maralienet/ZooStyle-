@@ -1176,6 +1176,10 @@ center {
 .myRecordsDIV .myRecords tr {
     height: 50px;
 }
+.myRecords .btnSimp {
+    width: 100px;
+    height: 35px;
+}
 
 .managements {
     border: var(--purp) 2px solid;
@@ -1206,6 +1210,15 @@ center {
     height: 520px;
     overflow: scroll;
     text-align: center;
+}
+.myRecords .column{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 7px;
+}
+.myRecords .column button{
+    margin: 2px 0;
 }
 
 .infoTableDIV .infoTable {

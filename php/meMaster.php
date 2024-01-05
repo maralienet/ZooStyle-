@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../css/index.css" />
 
@@ -143,17 +142,17 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="row">
+        <div class="row">
             <div class="col-lg-4 col-md-0 col-sm-0"></div>
             <div class="col-lg-8 col-md-12 col-sm-12">
-                <h2>Мои записи</h2>
+                <h2>Мои заказы</h2>
                 <div class="myRecordsDIV">
                     <?php
-                    require('code/showMeTable.php');
+                    require('code/showMeTableMaster.php');
                     ?>
                 </div>
             </div>
-        </div> -->
+        </div>
     </div>
 
     <footer>
@@ -208,6 +207,7 @@
 
     <script src="../js/checkRegister.js"></script>
     <script src="../js/register.js"></script>
+    <script src="../js/managing.js"></script>
 </body>
 
 </html>
