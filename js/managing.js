@@ -7,8 +7,8 @@ function acceptOrder(id) {
             status: 'accept'
         },
         success: function (rp) {
-            if (rp === 'OK')
-                window.location.reload()
+            $("tr[data-id='" + id + "']").find("td").eq(3).text(rp);
+            console.log(22)
         }
     })
 }
@@ -21,8 +21,12 @@ function cancelOrder(id) {
             status: 'cancel'
         },
         success: function (rp) {
-            if (rp === 'OK')
-                window.location.reload()
+            $("tr[data-id='" + id + "']").find("td").eq(3).text(rp);
+            console.log(11)
         }
     })
+}
+
+function changeImage(element, newImageSrc) {
+    $(element).find('img').attr('src', newImageSrc);
 }

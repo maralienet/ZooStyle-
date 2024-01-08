@@ -25,7 +25,7 @@ if (isset($_COOKIE['id'])) {
                 $status = 'Принят';
             }
             if($row["servName"]!=$row["petType"]){
-                echo "<tr>
+                echo "<tr class='bodyRows'>
                     <td headers='Услуга'>" . $row["petType"] . " " . $row["servName"] . ". " . $row["servtName"] . "</td>
                     <td headers='Мастер'>" . $row["mastName"] . " " . $row["mastSurname"] . "</td>
                     <td headers='Дата'>" . $row["orderDate"] . "</td>
@@ -33,7 +33,7 @@ if (isset($_COOKIE['id'])) {
                 </tr>";
             }
             else{
-                echo "<tr>
+                echo "<tr class='bodyRows'>
                     <td headers='Услуга'>" . $row["servName"] . ". " . $row["servtName"] . "</td>
                     <td headers='Мастер'>" . $row["mastName"] . " " . $row["mastSurname"] . "</td>
                     <td headers='Дата'>" . $row["orderDate"] . "</td>

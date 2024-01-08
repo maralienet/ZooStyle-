@@ -1,6 +1,5 @@
 <?php
 require("conn.php");
-echo '<img src="../pics/me/emptyUser.jpg" alt="user" class="img-fluid dog2 mePhoto" />';
 if (isset($_COOKIE["id"])) {
     $id = urldecode($_COOKIE["id"]);
 
@@ -19,6 +18,7 @@ if (isset($_COOKIE["id"])) {
                 echo '<img src="../pics/me/emptyUser.jpg" alt="user" class="img-fluid dog2 mePhoto" />';
         }
     }
-}
+} else
+    echo '<img src="../pics/me/emptyUser.jpg" alt="user" class="img-fluid dog2 mePhoto" />';
 
 $conn->close();

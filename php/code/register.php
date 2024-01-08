@@ -35,7 +35,7 @@ function registration()
         ('$name',$uid)";
 
         if ($conn->query($sql1))
-            setcookie('id', $uid, time() + (3600), "/");
+            setcookie('id', $uid, time() + (3600*24), "/");
     }
     $conn->close();
 }

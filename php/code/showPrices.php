@@ -32,7 +32,7 @@ if ($result->num_rows > 0) {
                         <div class="type">
                             <div style="text-align:center">
                                 <p><b>' . $rov['petType'] . '</b></p>
-                            </div><br />
+                            </div><br/>
                         </div>';
                     for ($i = 0; $i < count($servNames); $i++) {
                         echo '<div class="pris">

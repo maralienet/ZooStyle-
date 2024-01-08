@@ -5,6 +5,8 @@
     --halfgreen: rgba(194, 231, 218, 0.271);
     --brigthpurp: #bfb5ef;
     --darkpurp: #5d548e;
+    --accept: #28a745;
+    --deny: #c5313f;
 }
 
 * {
@@ -1177,8 +1179,17 @@ center {
     height: 50px;
 }
 .myRecords .btnSimp {
-    width: 100px;
+    width: 35px;
     height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: 1.5px black solid;
+}
+.myRecords .btnSimp img{
+    width: 20px;
+    height: 20px;
 }
 
 .managements {
@@ -1214,11 +1225,25 @@ center {
 .myRecords .column{
     display: flex;
     align-items: center;
-    flex-direction: column;
+    justify-content: space-between;
     margin-bottom: 7px;
 }
 .myRecords .column button{
     margin: 2px 0;
+    transition: 0.3s;
+}
+.myRecords .column .accept:hover{
+    border-color: var(--accept);
+}
+.myRecords .column .deny:hover{
+    border-color: var(--deny);    
+}
+
+.myRecords .bodyRows{
+    transition: 0.2s ease-in;
+}
+.myRecords .bodyRows:hover {
+    background-color: #afa0f66e;
 }
 
 .infoTableDIV .infoTable {
@@ -1349,8 +1374,8 @@ center {
     }
 
     .mePhoto {
-        width: 60%;
-        height: auto;
+        width: 170px;
+        height: 170px;
     }
 
     .me .blobs2 {
@@ -1536,7 +1561,8 @@ center {
     }
 
     .mePhoto {
-        width: 40%;
+        width: 300px;
+        height: 300px;
     }
 
     .nede {
@@ -1688,7 +1714,8 @@ center {
     }
 
     .mePhoto {
-        width: 60%;
+        width: 250px !important;
+        height: 250px !important;
     }
 
     .edits button {

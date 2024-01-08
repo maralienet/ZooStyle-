@@ -64,42 +64,6 @@
         </div>
     </header>
 
-    
-    <div class="notifyWindow delete notifyWindowDel align-items-center" style="display: none; text-align:center;">
-        <h3>Вы уверены, что хотите удалить аккаунт?</h3>
-        <div class="btns">
-            <button onclick="deleteAccount(true)">Да</button>
-            <button onclick="hideWindow()">Нет</button>
-        </div>
-    </div>
-    <div class="editWindow edit align-items-center" style="display: none; text-align:center;">
-        <h3>Изменить аккаунт</h3>
-        <form enctype="multipart/form-data">
-            <?php
-            require('code/showMeEdit.php');
-            showEditWindow();
-            ?>
-        </form>
-        <div class="btns">
-            <button onclick="showEditWin(true)" class="btnSimp">Изменить</button>
-            <button onclick="hideWindow(true)" class="btnSimp">Отмена</button>
-        </div>
-    </div>
-    <div class="editWindow confirm align-items-center" style="display: none; text-align:center;">
-        <h3>Подтверждение</h3>
-        <form class="controls">
-            <div class="form-group input-container">
-                <input class="form-input" id="confPass" name="confPass" type="password" required />
-                <label for="confPass">Подтвердите ваш пароль</label>
-            </div>
-            <span class="sayError" id="sayErrorConfPass"></span>
-        </form>
-        <div class="btns">
-            <button onclick="confirmPass()" class="btnSimp">Подтвердить</button>
-            <button onclick="unconfirm()" class="btnSimp">Отмена</button>
-        </div>
-    </div>
-
     <div class="container">
         <div class="row">
             <center>
@@ -136,8 +100,6 @@
 
             <div class="col-lg-4 col-md-6 col-sm-6 col-3">
                 <div class="nede edits">
-                    <button onclick="showEditWin()"><span>Редактировать</span><img src='../pics/me/pencil.png' /></button>
-                    <button onclick="deleteAccount()"><span>Удалить</span><img src='../pics/me/trash.png' /></button>
                     <button onclick="exit()"><span>Выйти</span><img src='../pics/me/exit.png' /></button>
                 </div>
             </div>

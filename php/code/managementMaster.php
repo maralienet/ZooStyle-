@@ -11,6 +11,11 @@ function changeStatus($id, $status)
     else
         $sql = "UPDATE `Orders` SET `status`=0 where `orderId`=$id";
     $result = $conn->query($sql);
-    if ($result) echo 'OK';
+    if ($result){
+        if ($status == 'accept')
+            echo 'Принят';
+        else
+            echo 'Не принят';
+    }
     $conn->close();
 }
