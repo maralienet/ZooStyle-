@@ -206,31 +206,70 @@
                         </div>
                         <input type="text" class="searchInput" />
 
-                        <legend>Активность</legend>
+                        <fieldset class="fset">
+                            <legend>Тип</legend>
 
-                        <div>
-                            <input type="radio" id="active5" name="active" value="true" />
-                            <label for="active5">Да</label>
-                        </div>
+                            <div>
+                                <input type="radio" id="type1" name="type" value="Кошки" />
+                                <label for="type1">Кошки</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="type2" name="type" value="Собаки" />
+                                <label for="type2">Собаки</label>
+                            </div>
+                        </fieldset>
 
-                        <div>
-                            <input type="radio" id="active6" name="active" value="false" />
-                            <label for="active6">Нет</label>
-                        </div>
+                        <fieldset class="fset">
+                            <legend>Вид услуги</legend>
+
+                            <div>
+                                <input type="radio" id="srvType1" name="srvType" value="Обрезание когтей" />
+                                <label for="srvType1">Обрезание когтей</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="srvType2" name="srvType" value="Мытьё" />
+                                <label for="srvType2">Мытьё</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="srvType3" name="srvType" value="Груминг" />
+                                <label for="srvType3">Груминг</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="srvType4" name="srvType" value="Выгул" />
+                                <label for="srvType4">Выгул</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="srvType5" name="srvType" value="Диетолог" />
+                                <label for="srvType5">Диетолог</label>
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="fset">
+                            <legend>Активность</legend>
+
+                            <div>
+                                <input type="radio" id="active5" name="active" value="true" />
+                                <label for="active5">Да</label>
+                            </div>
+
+                            <div>
+                                <input type="radio" id="active6" name="active" value="false" />
+                                <label for="active6">Нет</label>
+                            </div>
                         </fieldset>
                         <button type="submit" class="btnPurp">Найти</button>
                     </div>
 
 
-                    <div class="manageItem" onclick="show('Салоны')">
-                        <p>Салоны</p>
+                    <div class="manageItem" onclick="show('Типы услуг')">
+                        <p>Типы услуг</p>
                     </div>
 
 
                     <div id="invisSALON" style="display:none;">
                         <div class="manageItemHeader">
                             <div class="manageItem1">
-                                <p>Салоны</p>
+                                <p>Типы услуг</p>
                             </div>
                             <div class="cancel" onClick="show('')">
                                 <img src='../pics/manage/cancel.png' />
@@ -255,45 +294,10 @@
                 </div>
             </div>
             <div class="col-lg-9 col-md-12 col-sm-12">
-                <div class="infoTableDIV">
-                    <table class="infoTable">
-                        <tr>
-                            <th>id</th>
-                            <th>Name</th>
-                            <th>Descr</th>
-                            <th>Price</th>
-                        </tr>
-                        <tr>
-                            <td>id</td>
-                            <td>Name</td>
-                            <td>Descr</td>
-                            <td>Price</td>
-                        </tr>
-                        <tr>
-                            <td>id</td>
-                            <td>Name</td>
-                            <td>Descr</td>
-                            <td>Price</td>
-                        </tr>
-                        <tr>
-                            <td>id</td>
-                            <td>Name</td>
-                            <td>Descr</td>
-                            <td>Price</td>
-                        </tr>
-                        <tr>
-                            <td>id</td>
-                            <td>Name</td>
-                            <td>Descr</td>
-                            <td>Price</td>
-                        </tr>
-                        <tr>
-                            <td>id</td>
-                            <td>Name</td>
-                            <td>Descr</td>
-                            <td>Price</td>
-                        </tr>
-                    </table>
+                <div class="infoTableDIV" id='table'>
+                    <tr>
+                        <h4 style="margin-top:10px">Выберите таблицу</h4>
+                    </tr>
                 </div>
             </div>
         </div>
@@ -348,9 +352,9 @@
 
     <script src="../js/jquery-3.6.4.min.js"></script>
     <script src="../js/popper.min.js"></script>
-    <script src="../js/showManagements.js"></script>
     <script src="../bootstrap/js/bootstrap.min.js"></script>
 
+    <script src="../js/managing.js"></script>
     <script src="../js/checkRegister.js"></script>
 </body>
 

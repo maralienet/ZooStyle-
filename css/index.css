@@ -1219,7 +1219,7 @@ center {
 .infoTableDIV {
     border: var(--purp) 2px solid;
     height: 520px;
-    overflow: scroll;
+    overflow: auto;
     text-align: center;
 }
 .myRecords .column{
@@ -1247,11 +1247,14 @@ center {
 }
 
 .infoTableDIV .infoTable {
-    width: 100%;
+    width: max-content;
 }
 
 .infoTableDIV .infoTable tr {
     height: 50px;
+}
+.infoTableDIV .infoTable tr * {
+    padding: 0 7px;
 }
 
 .infoTableDIV .infoTable tr:hover {
@@ -1312,6 +1315,7 @@ center {
     padding-left: 25px;
     margin-right: 0;
     line-height: 18px;
+    -webkit-user-select: none;
     user-select: none;
 }
 

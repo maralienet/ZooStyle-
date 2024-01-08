@@ -21,9 +21,8 @@ if (isset($_COOKIE['id'])) {
             </tr>";
         while ($row = $result->fetch_assoc()) {
             $status = 'Не принят';
-            if($row['status']==1){
+            if($row['status']==1)
                 $status = 'Принят';
-            }
             if($row["servName"]!=$row["petType"]){
                 echo "<tr class='bodyRows'>
                     <td headers='Услуга'>" . $row["petType"] . " " . $row["servName"] . ". " . $row["servtName"] . "</td>
@@ -42,8 +41,7 @@ if (isset($_COOKIE['id'])) {
             }
         }
         echo "</table>";
-    } else {
+    } else
         echo "<h4 style='color:#535353;'>Записей не найдено</h4>";
-    }
 }
 $conn->close();
