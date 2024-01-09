@@ -201,8 +201,7 @@ function showTable($table)
                 } else echo '
                 <table class="infoTable">
                     <tr><h4 style="margin-top:10px">Заказы не найдены.</h4></tr>
-                </table>
-                    ';
+                </table>';
                 break;
             }
         case 'Типы услуг': {

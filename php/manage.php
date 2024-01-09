@@ -235,8 +235,8 @@
                                 <legend>Тип</legend>
 
                                 <div>
-                                    <input type="radio" id="cats_serv" name="type" value="Кошки" />
-                                    <label for="cats_serv">Кошки</label>
+                                    <input type="radio" id="cats_serv" name="type" value="Коты" />
+                                    <label for="cats_serv">Коты</label>
                                 </div>
 
                                 <div>
@@ -300,8 +300,8 @@
                                 <legend>Тип</legend>
 
                                 <div>
-                                    <input type="radio" id="cats_ord" name="type" value="Кошки" />
-                                    <label for="cats_ord">Кошки</label>
+                                    <input type="radio" id="cats_ord" name="type" value="Коты" />
+                                    <label for="cats_ord">Коты</label>
                                 </div>
                                 <div>
                                     <input type="radio" id="dogs_ord" name="type" value="Собаки" />
@@ -335,16 +335,33 @@
                             </fieldset>
 
                             <fieldset class="fset">
-                                <legend>Активность</legend>
+                                <legend>Дата</legend>
+
+                                <div>
+                                    <input type="radio" id="data1" name="data" value=" 1" />
+                                    <label for="data1">За последний месяц</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="data2" name="data" value="3" />
+                                    <label for="data2">За последних 3 месяца</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="data3" name="data" value="6" />
+                                    <label for="data3">За последних полгода</label>
+                                </div>
+                            </fieldset>
+
+                            <fieldset class="fset">
+                                <legend>Статус</legend>
 
                                 <div>
                                     <input type="radio" id="active_ord" name="active" value="true" />
-                                    <label for="active_ord">Да</label>
+                                    <label for="active_ord">Принят</label>
                                 </div>
 
                                 <div>
                                     <input type="radio" id="inactive_ord" name="active" value="false" />
-                                    <label for="inactive_ord">Нет</label>
+                                    <label for="inactive_ord">Не принят</label>
                                 </div>
                             </fieldset>
                             <div class="edits">

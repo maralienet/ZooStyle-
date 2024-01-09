@@ -30,11 +30,17 @@ if (isset($_POST['form'])) {
         case 'Услуги': {
                 if (isset($_POST['service']) && $_POST['service'] != '')
                     search($_POST['service'], $form);
-
+                $type = isset($_POST['type']) ? $_POST['type'] : '';
+                $price = isset($_POST['price']) ? $_POST['price'] : '';
+                $active = isset($_POST['active']) ? $_POST['active'] : '';
+                filterServ($type, $price, $active);
                 break;
             }
         case 'Заявки': {
-
+                $type = isset($_POST['type']) ? $_POST['type'] : '';
+                $servType = isset($_POST['servType']) ? $_POST['servType'] : '';
+                $active = isset($_POST['active']) ? $_POST['active'] : '';
+                filterServ($type, $servType, $active);
                 break;
             }
         case 'Типы услуг': {
@@ -49,15 +55,15 @@ if (isset($_POST['form'])) {
 function filterUser($role, $active)
 {
     require("conn.php");
-    if ($role != '' && $active != '')
-        $sql = "SELECT phone,password,role,active FROM Users
-        where role='$role' and active=$active";
-    else if ($role != '')
-        $sql = "SELECT phone,password,role,active FROM Users
-        where role='$role'";
-    else if ($active != '')
-        $sql = "SELECT phone,password,role,active FROM Users
-        where active=$active";
+    $sql = "SELECT phone,password,role,active FROM Users";
+    $conditions = [];
+    if ($role != '')
+        $conditions[] = "role='$role'";
+    if ($active != '')
+        $conditions[] = "active=$active";
+    if (!empty($conditions))
+        $sql .= ' WHERE ' . implode(' AND ', $conditions);
+
     $res = $conn->query($sql);
     if ($res->num_rows > 0) {
         echo '<table class="infoTable">
@@ -182,8 +188,16 @@ function filterServ($type, $price, $active)
 {
     require("conn.php");
     $sql = "SELECT servName,petType,price,servtName,Services.active FROM Services
-    join ServicesTypes on ServicesTypes.servtId = Services.servtId
-    where servtName like '$text%'";
+    join ServicesTypes on ServicesTypes.servtId = Services.servtId";
+    $conditions = [];
+    if ($type != '')
+        $conditions[] = "petType='$type'";
+    if ($price != '')
+        $conditions[] = "price<=$price";
+    if ($active != '')
+        $conditions[] = "Services.active=$active";
+    if (!empty($conditions))
+        $sql .= ' WHERE ' . implode(' AND ', $conditions);
     $res = $conn->query($sql);
     if ($res->num_rows > 0) {
         echo '<table class="infoTable">
@@ -217,9 +231,58 @@ function filterServ($type, $price, $active)
 function filterOrders($type, $servType, $active)
 {
     require("conn.php");
+    $sql = "SELECT servName,servtName,custName,mastName,petType,mastSurname,orderDate,status,Orders.active FROM Orders
+    join Masters on Masters.mastId=Orders.mastId
+    join Services on Services.servId=Orders.servId
+    join ServicesTypes on ServicesTypes.servtId=Services.servtId 
+    join Customers on Customers.custId=Orders.custId";
+    $conditions = [];
+    if ($type != '')
+        $conditions[] = "petType='$type'";
+    if ($servType != '')
+        $conditions[] = "servtName='$servType'";
+    if ($active != '')
+        $conditions[] = "status=$active";
+    if (!empty($conditions))
+        $sql .= ' WHERE ' . implode(' AND ', $conditions);
+        
+        $res = $conn->query($sql);
+        if ($res->num_rows > 0) {
+            echo "<table class='infoTable' style='width: max-content !important;'>
+                <tr>
+                    <th>Вид услуги</th>
+                    <th>Услуга</th>
+                    <th>Тип животного</th>
+                    <th>Заказчик</th>
+                    <th>Мастер</th>
+                    <th>Дата</th>
+                    <th>Статус</th>
+                    <th>Активность</th>
+                </tr>";
+            while ($row = $res->fetch_assoc()) {
+                $status = 'Не принят';
+                $active = 'Не активен';
+                if ($row['status'] == 1)
+                    $status = 'Принят';
+                if ($row['active'] == 1)
+                    $active = 'Активен';
 
-
-
+                echo "<tr class='bodyRows'>
+                        <td headers='Вид услуги'>" . $row["servtName"] . "</td>
+                        <td headers='Услуга'>" . $row["servName"] . "</td>
+                        <td headers='Тип животного'>" . $row["petType"] . " </td>
+                        <td headers='Заказчик'>" . $row["custName"] . "</td>
+                        <td headers='Мастер'>" . $row["mastName"] . " " . $row["mastSurname"] . "</td>
+                        <td headers='Дата'>" . $row["orderDate"] . "</td>
+                        <td headers='Статус'>$status</td>
+                        <td headers='Активность'> $active</td>
+                    </tr>";
+            }
+            echo "</table>";
+        } else echo '
+        <table class="infoTable">
+            <tr><h4 style="margin-top:10px">Заказы не найдены.</h4></tr>
+        </table>';
     $conn->close();
 }
 function filterTypes($active)
