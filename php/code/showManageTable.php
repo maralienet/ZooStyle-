@@ -40,6 +40,75 @@ function showTable($table)
                     ';
                 break;
             }
+        case 'Мастера': {
+            //TODO: сделать вывод фоток!
+                $sql = "SELECT mastName, mastSurname, post, photo, servtName, Users.active as active FROM Masters
+                join ServicesTypes on ServicesTypes.servtId = Masters.servtId
+                join Users on Users.userId = Masters.userId";
+                $res = $conn->query($sql);
+                if ($res->num_rows > 0) {
+                    echo '<table class="infoTable">
+                        <tr>
+                            <th>Имя</th>
+                            <th>Фамилия</th>
+                            <th>Должность</th>
+                            <th>Услуга</th>
+                            <th>Активность</th>
+                        </tr>';
+                    while ($row = $res->fetch_assoc()) {
+                        $active = 'Не активен';
+                        if ($row['active'] == 1)
+                            $active = 'Активен';
+                        echo '
+                        <tr>
+                            <td headers="Имя">' . $row['mastName'] . '</td>
+                            <td headers="Фамилия">' . $row['mastSurname'] . '</td>
+                            <td headers="Должность">' . $row['post'] . '</td>
+                            <td headers="Услуга">' . $row['servtName'] . '</td>
+                            <td headers="Активность">' . $active . '</td>
+                        </tr>
+                        ';
+                    }
+                    echo "</table>";
+                } else echo '
+                <table class="infoTable">
+                    <tr><h4 style="margin-top:10px">Мастера не найдены.</h4></tr>
+                </table>
+                    ';
+                break;
+            }
+        case 'Заказчики': {
+            //TODO: сделать вывод фоток!
+                $sql = "SELECT custName, sale, photo, Users.active as active FROM Customers
+                join Users on Users.userId = Customers.userId";
+                $res = $conn->query($sql);
+                if ($res->num_rows > 0) {
+                    echo '<table class="infoTable">
+                        <tr>
+                            <th>Имя</th>
+                            <th>Скидка</th>
+                            <th>Активность</th>
+                        </tr>';
+                    while ($row = $res->fetch_assoc()) {
+                        $active = 'Не активен';
+                        if ($row['active'] == 1)
+                            $active = 'Активен';
+                        echo '
+                        <tr>
+                            <td headers="Имя">' . $row['custName'] . '</td>
+                            <td headers="Скидка">' . $row['sale'] . '</td>
+                            <td headers="Активность">' . $active . '</td>
+                        </tr>
+                        ';
+                    }
+                    echo "</table>";
+                } else echo '
+                <table class="infoTable">
+                    <tr><h4 style="margin-top:10px">Заказчики не найдены.</h4></tr>
+                </table>
+                    ';
+                break;
+            }
         case 'Услуги': {
                 $sql = "SELECT servName,petType,price,servtName,Services.active FROM Services
                 join ServicesTypes on ServicesTypes.servtId = Services.servtId";
@@ -83,7 +152,7 @@ function showTable($table)
                 join Customers on Customers.custId=Orders.custId";
                 $res = $conn->query($sql);
                 if ($res->num_rows > 0) {
-                    echo "<table class='infoTable'>
+                    echo "<table class='infoTable' style='width: max-content !important;'>
                         <tr>
                             <th>Вид услуги</th>
                             <th>Услуга</th>

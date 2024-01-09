@@ -1247,7 +1247,7 @@ center {
 }
 
 .infoTableDIV .infoTable {
-    width: max-content;
+    width: 100%;
 }
 
 .infoTableDIV .infoTable tr {

@@ -4,6 +4,8 @@ const users = document.getElementById('invisUSERS')
 const service = document.getElementById('invisSERVICE')
 const order = document.getElementById('invisORDER')
 const salon = document.getElementById('invisSALON')
+const master = document.getElementById('invisMASTERS')
+const customer = document.getElementById('invisCUSTS')
 
 
 function show(type) {
@@ -24,6 +26,22 @@ function show(type) {
             }
 
             users.style.display = 'block'
+            break
+        }
+        case 'Мастера': {
+            for (let i = 0; i < manageItems.length; i++) {
+                manageItems[i].style.display = 'none';
+            }
+
+            master.style.display = 'block'
+            break
+        }
+        case 'Заказчики': {
+            for (let i = 0; i < manageItems.length; i++) {
+                manageItems[i].style.display = 'none';
+            }
+
+            customer.style.display = 'block'
             break
         }
         case 'Услуги': {
@@ -60,6 +78,8 @@ function show(type) {
             users.style.display = 'none'
             service.style.display = 'none'
             order.style.display = 'none'
+            master.style.display = 'none'
+            customer.style.display = 'none'
             salon.style.display = 'none'
 
             break

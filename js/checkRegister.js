@@ -17,7 +17,7 @@ function checkRegCookie() {
       success: function (rp) {
         switch (rp) {
           case 'Администратор': {
-            window.location.replace('manage.php');
+            window.location.replace('manage.php');           
             break;
           }
           case 'Мастер': {
@@ -82,6 +82,7 @@ function unconfirm() {
 }
 
 function showEditWin(agreed = false) {
+  checkPhone($('#phonenum').val())
   $('.edit').show()
   if (agreed && document.getElementById('sayErrorPhone').innerHTML === '')
     $('.confirm').show()
