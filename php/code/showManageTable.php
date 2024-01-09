@@ -41,7 +41,6 @@ function showTable($table)
                 break;
             }
         case 'Мастера': {
-            //TODO: сделать вывод фоток!
                 $sql = "SELECT mastName, mastSurname, post, photo, servtName, Users.active as active FROM Masters
                 join ServicesTypes on ServicesTypes.servtId = Masters.servtId
                 join Users on Users.userId = Masters.userId";
@@ -54,6 +53,7 @@ function showTable($table)
                             <th>Должность</th>
                             <th>Услуга</th>
                             <th>Активность</th>
+                            <th>Фото</th>
                         </tr>';
                     while ($row = $res->fetch_assoc()) {
                         $active = 'Не активен';
@@ -66,6 +66,7 @@ function showTable($table)
                             <td headers="Должность">' . $row['post'] . '</td>
                             <td headers="Услуга">' . $row['servtName'] . '</td>
                             <td headers="Активность">' . $active . '</td>
+                            <td headers="Фото" style="width:150px;height:100px;overflow:hidden"><img src="' . $row['photo'] . '" style="width:100%;height:100%;object-fit:cover;"></td>
                         </tr>
                         ';
                     }
@@ -78,7 +79,6 @@ function showTable($table)
                 break;
             }
         case 'Заказчики': {
-            //TODO: сделать вывод фоток!
                 $sql = "SELECT custName, sale, photo, Users.active as active FROM Customers
                 join Users on Users.userId = Customers.userId";
                 $res = $conn->query($sql);
@@ -88,16 +88,31 @@ function showTable($table)
                             <th>Имя</th>
                             <th>Скидка</th>
                             <th>Активность</th>
+                            <th>Фото</th>
                         </tr>';
                     while ($row = $res->fetch_assoc()) {
                         $active = 'Не активен';
+                        $photo = '';
                         if ($row['active'] == 1)
                             $active = 'Активен';
+                        if ($row['photo'] != null)
+                            $photo = $row['photo'];
+                        if($photo)
                         echo '
                         <tr>
                             <td headers="Имя">' . $row['custName'] . '</td>
                             <td headers="Скидка">' . $row['sale'] . '</td>
                             <td headers="Активность">' . $active . '</td>
+                            <td headers="Фото" style="width:150px;height:100px;overflow:hidden"><img src="' . $photo . '" style="width:100%;height:100%;object-fit:cover;"></td>
+                        </tr>
+                        ';
+                        else
+                        echo '
+                        <tr>
+                            <td headers="Имя">' . $row['custName'] . '</td>
+                            <td headers="Скидка">' . $row['sale'] . '</td>
+                            <td headers="Активность">' . $active . '</td>
+                            <td headers="Фото">Не добавлено</td>
                         </tr>
                         ';
                     }

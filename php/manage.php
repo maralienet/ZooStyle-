@@ -66,20 +66,15 @@
     </header>
 
     <div class="container">
-    <?php
-    if(isset($_POST['user'])){
-        if($_POST['user']!='Администратор')
-            echo `<div class="row">
-                    <center>
-                        <h1><b>У вас недостаточно прав</b></h1>
-                    </center>
-                </div>`;
-    }
-    ?>
         <div class="row">
             <center>
                 <h1><b>Управление</b></h1>
             </center>
+        </div>
+        <div class="row justify-content-end manage">
+            <div class="edits">
+                <button onclick="exit()"><span>Выйти</span><img src='../pics/me/exit.png' /></button>
+            </div>
         </div>
         <div class="row">
             <div class="col-lg-3 col-md-12 col-sm-12">
@@ -97,43 +92,44 @@
                                 <img src='../pics/manage/cancel.png' />
                             </div>
                         </div>
-                        <input type="text" class="searchInput" />
+                        <form id='usersForm'>
+                            <input type="text" class="searchInput phoneInput" id='phonenum' placeholder="Поиск по телефону" />
 
-                        <fieldset class="fset">
-                            <legend>Роль</legend>
+                            <fieldset class="fset">
+                                <legend>Роль</legend>
+                                <div>
+                                    <input type="radio" id="orderer" name="role" value="Заказчик" />
+                                    <label for="orderer">Заказчик</label>
+                                </div>
 
-                            <div>
-                                <input type="radio" id="role1" name="role" value="Заказчик" />
-                                <label for="role1">Заказчик</label>
-                            </div>
+                                <div>
+                                    <input type="radio" id="master" name="role" value="Мастер" />
+                                    <label for="master">Мастер</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="admin" name="role" value="Администратор" />
+                                    <label for="admin">Администратор</label>
+                                </div>
+                            </fieldset>
+                            <fieldset class="fset">
+                                <legend>Активность</legend>
 
-                            <div>
-                                <input type="radio" id="role2" name="role" value="Мастер" />
-                                <label for="role2">Мастер</label>
-                            </div>
-                            <div>
-                                <input type="radio" id="role3" name="role" value="Администратор" />
-                                <label for="role3">Администратор</label>
-                            </div>
-                        </fieldset>
-                        <fieldset class="fset">
-                            <legend>Активность</legend>
+                                <div>
+                                    <input type="radio" id="active_user" name="active" value="true" />
+                                    <label for="active_user">Да</label>
+                                </div>
 
-                            <div>
-                                <input type="radio" id="active1" name="active" value="true" />
-                                <label for="active1">Да</label>
+                                <div>
+                                    <input type="radio" id="inactive_user" name="active" value="false" />
+                                    <label for="inactive_user">Нет</label>
+                                </div>
+                            </fieldset>
+                            <div class="edits">
+                                <button><img src='../pics/manage/add.png' /></button>
+                                <button><img src='../pics/me/trash.png' /></button>
                             </div>
-
-                            <div>
-                                <input type="radio" id="active2" name="active" value="false" />
-                                <label for="active2">Нет</label>
-                            </div>
-                        </fieldset>
-                        <div class="edits">
-                            <button><img src='../pics/manage/add.png' /></button>
-                            <button><img src='../pics/me/trash.png' /></button>
-                        </div>
-                        <button type="submit" class="btnPurp">Найти</button>
+                            <button type="submit" class="btnPurp">Найти</button>
+                        </form>
                     </div>
 
                     <div class="manageItem" onclick="show('Мастера')">
@@ -149,25 +145,27 @@
                                 <img src='../pics/manage/cancel.png' />
                             </div>
                         </div>
-                        <input type="text" class="searchInput" />
-                        <fieldset class="fset">
-                            <legend>Активность</legend>
+                        <form id="masterForm">
+                            <input type="text" class="searchInput" placeholder="Поиск по фамилии" />
+                            <fieldset class="fset">
+                                <legend>Активность</legend>
 
-                            <div>
-                                <input type="radio" id="active3" name="active" value="true" />
-                                <label for="active3">Да</label>
-                            </div>
+                                <div>
+                                    <input type="radio" id="active_mast" name="active" value="true" />
+                                    <label for="active_mast">Да</label>
+                                </div>
 
-                            <div>
-                                <input type="radio" id="active4" name="active" value="false" />
-                                <label for="active4">Нет</label>
+                                <div>
+                                    <input type="radio" id="inactive_mast" name="active" value="false" />
+                                    <label for="inactive_mast">Нет</label>
+                                </div>
+                            </fieldset>
+                            <div class="edits">
+                                <button><img src='../pics/manage/add.png' /></button>
+                                <button><img src='../pics/me/trash.png' /></button>
                             </div>
-                        </fieldset>
-                        <div class="edits">
-                            <button><img src='../pics/manage/add.png' /></button>
-                            <button><img src='../pics/me/trash.png' /></button>
-                        </div>
-                        <button type="submit" class="btnPurp">Найти</button>
+                            <button type="submit" class="btnPurp">Найти</button>
+                        </form>
                     </div>
 
                     <div class="manageItem" onclick="show('Заказчики')">
@@ -183,43 +181,43 @@
                                 <img src='../pics/manage/cancel.png' />
                             </div>
                         </div>
-                        <input type="text" class="searchInput" />
-                        <fieldset class="fset">
-                            <legend>С фото</legend>
-                            <div>
-                                <input type="radio" id="wphoto1" name="wphoto" value="true" />
-                                <label for="wphoto1">Да</label>
-                            </div>
+                        <form id="custForm">
+                            <input type="text" class="searchInput" placeholder="Поиск по имени" />
+                            <fieldset class="fset">
+                                <legend>С фото</legend>
+                                <div>
+                                    <input type="radio" id="wiphoto_ordr" name="wphoto" value="true" />
+                                    <label for="wiphoto_ordr">Да</label>
+                                </div>
 
-                            <div>
-                                <input type="radio" id="wphoto2" name="wphoto" value="false" />
-                                <label for="wphoto2">Нет</label>
-                            </div>
-                        </fieldset>
-                        <fieldset class="fset">
-                            <legend>Активность</legend>
-                            <div>
-                                <input type="radio" id="active5" name="active" value="true" />
-                                <label for="active5">Да</label>
-                            </div>
+                                <div>
+                                    <input type="radio" id="wophoto_ord" name="wphoto" value="false" />
+                                    <label for="wophoto_ordr">Нет</label>
+                                </div>
+                            </fieldset>
+                            <fieldset class="fset">
+                                <legend>Активность</legend>
+                                <div>
+                                    <input type="radio" id="active_ordr" name="active" value="true" />
+                                    <label for="active_ordr">Да</label>
+                                </div>
 
-                            <div>
-                                <input type="radio" id="active6" name="active" value="false" />
-                                <label for="active6">Нет</label>
+                                <div>
+                                    <input type="radio" id="inactive_ordr" name="active" value="false" />
+                                    <label for="inactive_ordr">Нет</label>
+                                </div>
+                            </fieldset>
+                            <div class="edits">
+                                <button><img src='../pics/manage/add.png' /></button>
+                                <button><img src='../pics/me/trash.png' /></button>
                             </div>
-                        </fieldset>
-                        <div class="edits">
-                            <button><img src='../pics/manage/add.png' /></button>
-                            <button><img src='../pics/me/trash.png' /></button>
-                        </div>
-                        <button type="submit" class="btnPurp">Найти</button>
+                            <button type="submit" class="btnPurp">Найти</button>
+                        </form>
                     </div>
-
 
                     <div class="manageItem" onclick="show('Услуги')">
                         <p>Услуги</p>
                     </div>
-
 
                     <div id="invisSERVICE" style="display:none;">
                         <div class="manageItemHeader">
@@ -230,62 +228,63 @@
                                 <img src='../pics/manage/cancel.png' />
                             </div>
                         </div>
-                        <input type="text" class="searchInput" />
+                        <form id="servForm">
+                            <input type="text" class="searchInput" placeholder="Поиск по виду" />
 
-                        <fieldset class="fset">
-                            <legend>Тип</legend>
+                            <fieldset class="fset">
+                                <legend>Тип</legend>
 
-                            <div>
-                                <input type="radio" id="type1" name="type" value="Кошки" />
-                                <label for="type1">Кошки</label>
-                            </div>
+                                <div>
+                                    <input type="radio" id="cats_serv" name="type" value="Кошки" />
+                                    <label for="cats_serv">Кошки</label>
+                                </div>
 
-                            <div>
-                                <input type="radio" id="type2" name="type" value="Собаки" />
-                                <label for="type2">Собаки</label>
-                            </div>
-                        </fieldset>
-                        <fieldset class="fset">
-                            <legend>Цена</legend>
+                                <div>
+                                    <input type="radio" id="dogs_serv" name="type" value="Собаки" />
+                                    <label for="dogs_serv">Собаки</label>
+                                </div>
+                            </fieldset>
+                            <fieldset class="fset">
+                                <legend>Цена</legend>
 
-                            <div>
-                                <input type="radio" id="price1" name="price" value="20" />
-                                <label for="price1">До 20р</label>
-                            </div>
+                                <div>
+                                    <input type="radio" id="do20" name="price" value="20" />
+                                    <label for="do20">До 20р</label>
+                                </div>
 
-                            <div>
-                                <input type="radio" id="price2" name="price" value="40" />
-                                <label for="price2">До 40р</label>
-                            </div>
-                            <div>
-                                <input type="radio" id="price3" name="price" value="60" />
-                                <label for="price3">До 60р</label>
-                            </div>
-                        </fieldset>
-                        <fieldset class="fset">
-                            <legend>Активность</legend>
+                                <div>
+                                    <input type="radio" id="do40" name="price" value="40" />
+                                    <label for="do40">До 40р</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="do60" name="price" value="60" />
+                                    <label for="do60">До 60р</label>
+                                </div>
+                            </fieldset>
+                            <fieldset class="fset">
+                                <legend>Активность</legend>
 
-                            <div>
-                                <input type="radio" id="active3" name="active" value="true" />
-                                <label for="active3">Да</label>
-                            </div>
+                                <div>
+                                    <input type="radio" id="active_serv" name="active" value="true" />
+                                    <label for="active_serv">Да</label>
+                                </div>
 
-                            <div>
-                                <input type="radio" id="active4" name="active" value="false" />
-                                <label for="active4">Нет</label>
+                                <div>
+                                    <input type="radio" id="inactive_serv" name="active" value="false" />
+                                    <label for="inactive_serv">Нет</label>
+                                </div>
+                            </fieldset>
+                            <div class="edits">
+                                <button><img src='../pics/manage/add.png' /></button>
+                                <button><img src='../pics/me/trash.png' /></button>
                             </div>
-                        </fieldset>
-                        <div class="edits">
-                            <button><img src='../pics/manage/add.png' /></button>
-                            <button><img src='../pics/me/trash.png' /></button>
-                        </div>
-                        <button type="submit" class="btnPurp">Найти</button>
+                            <button type="submit" class="btnPurp">Найти</button>
                     </div>
+                    </form>
 
                     <div class="manageItem" onclick="show('Заявки')">
                         <p>Заявки</p>
                     </div>
-
 
                     <div id="invisORDER" style="display:none;">
                         <div class="manageItemHeader">
@@ -296,66 +295,65 @@
                                 <img src='../pics/manage/cancel.png' />
                             </div>
                         </div>
-                        <input type="text" class="searchInput" />
+                        <form id="ordForm">
+                            <fieldset class="fset">
+                                <legend>Тип</legend>
 
-                        <fieldset class="fset">
-                            <legend>Тип</legend>
+                                <div>
+                                    <input type="radio" id="cats_ord" name="type" value="Кошки" />
+                                    <label for="cats_ord">Кошки</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="dogs_ord" name="type" value="Собаки" />
+                                    <label for="dogs_ord">Собаки</label>
+                                </div>
+                            </fieldset>
 
-                            <div>
-                                <input type="radio" id="type1" name="type" value="Кошки" />
-                                <label for="type1">Кошки</label>
-                            </div>
-                            <div>
-                                <input type="radio" id="type2" name="type" value="Собаки" />
-                                <label for="type2">Собаки</label>
-                            </div>
-                        </fieldset>
+                            <fieldset class="fset">
+                                <legend>Вид услуги</legend>
 
-                        <fieldset class="fset">
-                            <legend>Вид услуги</legend>
+                                <div>
+                                    <input type="radio" id="srvType1" name="srvType" value="Обрезание когтей" />
+                                    <label for="srvType1">Обрезание когтей</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="srvType2" name="srvType" value="Мытьё" />
+                                    <label for="srvType2">Мытьё</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="srvType3" name="srvType" value="Груминг" />
+                                    <label for="srvType3">Груминг</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="srvType4" name="srvType" value="Выгул" />
+                                    <label for="srvType4">Выгул</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="srvType5" name="srvType" value="Диетолог" />
+                                    <label for="srvType5">Диетолог</label>
+                                </div>
+                            </fieldset>
 
-                            <div>
-                                <input type="radio" id="srvType1" name="srvType" value="Обрезание когтей" />
-                                <label for="srvType1">Обрезание когтей</label>
-                            </div>
-                            <div>
-                                <input type="radio" id="srvType2" name="srvType" value="Мытьё" />
-                                <label for="srvType2">Мытьё</label>
-                            </div>
-                            <div>
-                                <input type="radio" id="srvType3" name="srvType" value="Груминг" />
-                                <label for="srvType3">Груминг</label>
-                            </div>
-                            <div>
-                                <input type="radio" id="srvType4" name="srvType" value="Выгул" />
-                                <label for="srvType4">Выгул</label>
-                            </div>
-                            <div>
-                                <input type="radio" id="srvType5" name="srvType" value="Диетолог" />
-                                <label for="srvType5">Диетолог</label>
-                            </div>
-                        </fieldset>
+                            <fieldset class="fset">
+                                <legend>Активность</legend>
 
-                        <fieldset class="fset">
-                            <legend>Активность</legend>
+                                <div>
+                                    <input type="radio" id="active_ord" name="active" value="true" />
+                                    <label for="active_ord">Да</label>
+                                </div>
 
-                            <div>
-                                <input type="radio" id="active7" name="active" value="true" />
-                                <label for="active7">Да</label>
+                                <div>
+                                    <input type="radio" id="inactive_ord" name="active" value="false" />
+                                    <label for="inactive_ord">Нет</label>
+                                </div>
+                            </fieldset>
+                            <div class="edits">
+                                <button><img src='../pics/manage/add.png' /></button>
+                                <button><img src='../pics/me/trash.png' /></button>
                             </div>
-
-                            <div>
-                                <input type="radio" id="active8" name="active" value="false" />
-                                <label for="active8">Нет</label>
-                            </div>
-                        </fieldset>
-                        <div class="edits">
-                            <button><img src='../pics/manage/add.png' /></button>
-                            <button><img src='../pics/me/trash.png' /></button>
-                        </div>
-                        <button type="submit" class="btnPurp">Найти</button>
+                            <button type="submit" class="btnPurp">Найти</button>
+                        </form>
                     </div>
-
 
                     <div class="manageItem" onclick="show('Типы услуг')">
                         <p>Типы услуг</p>
@@ -370,26 +368,28 @@
                                 <img src='../pics/manage/cancel.png' />
                             </div>
                         </div>
-                        <input type="text" class="searchInput" />
+                        <form id="servtForm">
+                            <input type="text" class="searchInput" placeholder="Поиск по названию" />
 
-                        <fieldset class="fset">
-                        <legend>Активность</legend>
+                            <fieldset class="fset">
+                                <legend>Активность</legend>
 
-                        <div>
-                            <input type="radio" id="active9" name="active" value="true" />
-                            <label for="active9">Да</label>
-                        </div>
+                                <div>
+                                    <input type="radio" id="active_servt" name="active" value="true" />
+                                    <label for="active_servt">Да</label>
+                                </div>
 
-                        <div>
-                            <input type="radio" id="active10" name="active" value="false" />
-                            <label for="active10">Нет</label>
-                        </div>
-                        </fieldset>
-                        <div class="edits">
-                            <button><img src='../pics/manage/add.png' /></button>
-                            <button><img src='../pics/me/trash.png' /></button>
-                        </div>
-                        <button type="submit" class="btnPurp">Найти</button>
+                                <div>
+                                    <input type="radio" id="inactive_servt" name="active" value="false" />
+                                    <label for="inactive_servt">Нет</label>
+                                </div>
+                            </fieldset>
+                            <div class="edits">
+                                <button><img src='../pics/manage/add.png' /></button>
+                                <button><img src='../pics/me/trash.png' /></button>
+                            </div>
+                            <button type="submit" class="btnPurp">Найти</button>
+                        </form>
                     </div>
                 </div>
             </div>

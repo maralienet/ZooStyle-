@@ -119,3 +119,30 @@ function cancelOrder(id) {
 function changeImage(element, newImageSrc) {
     $(element).find('img').attr('src', newImageSrc);
 }
+
+$('.phoneInput').on('keypress', function (e) {
+    if (!/[0-9]/.test(String.fromCharCode(e.which))) {
+        e.preventDefault();
+    }
+});
+
+document.getElementById('usersForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var formData = new FormData(this);
+    let phonenum = $('#phonenum').val()
+    if (phonenum) formData.append('phonenum', phonenum)
+    
+    $.ajax({
+        url: 'code/managementAdmin.php',
+        method: 'post',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (rp) {
+            console.log(rp)
+        },
+        error: function () {
+          console.log('error!')
+        }
+      })
+});

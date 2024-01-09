@@ -1119,6 +1119,11 @@ center {
     padding: 8px 0;
     transition: 0.3s;
 }
+.manage .edits button {
+    width: 100%;
+    padding: 8px 50px;
+    margin: 10px;
+}
 
 .managements .edits button {
     width: 25%;
