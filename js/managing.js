@@ -121,16 +121,68 @@ function changeImage(element, newImageSrc) {
 }
 
 $('.phoneInput').on('keypress', function (e) {
-    if (!/[0-9]/.test(String.fromCharCode(e.which))) {
-        e.preventDefault();
+    var charCode = (e.which) ? e.which : e.keyCode
+    if (this.value.length === 0) {
+        this.value = '+'
+        return false
+    } else if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+        return false
     }
+    return true
 });
 
 document.getElementById('usersForm').addEventListener('submit', function(e) {
     e.preventDefault();
     var formData = new FormData(this);
     let phonenum = $('#phonenum').val()
-    if (phonenum) formData.append('phonenum', phonenum)
+    formData.append('phonenum', phonenum)
+    formData.append('form', 'Пользователи')
+
+    $.ajax({
+        url: 'code/managementAdmin.php',
+        method: 'post',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (rp) {
+            document.getElementById('table').innerHTML = rp;
+        },
+        error: function () {
+          console.log('error!')
+        }
+      })
+});
+
+document.getElementById('masterForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var formData = new FormData(this);
+    let surname = $('#surname').val()
+    formData.append('surname', surname)
+    formData.append('form', 'Мастера')
+    $.ajax({
+        url: 'code/managementAdmin.php',
+        method: 'post',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (rp) {
+            document.getElementById('table').innerHTML = rp;
+        },
+        error: function () {
+          console.log('error!')
+        }
+      })
+});
+
+document.getElementById('custForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var formData = new FormData(this);
+    let naming = $('#naming').val()
+    formData.append('name', naming)
+    formData.append('form', 'Заказчики')
+    for(let [name, value] of formData) {
+        console.log(`${name} = ${value}`); // key1=value1, потом key2=value2
+      }
     
     $.ajax({
         url: 'code/managementAdmin.php',
@@ -139,7 +191,71 @@ document.getElementById('usersForm').addEventListener('submit', function(e) {
         processData: false,
         contentType: false,
         success: function (rp) {
-            console.log(rp)
+            document.getElementById('table').innerHTML = rp;
+        },
+        error: function () {
+          console.log('error!')
+        }
+      })
+});
+
+document.getElementById('servForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var formData = new FormData(this);
+    let service = $('#service').val()
+    formData.append('service', service)
+    formData.append('form', 'Услуги')
+    
+    $.ajax({
+        url: 'code/managementAdmin.php',
+        method: 'post',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (rp) {
+            document.getElementById('table').innerHTML = rp;
+        },
+        error: function () {
+          console.log('error!')
+        }
+      })
+});
+
+document.getElementById('ordForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var formData = new FormData(this);
+    formData.append('form', 'Заявки')
+    
+    $.ajax({
+        url: 'code/managementAdmin.php',
+        method: 'post',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (rp) {
+            document.getElementById('table').innerHTML = rp;
+        },
+        error: function () {
+          console.log('error!')
+        }
+      })
+});
+
+document.getElementById('servtForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var formData = new FormData(this);
+    let typeName = $('#typeName').val()
+    formData.append('typeName', typeName)
+    formData.append('form', 'Типы услуг')
+    
+    $.ajax({
+        url: 'code/managementAdmin.php',
+        method: 'post',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (rp) {
+            document.getElementById('table').innerHTML = rp;
         },
         error: function () {
           console.log('error!')

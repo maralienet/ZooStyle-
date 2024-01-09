@@ -146,7 +146,7 @@
                             </div>
                         </div>
                         <form id="masterForm">
-                            <input type="text" class="searchInput" placeholder="Поиск по фамилии" />
+                            <input type="text" class="searchInput" id="surname" placeholder="Поиск по фамилии" />
                             <fieldset class="fset">
                                 <legend>Активность</legend>
 
@@ -182,16 +182,16 @@
                             </div>
                         </div>
                         <form id="custForm">
-                            <input type="text" class="searchInput" placeholder="Поиск по имени" />
+                            <input type="text" class="searchInput" id='naming' placeholder="Поиск по имени" />
                             <fieldset class="fset">
                                 <legend>С фото</legend>
                                 <div>
-                                    <input type="radio" id="wiphoto_ordr" name="wphoto" value="true" />
+                                    <input type="radio" id="wiphoto_ordr" name="photo" value="not null" />
                                     <label for="wiphoto_ordr">Да</label>
                                 </div>
 
                                 <div>
-                                    <input type="radio" id="wophoto_ord" name="wphoto" value="false" />
+                                    <input type="radio" id="wophoto_ordr" name="photo" value="null" />
                                     <label for="wophoto_ordr">Нет</label>
                                 </div>
                             </fieldset>
@@ -229,7 +229,7 @@
                             </div>
                         </div>
                         <form id="servForm">
-                            <input type="text" class="searchInput" placeholder="Поиск по виду" />
+                            <input type="text" class="searchInput" id='service' placeholder="Поиск по виду" />
 
                             <fieldset class="fset">
                                 <legend>Тип</legend>
@@ -369,7 +369,7 @@
                             </div>
                         </div>
                         <form id="servtForm">
-                            <input type="text" class="searchInput" placeholder="Поиск по названию" />
+                            <input type="text" class="searchInput" id='typeName' placeholder="Поиск по названию" />
 
                             <fieldset class="fset">
                                 <legend>Активность</legend>
