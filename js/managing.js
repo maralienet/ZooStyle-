@@ -87,7 +87,7 @@ function show(type) {
     }
 }
 function clearForm() {
-    $('#phonenum').val('')
+    $('.phonenum').val('')
     $('#surname').val('')
     $('#naming').val('')
     $('#service').val('')
@@ -166,7 +166,7 @@ $('.phoneInput').on('keypress', function (e) {
 document.getElementById('usersForm').addEventListener('submit', function(e) {
     e.preventDefault();
     var formData = new FormData(this);
-    let phonenum = $('#phonenum').val()
+    let phonenum = $('.phonenum').val()
     formData.append('phonenum', phonenum)
     formData.append('form', 'Пользователи')
 
@@ -394,14 +394,14 @@ function openAddWindow(table){
 
 $('.addUser form').on('submit',function(e){
     e.preventDefault()
-    let errorPhone = document.getElementById('sayErrorPhone')
+    let errorPhone = document.getElementById('sayErrorPhoneA')
     let errorPass = document.getElementById('sayErrorPass')
-    checkPhone($('#phonenum').val())
+    checkPhoneNum($('.addUser form .phonenum').val(),errorPhone)
     if(errorPass.innerHTML==='' && errorPhone.innerHTML===''){
         var formData = new FormData(this)
         formData.append('table', 'Users')   
         $.ajax({
-            url: 'code/insertRecord.php',
+            url: 'code/managementAdmin.php',
             method: 'post',
             data: formData,
             processData: false,
@@ -421,20 +421,24 @@ $('.addUser form').on('submit',function(e){
     }
 })
 
-let file = '';
+let photo = '';
 $('.input-file input[type=file]').on('change', function () {
-  file = this.files[0];
-  $(this).next().html(file.name);
+  photo = this.files[0];
+  $(this).next().html(photo.name);
 })
 $('.addMaster form').on('submit',function(e){
     e.preventDefault()
-    let errorPhone = document.getElementById('sayErrorPhone')
-    checkPhone($('#phonenum').val())
-    if(errorPhone.innerHTML===''){
+    let errorPhone = document.getElementById('sayErrorPhoneM')
+    let errorPhoto = document.getElementById('sayErrorPhotoM')
+    checkPhoneNum($('.addMaster form .phonenum').val(),errorPhone)
+    checkPhoto(errorPhoto)
+    if(errorPhone.innerHTML==='' && errorPhoto.innerHTML===''){
         var formData = new FormData(this)
         formData.append('table', 'Masters')   
+        formData.append('file', photo)
+        formData.append('pass', createPass(formData.get("name"),formData.get("surname")))   
         $.ajax({
-            url: 'code/insertRecord.php',
+            url: 'code/managementAdmin.php',
             method: 'post',
             data: formData,
             processData: false,
@@ -445,7 +449,37 @@ $('.addMaster form').on('submit',function(e){
                     closeForm()
                 }
                 else
-                console.log(rp)
+                    console.log(rp)
+            },
+            error: function () {
+              console.log('error!')
+            }
+          })
+    }
+})
+$('.addCust form').on('submit',function(e){
+    e.preventDefault()
+    let errorPhone = document.getElementById('sayErrorPhoneC')
+    let errorPhoto = document.getElementById('sayErrorPhotoC')
+    checkPhoneNum($('.addCust form .phonenum').val(),errorPhone)
+    if(errorPhone.innerHTML==='' && errorPhoto.innerHTML===''){
+        var formData = new FormData(this)
+        formData.append('table', 'Masters')   
+        formData.append('file', photo)
+        formData.append('pass', createPass(formData.get("name"),formData.get("surname")))   
+        $.ajax({
+            url: 'code/managementAdmin.php',
+            method: 'post',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (rp) {
+                if(rp=='OK'){
+                    location.reload()
+                    closeForm()
+                }
+                else
+                    console.log(rp)
             },
             error: function () {
               console.log('error!')
@@ -457,9 +491,17 @@ $('.addMaster form').on('submit',function(e){
 function closeForm(){
     $('.addForm').hide()
     $('input').val('')
+    $('select').val('')
+    $('.input-file span').html('Выберите файл')
+    photo=''
+    $('input[type="file"]').val(null)
+    let errs = Array.from(document.getElementsByClassName('sayError'))
+    errs.forEach(err => {
+        err.innerHTML=''
+    })
 }
 
-$('#phonenum').on('keypress', function (e) {
+$('.phonenum').on('keypress', function (e) {
     var charCode = (e.which) ? e.which : e.keyCode
     if (this.value.length === 0) {
         this.value = '+'
@@ -469,28 +511,32 @@ $('#phonenum').on('keypress', function (e) {
     return true
 })
 
-$('#pass').on('input', function (e) {
-    let error = document.getElementById('sayErrorPass')
+$('.pass').on('input', function (e) {
+    let error = $('.sayErrorPass')
     let password = this.value;
     let hasNumber = /\d/.test(password)
     let hasLetter = /[a-zA-Z]/.test(password);
     let hasSpecialChar = /[!@#$%^&*_+=-`~]/.test(password)
 
     if (password.length < 6) 
-        error.innerHTML = 'Пароль должен быть длиннее 6 символов'    
+        error.html('Пароль должен быть длиннее 6 символов'  )  
     else if (!hasNumber || !hasSpecialChar || !hasLetter)
-        error.innerHTML = 'Пароль должен содержать хотя бы одну букву, цифру и спец. символ'   
+        error.html('Пароль должен содержать хотя бы одну букву, цифру и спец. символ')
     else if (password.length >= 6 && hasNumber && hasSpecialChar && hasLetter)
-        error.innerHTML = ''
+        error.html('')
 })
-function checkPhone(phonenum) {
-    let error = document.getElementById('sayErrorPhone')
+function checkPhoneNum(phonenum,error) {
     if (phonenum.length !== 13)
         error.innerHTML = ('Номер в неверном формате')
     else
         error.innerHTML = ''
 }
-
+function checkPhoto(error) {
+    if (photo==='')
+        error.innerHTML = ('Фото не выбрано')
+    else
+        error.innerHTML = ''
+}
 function transliterate(word){
     var answer = ""
     var converter = {

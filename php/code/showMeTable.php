@@ -8,7 +8,7 @@ if (isset($_COOKIE['id'])) {
     join Services on Services.servId=Orders.servId
     join ServicesTypes on ServicesTypes.servtId=Services.servtId 
     join Customers on Customers.custId=Orders.custId
-    where Customers.userId=$id";
+    where Customers.userId=$id and Orders.active=1";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {

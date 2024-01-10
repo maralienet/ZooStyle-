@@ -26,10 +26,10 @@ $("#adding").on('submit', function (e) {
             orderDate: orderDate
         },
         success: function (rp) {
-            if (rp === 'OK')
-                $('.accepted').hide().slideDown()
-            else if (rp === 'acc err')
+            if (rp === 'acc err')
                 $('.canceled').show()
+            else
+            $('.accepted').show()
         },
         error: function () {
             console.log('error!')
@@ -39,7 +39,7 @@ $("#adding").on('submit', function (e) {
 })
 
 function closeWindow(btn) {
-    $(`.${btn}`).slideUp()
+    $(`.${btn}`).hide()
     if (btn === 'canceled')
         window.location.replace('authorization.php')
     if (btn === 'accepted') {

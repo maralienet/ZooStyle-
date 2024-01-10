@@ -54,7 +54,6 @@ function orderAdd()
         $sql = 'INSERT INTO `Orders`(`custId`, `mastId`, `servId`, `orderDate`) VALUES 
         (' . $custId . ',' . $mastId . ',' . $servId . ',"' . $orderDate . '")';
         if ($conn->query($sql)) {
-            echo 'OK';
             $sql = "SELECT count(*) as count FROM Orders
             join Customers on Customers.custId=Orders.custId 
             join Users on Users.userId=Customers.userId

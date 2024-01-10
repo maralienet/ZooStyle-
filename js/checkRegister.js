@@ -73,7 +73,6 @@ function hideWindow(edit = false) {
     $('input[type="file"]').val(null)
     $('#sayErrorPhone').text('')
     $('#sayErrorPass').text('')
-
     $('.edit').hide()
   }
 }

@@ -271,6 +271,7 @@ function filterOrders($type, $data, $active)
                 <th>Мастер</th>
                 <th>Дата</th>
                 <th>Статус</th>
+                <th></th>
                 <th>Активность</th>
                 <th style='width:70px !important;'></th>
             </tr>";
@@ -290,6 +291,12 @@ function filterOrders($type, $data, $active)
                     <td headers='Мастер'>" . $row["mastName"] . " " . $row["mastSurname"] . "</td>
                     <td headers='Дата'>" . $row["orderDate"] . "</td>
                     <td headers='Статус'>$status</td>
+                    <td style='width: 80px;'>
+                        <div class='column'>
+                        <button class='btnSimp accept' onmouseover='changeImage(this, `../../pics/manage/ok_hover.png`)' onmouseout='changeImage(this, `../../pics/manage/ok.png`)' onclick='acceptOrder(" . $row["orderId"] . ")'><img src='../../pics/manage/ok.png'></button>
+                        <button class='btnSimp deny' onmouseover='changeImage(this, `../../pics/manage/add_hover.png`)' onmouseout='changeImage(this, `../../pics/manage/add.png`)' onclick='cancelOrder(" . $row["orderId"] . ")'><img src='../../pics/manage/add.png' style='transform: rotate(45deg);'></button>                        
+                        </div>
+                    </td>
                     <td headers='Активность'> $active</td>
                     <td><button class='deleteBtn' onclick='deleteRecord(" . $row['orderId'] . ",`Orders`)'><img src='../../pics/me/trash.png'/></button></td>
                 </tr>";
@@ -533,5 +540,80 @@ function search($text, $table)
                 break;
             }
     }
+    $conn->close();
+}
+?>
+<?php
+if (isset($_POST['table'])) {
+    $table = $_POST['table'];
+    $sql = '';
+    switch ($table) {
+        case 'Users': {
+                insertUser($_POST['phonenum'], $_POST['pass'], $_POST['role']);
+                break;
+            }
+        case 'Masters': {
+                inserMaster($_POST['phonenum'], $_POST['pass'], $_POST['name'], $_POST['surname'], $_POST['post'], $_POST['servtId']);
+                break;
+            }
+        case 'Customers': {
+
+                break;
+            }
+        case 'Services': {
+
+                break;
+            }
+        case 'Orders': {
+
+                break;
+            }
+        case 'ServicesTypes': {
+
+                break;
+            }
+    }
+}
+
+function insertUser($phone, $pass, $role)
+{
+    require("conn.php");
+    $sql = "INSERT INTO `Users`(`phone`, `password`, `role`) VALUES 
+        ('$phone','$pass','$role')";
+    if ($conn->query($sql))
+        echo 'OK';
+    else
+        echo $conn->error;
+    $conn->close();
+}
+function inserMaster($phone, $pass, $name, $surname, $post, $servtId)
+{
+    require("conn.php");
+    $sql = "INSERT INTO `Users`(`phone`, `password`, `role`) VALUES 
+        ('$phone','$pass','Мастер')";
+    $a = $conn->query($sql);
+    $query = "SELECT userId from Users where phone=$phone";
+    $uid = null;
+    $result = $conn->query($query);
+    if ($result->num_rows > 0)
+        while ($row = $result->fetch_assoc())
+            $uid = $row["userId"];
+    if ($uid != null) {
+        $filename = $_FILES["file"]["name"];
+        $tempname = $_FILES["file"]["tmp_name"];
+        $folder = "../../pics/about/" . $filename;
+        if (!file_exists(dirname($folder))) {
+            mkdir(dirname($folder), 0777, true);
+        }
+        if (move_uploaded_file($tempname, $folder)) {
+            $sql1 = "INSERT INTO `Masters`(`mastName`, `mastSurname`, `post`, `photo`, `servtId`, `userId`) VALUES 
+                ('$name','$surname','$post','$folder',$servtId,$uid)";
+            if ($conn->query($sql1))
+                echo 'OK';
+            else
+                echo $sql1;
+        }
+    } else
+        echo 'Нет такого пользователя';
     $conn->close();
 }

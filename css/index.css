@@ -1232,20 +1232,29 @@ center {
     overflow: auto;
     text-align: center;
 }
-.myRecords .column{
+.myRecords .column,.infoTable .column{
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 7px;
 }
-.myRecords .column button{
+.myRecords .column button,.infoTable .column button{
     margin: 2px 0;
     transition: 0.3s;
 }
-.myRecords .column .accept:hover{
+.infoTable .column button{
+    width: 40px;
+    height: auto;
+    background: transparent;
+}
+.infoTable .column button img{
+    width: 30px;
+    height: auto;
+}
+.myRecords .column .accept:hover,.infoTable .column .accept:hover{
     border-color: var(--accept);
 }
-.myRecords .column .deny:hover{
+.myRecords .column .deny:hover,.infoTable .column .deny:hover{
     border-color: var(--deny);    
 }
 

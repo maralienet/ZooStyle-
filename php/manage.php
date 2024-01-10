@@ -92,16 +92,16 @@
                     <center>Добавление администратора</center>
                 </h4>
                 <div class="form-group input-container">
-                    <input class="form-input" id="phonenum" name='phonenum' maxlength="13" type="tel" required />
+                    <input class="form-input phonenum" name='phonenum' maxlength="13" type="tel" required />
                     <label for="phonenum">Номер телефона</label>
                 </div>
-                <span class="sayError" id="sayErrorPhone"></span>
+                <span class="sayError" id="sayErrorPhoneA"></span>
 
                 <div class="form-group input-container">
-                    <input class="form-input" id="pass" name='pass' type="password" required />
+                    <input class="form-input pass" name='pass' type="password" required />
                     <label for="pass">Пароль</label>
                 </div>
-                <span class="sayError" id="sayErrorPass"></span>
+                <span class="sayError" class="sayErrorPass"></span>
 
                 <span>Роль</span>
                 <div class="form-group input-container">
@@ -123,42 +123,76 @@
                     <center>Добавление мастера</center>
                 </h4>
                 <div class="form-group input-container">
-                    <input class="form-input" id="phonenum" name='phonenum' maxlength="13" type="tel" required />
+                    <input class="form-input phonenum" name='phonenum' maxlength="13" type="tel" required />
                     <label for="phonenum">Номер телефона</label>
                 </div>
-                <span class="sayError" id="sayErrorPhone"></span>
-
-                <div class="form-group input-container">
-                    <input class="form-input" name='pass' type="password" required />
-                    <label for="pass">Пароль</label>
-                </div>
+                <span class="sayError" id="sayErrorPhoneM"></span>
 
                 <div class="form-group input-container">
                     <input class="form-input" name='name' type="text" required />
-                    <label for="pass">Имя</label>
+                    <label for="name">Имя</label>
                 </div>
 
                 <div class="form-group input-container">
                     <input class="form-input" name='surname' type="text" required />
-                    <label for="pass">Фамилия</label>
+                    <label for="surname">Фамилия</label>
+                </div>
+
+                <span>Предоставляемая услуга</span>
+                <div class="form-group input-container">
+                    <select class="formSelect Select__control" name="servtId" required>
+                        <?php
+                        require("code/conn.php");
+                        $sql = "SELECT servtId,servtName FROM ServicesTypes";
+                        $result = $conn->query($sql);
+                        if ($result->num_rows > 0)
+                            while ($row = $result->fetch_assoc())
+                                echo "<option value='" . $row["servtId"] . "'>" . $row["servtName"] . "</option>";
+                        $conn->close();
+                        ?>
+                    </select>
                 </div>
 
                 <div class="form-group input-container">
                     <input class="form-input" name='post' type="text" required />
-                    <label for="pass">Должность</label>
+                    <label for="post">Должность</label>
                 </div>
 
                 <span class="avatar">Фото</span>
                 <label class="input-file">
-                    <input type="file" name="file" accept="image/*" required>
+                    <input type="file" accept="image/*" />
                     <span>Выберите файл</span>
                 </label>
+                <span class="sayError" id="sayErrorPhotoM"></span>
                 <br />
-                <span>Предоставляемая услуга</span>
+                <button class="btnSimp" type="submit">
+                    Добавить
+                </button>
+            </form>
+            <div onclick="closeForm()">
+                <img class="close" src="../pics/manage/add.png">
+            </div>
+        </div>
+        <div class="addForm addCust" style="display: none">
+            <form>
+                <h4>
+                    <center>Добавление заказчика</center>
+                </h4>
                 <div class="form-group input-container">
-                    <select class="formSelect Select__control" name="role">
-                        <option value="Администратор" checked>Администратор</option>
-                    </select>
+                    <input class="form-input phonenum" name='phonenum' maxlength="13" type="tel" required />
+                    <label for="phonenum">Номер телефона</label>
+                </div>
+                <span class="sayError" id="sayErrorPhoneC"></span>
+
+                <div class="form-group input-container">
+                    <input class="form-input pass" name='pass' type="password" required />
+                    <label for="pass">Пароль</label>
+                </div>
+                <span class="sayError" class="sayErrorPass"></span>
+
+                <div class="form-group input-container">
+                    <input class="form-input" name='name' type="text" required />
+                    <label for="pass">Имя</label>
                 </div>
                 <button class="btnSimp" type="submit">
                     Добавить
