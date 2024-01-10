@@ -81,9 +81,41 @@ function show(type) {
             master.style.display = 'none'
             customer.style.display = 'none'
             salon.style.display = 'none'
-
+            clearForm()
             break
         }
+    }
+}
+function clearForm() {
+    $('#phonenum').val('')
+    $('#surname').val('')
+    $('#naming').val('')
+    $('#service').val('')
+    $('#typeName').val('')
+
+    let roleRadios = document.getElementsByName('role');
+    for(let i = 0; i < roleRadios.length; i++) {
+        roleRadios[i].checked = false
+    }
+    let activeRadios = document.getElementsByName('active');
+    for(let i = 0; i < activeRadios.length; i++) {
+        activeRadios[i].checked = false
+    }
+    let photoRadios = document.getElementsByName('photo');
+    for(let i = 0; i < photoRadios.length; i++) {
+        photoRadios[i].checked = false
+    }
+    let typeRadios = document.getElementsByName('type');
+    for(let i = 0; i < typeRadios.length; i++) {
+        typeRadios[i].checked = false
+    }
+    let priceRadios = document.getElementsByName('price');
+    for(let i = 0; i < priceRadios.length; i++) {
+        priceRadios[i].checked = false
+    }
+    let dataRadios = document.getElementsByName('data');
+    for(let i = 0; i < dataRadios.length; i++) {
+        dataRadios[i].checked = false
     }
 }
 
@@ -180,10 +212,6 @@ document.getElementById('custForm').addEventListener('submit', function(e) {
     let naming = $('#naming').val()
     formData.append('name', naming)
     formData.append('form', 'Заказчики')
-    for(let [name, value] of formData) {
-        console.log(`${name} = ${value}`); // key1=value1, потом key2=value2
-      }
-    
     $.ajax({
         url: 'code/managementAdmin.php',
         method: 'post',
@@ -262,3 +290,250 @@ document.getElementById('servtForm').addEventListener('submit', function(e) {
         }
       })
 });
+
+let tablesVisible = false
+let editTablesVisible = false
+let photosVisible = false
+function tables(){
+    if(!tablesVisible){
+        $('.tables').slideDown()
+        $('.editTables').slideUp()
+        $('.photos').slideUp()
+        editTablesVisible = false
+        photosVisible = false
+    }
+    else
+        $('.tables').slideUp()
+    tablesVisible=!tablesVisible
+}
+function editTables(){
+    if(!editTablesVisible){
+        $('.editTables').slideDown()
+        $('.tables').slideUp()
+        $('.photos').slideUp()
+        tablesVisible = false
+        photosVisible = false
+    }
+    else
+        $('.editTables').slideUp()
+    editTablesVisible=!editTablesVisible
+}
+function photos(){
+    if(!photosVisible){
+        $('.photos').slideDown()
+        $('.editTables').slideUp()
+        $('.tables').slideUp()
+        tablesVisible = false
+        editTablesVisible = false
+    }
+    else
+        $('.photos').slideUp()
+    photosVisible=!photosVisible
+}
+
+let tabInfo = {
+    id: '',
+    table: ''
+}
+function deleteRecord(id,table){
+    tabInfo.id=id
+    tabInfo.table=table
+    $('.notifyWindowDel').slideDown()
+}
+function deleteConfirm(){
+    $('.notifyWindowDel').slideUp()
+    $.ajax({
+        url: 'code/deleteAccount.php',
+        method: 'post',
+        data: {
+            id: tabInfo.id,
+            table: tabInfo.table
+        },
+        success: function (rp) {
+            console.log( rp)
+            if(rp=='OK')
+                location.reload()
+        },
+        error: function () {
+          console.log('error!')
+        }
+    })
+}
+function hideWindow() {
+    $('.notifyWindowDel').slideUp()
+}
+
+function openAddWindow(table){
+    switch(table){
+        case 'Пользователи':{
+            $('.addUser').show();
+            break
+        }
+        case 'Мастера':{
+            $('.addMaster').show();
+            break
+        }
+        case 'Заказчики':{
+            $('.addCust').show();
+            break
+        }
+        case 'Услуги':{
+            $('.addServ').show();
+            break
+        }
+        case 'Заявки':{
+            $('.addOrder').show();
+            break
+        }
+        case 'Типы услуг':{
+            $('.addServt').show();
+            break
+        }
+    }
+}
+
+$('.addUser form').on('submit',function(e){
+    e.preventDefault()
+    let errorPhone = document.getElementById('sayErrorPhone')
+    let errorPass = document.getElementById('sayErrorPass')
+    checkPhone($('#phonenum').val())
+    if(errorPass.innerHTML==='' && errorPhone.innerHTML===''){
+        var formData = new FormData(this)
+        formData.append('table', 'Users')   
+        $.ajax({
+            url: 'code/insertRecord.php',
+            method: 'post',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (rp) {
+                if(rp=='OK'){
+                    location.reload()
+                    closeForm()
+                }
+                else
+                console.log(rp)
+            },
+            error: function () {
+              console.log('error!')
+            }
+          })
+    }
+})
+
+let file = '';
+$('.input-file input[type=file]').on('change', function () {
+  file = this.files[0];
+  $(this).next().html(file.name);
+})
+$('.addMaster form').on('submit',function(e){
+    e.preventDefault()
+    let errorPhone = document.getElementById('sayErrorPhone')
+    checkPhone($('#phonenum').val())
+    if(errorPhone.innerHTML===''){
+        var formData = new FormData(this)
+        formData.append('table', 'Masters')   
+        $.ajax({
+            url: 'code/insertRecord.php',
+            method: 'post',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (rp) {
+                if(rp=='OK'){
+                    location.reload()
+                    closeForm()
+                }
+                else
+                console.log(rp)
+            },
+            error: function () {
+              console.log('error!')
+            }
+          })
+    }
+})
+
+function closeForm(){
+    $('.addForm').hide()
+    $('input').val('')
+}
+
+$('#phonenum').on('keypress', function (e) {
+    var charCode = (e.which) ? e.which : e.keyCode
+    if (this.value.length === 0) {
+        this.value = '+'
+        return false
+    } else if (charCode > 31 && (charCode < 48 || charCode > 57))
+        return false
+    return true
+})
+
+$('#pass').on('input', function (e) {
+    let error = document.getElementById('sayErrorPass')
+    let password = this.value;
+    let hasNumber = /\d/.test(password)
+    let hasLetter = /[a-zA-Z]/.test(password);
+    let hasSpecialChar = /[!@#$%^&*_+=-`~]/.test(password)
+
+    if (password.length < 6) 
+        error.innerHTML = 'Пароль должен быть длиннее 6 символов'    
+    else if (!hasNumber || !hasSpecialChar || !hasLetter)
+        error.innerHTML = 'Пароль должен содержать хотя бы одну букву, цифру и спец. символ'   
+    else if (password.length >= 6 && hasNumber && hasSpecialChar && hasLetter)
+        error.innerHTML = ''
+})
+function checkPhone(phonenum) {
+    let error = document.getElementById('sayErrorPhone')
+    if (phonenum.length !== 13)
+        error.innerHTML = ('Номер в неверном формате')
+    else
+        error.innerHTML = ''
+}
+
+function transliterate(word){
+    var answer = ""
+    var converter = {
+        'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd', 'е': 'e', 'ё': 'e',
+        'ж': 'zh', 'з': 'z', 'и': 'i', 'й': 'y', 'к': 'k', 'л': 'l', 'м': 'm', 
+        'н': 'n', 'о': 'o', 'п': 'p', 'р': 'r', 'с': 's', 'т': 't', 'у': 'u', 
+        'ф': 'f', 'х': 'h', 'ц': 'c', 'ч': 'ch', 'ш': 'sh', 'щ': 'sch', 'ъ': '', 
+        'ы': 'y', 'ь': '', 'э': 'e', 'ю': 'yu', 'я': 'ya'
+    }
+    for (var i = 0; i < word.length; ++i){
+        if (converter[word[i]] == undefined)
+            answer += word[i]
+        else 
+            answer += converter[word[i]]
+    }   
+    return answer
+}
+
+function createPass(name, surname){
+    var nameLatin = transliterate(name.toLowerCase());
+    var surnameLatin = transliterate(surname.toLowerCase());
+    return nameLatin[0] + surnameLatin
+}
+
+// $(document).ready(function(){
+//     $(document).on('dblclick', '.infoTable td', function(){
+//         var originalContent = $(this).text();
+        
+//         $(this).addClass("cellEditing");
+//         $(this).html("<input type='text' value='" + originalContent + "' />");
+//         $(this).children().first().focus();
+
+//         $(this).children().first().keypress(function (e) {
+//             if (e.which == 13) {
+//                 var newContent = $(this).val();
+//                 $(this).parent().text(newContent);
+//                 $(this).parent().removeClass("cellEditing");
+//             }
+//         });
+        
+//     $(this).children().first().blur(function(){
+//         $(this).parent().text(originalContent);
+//         $(this).parent().removeClass("cellEditing");
+//     });
+//     });
+// });

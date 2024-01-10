@@ -1,7 +1,9 @@
 <?php
 require("conn.php");
 
-$sql = "SELECT mastName,mastSurname,post,photo FROM Masters";
+$sql = "SELECT mastName,mastSurname,post,photo FROM Masters
+join Users on Users.userId=Masters.userId
+where active=true";
 
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {

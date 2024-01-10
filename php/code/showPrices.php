@@ -1,7 +1,8 @@
 <?php
 require("conn.php");
 
-$sql = "SELECT servtId,servtName,descript FROM ServicesTypes";
+$sql = "SELECT servtId,servtName,descript FROM ServicesTypes
+where active=1";
 
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {

@@ -1121,8 +1121,13 @@ center {
 }
 .manage .edits button {
     width: 100%;
-    padding: 8px 50px;
+    padding: 8px 20px;
     margin: 10px;
+}
+.manage .edits {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .managements .edits button {
@@ -1274,6 +1279,52 @@ center {
 
 .infoTableDIV .infoTable tr:nth-child(odd) {
     background: #a899f24d;
+}
+.infoTableDIV .infoTable .deleteBtn{
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+}
+.infoTableDIV .infoTable .deleteBtn img{
+    height: 35px;
+    width: auto;
+}
+.infoTableDIV .infoTable .deleteBtn:hover img{
+    filter: contrast(30%);
+}
+
+.addForm{
+    background: white;
+    border: 2px var(--green) solid;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    width: 500px;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    padding: 40px 0;
+}
+.addForm .close{ 
+    margin-left: 20px;
+    transform: rotate(45deg);
+    width: 30px;
+    height: auto;
+}
+.addForm form{
+    width: auto;
+}
+.addForm form button{
+    width: 100%;
+}
+.addForm .sayError{
+    display: block;
+    width: 300px;
 }
 
 .manageItemHeader {
@@ -1930,6 +1981,10 @@ center {
         display: none;
     }
 
+    .addForm{
+        width: 90%;
+    }
+
     .persInfo p {
         font-size: 14px;
     }
@@ -2069,5 +2124,12 @@ center {
         border-radius: 100%;
         width: 250px;
         height: 250px;
+    }
+
+    .addForm .close{
+        width: 20px;
+    }
+    .addForm h4{
+        font-size: 1.2em;
     }
 }

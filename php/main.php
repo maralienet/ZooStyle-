@@ -278,7 +278,7 @@
 
                         <button class="btnSimp" type="submit">
                             Отправить
-                        </button class="btnSimp" type="submit">
+                        </button>
                     </form>
 
                     <div class='blobsF2'>

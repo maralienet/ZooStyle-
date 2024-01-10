@@ -9,7 +9,7 @@ function showTable($table)
 
     switch ($table) {
         case 'Пользователи': {
-                $sql = "SELECT phone,password,role,active FROM Users";
+                $sql = "SELECT userId,phone,password,role,active FROM Users";
                 $res = $conn->query($sql);
                 if ($res->num_rows > 0) {
                     echo '<table class="infoTable">
@@ -18,6 +18,7 @@ function showTable($table)
                             <th>Пароль</th>
                             <th>Роль</th>
                             <th>Активность</th>
+                            <th style="width:70px !important;"></th>
                         </tr>';
                     while ($row = $res->fetch_assoc()) {
                         $active = 'Не активен';
@@ -29,6 +30,7 @@ function showTable($table)
                             <td headers="Пароль">' . $row['password'] . '</td>
                             <td headers="Роль">' . $row['role'] . '</td>
                             <td headers="Активность">' . $active . '</td>
+                            <td><button class="deleteBtn" onclick="deleteRecord(' . $row['userId'] . ',`Users`)"><img src="../../pics/me/trash.png "/></button></td>
                         </tr>
                         ';
                     }
@@ -41,7 +43,7 @@ function showTable($table)
                 break;
             }
         case 'Мастера': {
-                $sql = "SELECT mastName, mastSurname, post, photo, servtName, Users.active as active FROM Masters
+                $sql = "SELECT Masters.userId as userId,mastName, mastSurname, post, photo, servtName, Users.active as active FROM Masters
                 join ServicesTypes on ServicesTypes.servtId = Masters.servtId
                 join Users on Users.userId = Masters.userId";
                 $res = $conn->query($sql);
@@ -54,6 +56,7 @@ function showTable($table)
                             <th>Услуга</th>
                             <th>Активность</th>
                             <th>Фото</th>
+                            <th style="width:70px !important;"></th>
                         </tr>';
                     while ($row = $res->fetch_assoc()) {
                         $active = 'Не активен';
@@ -67,19 +70,18 @@ function showTable($table)
                             <td headers="Услуга">' . $row['servtName'] . '</td>
                             <td headers="Активность">' . $active . '</td>
                             <td headers="Фото" style="width:150px;height:100px;overflow:hidden"><img src="' . $row['photo'] . '" style="width:100%;height:100%;object-fit:cover;"></td>
-                        </tr>
-                        ';
+                            <td><button class="deleteBtn" onclick="deleteRecord(' . $row['userId'] . ',`Masters`)"><img src="../../pics/me/trash.png "/></button></td>
+                        </tr>';
                     }
                     echo "</table>";
                 } else echo '
                 <table class="infoTable">
                     <tr><h4 style="margin-top:10px">Мастера не найдены.</h4></tr>
-                </table>
-                    ';
+                </table>';
                 break;
             }
         case 'Заказчики': {
-                $sql = "SELECT custName, sale, photo, Users.active as active FROM Customers
+                $sql = "SELECT Customers.userId as userId,custName, sale, photo, Users.active as active FROM Customers
                 join Users on Users.userId = Customers.userId";
                 $res = $conn->query($sql);
                 if ($res->num_rows > 0) {
@@ -89,6 +91,7 @@ function showTable($table)
                             <th>Скидка</th>
                             <th>Активность</th>
                             <th>Фото</th>
+                            <th style="width:70px !important;"></th>
                         </tr>';
                     while ($row = $res->fetch_assoc()) {
                         $active = 'Не активен';
@@ -104,8 +107,8 @@ function showTable($table)
                             <td headers="Скидка">' . $row['sale'] . '</td>
                             <td headers="Активность">' . $active . '</td>
                             <td headers="Фото" style="width:150px;height:100px;overflow:hidden"><img src="' . $photo . '" style="width:100%;height:100%;object-fit:cover;"></td>
-                        </tr>
-                        ';
+                            <td><button class="deleteBtn" onclick="deleteRecord(' . $row['userId'] . ',`Customers`)"><img src="../../pics/me/trash.png "/></button></td>
+                        </tr>';
                         else
                         echo '
                         <tr>
@@ -113,7 +116,8 @@ function showTable($table)
                             <td headers="Скидка">' . $row['sale'] . '</td>
                             <td headers="Активность">' . $active . '</td>
                             <td headers="Фото">Не добавлено</td>
-                        </tr>
+                            <td><button class="deleteBtn" onclick="deleteRecord(' . $row['userId'] . ',`Customers`)"><img src="../../pics/me/trash.png "/></button></td>
+                         </tr>
                         ';
                     }
                     echo "</table>";
@@ -125,7 +129,7 @@ function showTable($table)
                 break;
             }
         case 'Услуги': {
-                $sql = "SELECT servName,petType,price,servtName,Services.active FROM Services
+                $sql = "SELECT servId,servName,petType,price,servtName,Services.active FROM Services
                 join ServicesTypes on ServicesTypes.servtId = Services.servtId";
                 $res = $conn->query($sql);
                 if ($res->num_rows > 0) {
@@ -136,6 +140,7 @@ function showTable($table)
                             <th>Тип животного</th>
                             <th>Цена</th>
                             <th>Активность</th>
+                            <th style="width:70px !important;"></th>
                         </tr>';
                     while ($row = $res->fetch_assoc()) {
                         $active = 'Не активен';
@@ -148,6 +153,7 @@ function showTable($table)
                             <td headers="Тип животного">' . $row['petType'] . '</td>
                             <td headers="Цена">' . $row['price']  . '</td>
                             <td headers="Активность">' . $active . '</td>
+                            <td><button class="deleteBtn" onclick="deleteRecord(' . $row['servId'] . ',`Services`)"><img src="../../pics/me/trash.png "/></button></td>
                         </tr>
                         ';
                     }
@@ -160,7 +166,7 @@ function showTable($table)
                 break;
             }
         case 'Заявки': {
-                $sql = "SELECT servName,servtName,custName,mastName,petType, mastSurname,orderDate,status,Orders.active FROM Orders
+                $sql = "SELECT orderId,servName,servtName,custName,mastName,petType, mastSurname,orderDate,status,Orders.active FROM Orders
                 join Masters on Masters.mastId=Orders.mastId
                 join Services on Services.servId=Orders.servId
                 join ServicesTypes on ServicesTypes.servtId=Services.servtId 
@@ -177,6 +183,7 @@ function showTable($table)
                             <th>Дата</th>
                             <th>Статус</th>
                             <th>Активность</th>
+                            <th style='width:70px !important;'></th>
                         </tr>";
                     while ($row = $res->fetch_assoc()) {
                         $status = 'Не принят';
@@ -195,6 +202,7 @@ function showTable($table)
                                 <td headers='Дата'>" . $row["orderDate"] . "</td>
                                 <td headers='Статус'>$status</td>
                                 <td headers='Активность'> $active</td>
+                                <td><button class='deleteBtn' onclick='deleteRecord(" . $row['orderId'] . ",`Orders`)'><img src='../../pics/me/trash.png'/></button></td>
                             </tr>";
                     }
                     echo "</table>";
@@ -205,7 +213,7 @@ function showTable($table)
                 break;
             }
         case 'Типы услуг': {
-                $sql = "SELECT servtName,descript,active FROM ServicesTypes";
+                $sql = "SELECT servtId,servtName,descript,active FROM ServicesTypes";
                 $res = $conn->query($sql);
                 if ($res->num_rows > 0) {
                     echo '<table class="infoTable">
@@ -213,6 +221,7 @@ function showTable($table)
                             <th>Название</th>
                             <th>Описание</th>
                             <th>Активность</th>
+                            <th style="width:70px !important;"></th>
                         </tr>';
                     while ($row = $res->fetch_assoc()) {
                         $active = 'Не активен';
@@ -223,15 +232,14 @@ function showTable($table)
                             <td headers="Название">' . $row['servtName'] . '</td>
                             <td headers="Описание" style="width: 572px !important; word-wrap: break-word; padding: 7px">' . $row['descript'] . '</td>
                             <td headers="Активность">' . $active . '</td>
-                        </tr>
-                        ';
+                            <td><button class="deleteBtn" onclick="deleteRecord(' . $row['servtId'] . ',`ServicesTypes`)"><img src="../../pics/me/trash.png"/></button></td>
+                        </tr>';
                     }
                     echo "</table>";
                 } else echo '
                 <table class="infoTable">
                     <tr><h4 style="margin-top:10px">Типы услуг не найдены.</h4></tr>
-                </table>
-                    ';
+                </table>';
                 break;
             }
         default: {
