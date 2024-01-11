@@ -493,6 +493,11 @@ svg {
     top: -10px;
     font-size: 0.8em;
 }
+.input-container textarea:focus~label,
+.input-container textarea:valid~label {
+    top: -10px;
+    font-size: 0.8em;
+}
 
 .form-control:focus {
     border-color: none !important;
@@ -1225,6 +1230,9 @@ center {
 .managements .manageItem p:hover {
     color: var(--purp);
 }
+.managements .btnPurp {
+    font-weight: 500;
+}
 
 .infoTableDIV {
     border: var(--purp) 2px solid;
@@ -1305,6 +1313,19 @@ center {
 .infoTableDIV .infoTable .deleteBtn:hover img{
     filter: contrast(30%);
 }
+.infoTableDIV .photoTable{
+    display: flex;    
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.infoTableDIV .photo{
+    flex: 33%;
+}
+.infoTableDIV .photo img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
 .addForm{
     background: white;
@@ -1327,6 +1348,10 @@ center {
 }
 .addForm form{
     width: auto;
+}
+.addPhoto form{
+    display: flex;
+    flex-direction: column;
 }
 .addForm form button{
     width: 100%;
@@ -1650,6 +1675,9 @@ center {
         display: flex;
         justify-content: center;
         text-align: center;
+    }
+    .infoTableDIV .photo {
+        flex: 50%;
     }
 }
 
@@ -2000,6 +2028,10 @@ center {
 
     .main5 form {
         width: 95%;
+    }
+    .infoTableDIV .photo {
+        flex: 100%;
+        margin-bottom: 3px;
     }
 }
 

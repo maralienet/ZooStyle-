@@ -101,7 +101,7 @@
                     <input class="form-input pass" name='pass' type="password" required />
                     <label for="pass">Пароль</label>
                 </div>
-                <span class="sayError" class="sayErrorPass"></span>
+                <span class="sayError sayErrorPass"></span>
 
                 <span>Роль</span>
                 <div class="form-group input-container">
@@ -188,12 +188,76 @@
                     <input class="form-input pass" name='pass' type="password" required />
                     <label for="pass">Пароль</label>
                 </div>
-                <span class="sayError" class="sayErrorPass"></span>
+                <span class="sayError sayErrorPass" id="sayErrorPassC"></span>
 
                 <div class="form-group input-container">
                     <input class="form-input" name='name' type="text" required />
                     <label for="pass">Имя</label>
                 </div>
+                <button class="btnSimp" type="submit">
+                    Добавить
+                </button>
+            </form>
+            <div onclick="closeForm()">
+                <img class="close" src="../pics/manage/add.png">
+            </div>
+        </div>
+        <div class="addForm addServ" style="display: none">
+            <form>
+                <h4>
+                    <center>Добавление услуги</center>
+                </h4>
+                <div class="form-group input-container">
+                    <input class="form-input" name='name' type="text" required />
+                    <label for="name">Название</label>
+                </div>
+                <span>Роль</span>
+                <div class="form-group input-container">
+                    <select class="formSelect Select__control" name="type">
+                        <option value="Коты">Коты</option>
+                        <option value="Собаки">Собаки</option>
+                    </select>
+                </div>
+                <div class="form-group input-container">
+                    <input class="form-input" name='price' type="number" required />
+                    <label for="pass">Цена</label>
+                </div>
+                <span>Тип услуги</span>
+                <div class="form-group input-container">
+                    <select class="formSelect Select__control" name="servtId" required>
+                        <?php
+                        require("code/conn.php");
+                        $sql = "SELECT servtId,servtName FROM ServicesTypes";
+                        $result = $conn->query($sql);
+                        if ($result->num_rows > 0)
+                            while ($row = $result->fetch_assoc())
+                                echo "<option value='" . $row["servtId"] . "'>" . $row["servtName"] . "</option>";
+                        $conn->close();
+                        ?>
+                    </select>
+                </div>
+                <button class="btnSimp" type="submit">
+                    Добавить
+                </button>
+            </form>
+            <div onclick="closeForm()">
+                <img class="close" src="../pics/manage/add.png">
+            </div>
+        </div>
+        <div class="addForm addServt" style="display: none">
+            <form>
+                <h4>
+                    <center>Добавление услуги</center>
+                </h4>
+                <div class="form-group input-container">
+                    <input class="form-input" name='name' type="text" required />
+                    <label for="name">Название</label>
+                </div>
+                <div class="form-group input-container">
+                    <textarea class="form-input" name='descr' required></textarea>
+                    <label for="descr">Описание</label>
+                </div>
+
                 <button class="btnSimp" type="submit">
                     Добавить
                 </button>
@@ -461,9 +525,6 @@
                                     <label for="inactive_ord">Не принят</label>
                                 </div>
                             </fieldset>
-                            <div class="edits">
-                                <button onclick='openAddWindow("Заявки")'><img src='../pics/manage/add.png' /></button>
-                            </div>
                             <button type="submit" class="btnPurp">Найти</button>
                         </form>
                     </div>
@@ -516,311 +577,67 @@
 
         <div class="row editTables" style='display:none;'>
             <div class="col-lg-3 col-md-12 col-sm-12">
-                <div class="managements" id='managements'>
-                    <div class="manageItem" onclick="show('Пользователи')">
-                        <p>Пользователи</p>
+
+            </div>
+            <div class="col-lg-9 col-md-12 col-sm-12">
+                <div class="infoTableDIV">
+                    <tr>
+                        <h4 style="margin-top:10px">Выберите таблицу</h4>
+                    </tr>
+                </div>
+            </div>
+        </div>
+        <div class="addForm addPhoto" style="display: none">
+            <form enctype="multipart/form-data">
+                <h4>
+                    <center>Добавление фото</center>
+                </h4>
+                <span>Тип животного</span>
+                <div class="form-group input-container">
+                    <select class="formSelect Select__control" name="petType" required>
+                        <option value="Коты" checked>Коты</option>
+                        <option value="Собаки">Собаки</option>
+                    </select>
+                </div>
+                <span>Роль</span>
+                <div class="form-group input-container">
+                    <select class="formSelect Select__control" name="role" required>
+                        <option value="best" checked>Лучшие</option>
+                        <option value="all">Остальные</option>
+                    </select>
+                </div>
+                <span class="avatar">Фото</span>
+                <label class="input-file">
+                    <input type="file" accept="image/*" />
+                    <span>Выберите файл</span>
+                </label>
+                <span class="sayError" id="sayErrorPhotoP"></span>
+                <button class="btnSimp" type="submit">
+                    Добавить
+                </button>
+            </form>
+            <div onclick="closeForm()">
+                <img class="close" src="../pics/manage/add.png">
+            </div>
+        </div>
+        <div class="row photos" style='display:none;'>
+            <div class="col-lg-3 col-md-12 col-sm-12">
+                <div class="managements" id='photoManagements'>
+                    <div class="manageItem" onclick="show('Лучшие')">
+                        <p class='bp'>Лучшие фото</p>
                     </div>
-
-                    <div id="invisUSERS" style="display:none;">
-                        <div class="manageItemHeader">
-                            <div class="manageItem1">
-                                <p>Пользователи</p>
-                            </div>
-                            <div class="cancel" onClick="show('')">
-                                <img src='../pics/manage/cancel.png' />
-                            </div>
-                        </div>
-                        <form id='usersForm'>
-                            <input type="text" class="searchInput phoneInput" id='phonenum' placeholder="Поиск по телефону" />
-
-                            <fieldset class="fset">
-                                <legend>Роль</legend>
-                                <div>
-                                    <input type="radio" id="orderer" name="role" value="Заказчик" />
-                                    <label for="orderer">Заказчик</label>
-                                </div>
-
-                                <div>
-                                    <input type="radio" id="master" name="role" value="Мастер" />
-                                    <label for="master">Мастер</label>
-                                </div>
-                                <div>
-                                    <input type="radio" id="admin" name="role" value="Администратор" />
-                                    <label for="admin">Администратор</label>
-                                </div>
-                            </fieldset>
-                            <fieldset class="fset">
-                                <legend>Активность</legend>
-
-                                <div>
-                                    <input type="radio" id="active_user" name="active" value="true" />
-                                    <label for="active_user">Да</label>
-                                </div>
-
-                                <div>
-                                    <input type="radio" id="inactive_user" name="active" value="false" />
-                                    <label for="inactive_user">Нет</label>
-                                </div>
-                            </fieldset>
-                            <div class="edits">
-                                <button onclick='openAddWindow()'><img src='../pics/manage/add.png' /></button>
-                            </div>
-                            <button type="submit" class="btnPurp">Найти</button>
-                        </form>
+                    <div class="manageItem" onclick="show('Остальные')">
+                        <p class='op'>Остальные фото</p>
                     </div>
-
-                    <div class="manageItem" onclick="show('Мастера')">
-                        <p>Мастера</p>
-                    </div>
-
-                    <div id="invisMASTERS" style="display:none;">
-                        <div class="manageItemHeader">
-                            <div class="manageItem1">
-                                <p>Мастера</p>
-                            </div>
-                            <div class="cancel" onClick="show('')">
-                                <img src='../pics/manage/cancel.png' />
-                            </div>
-                        </div>
-                        <form id="masterForm">
-                            <input type="text" class="searchInput" id="surname" placeholder="Поиск по фамилии" />
-                            <fieldset class="fset">
-                                <legend>Активность</legend>
-
-                                <div>
-                                    <input type="radio" id="active_mast" name="active" value="true" />
-                                    <label for="active_mast">Да</label>
-                                </div>
-
-                                <div>
-                                    <input type="radio" id="inactive_mast" name="active" value="false" />
-                                    <label for="inactive_mast">Нет</label>
-                                </div>
-                            </fieldset>
-                            <div class="edits">
-                                <button onclick='openAddWindow()'><img src='../pics/manage/add.png' /></button>
-                            </div>
-                            <button type="submit" class="btnPurp">Найти</button>
-                        </form>
-                    </div>
-
-                    <div class="manageItem" onclick="show('Заказчики')">
-                        <p>Заказчики</p>
-                    </div>
-
-                    <div id="invisCUSTS" style="display:none;">
-                        <div class="manageItemHeader">
-                            <div class="manageItem1">
-                                <p>Заказчики</p>
-                            </div>
-                            <div class="cancel" onClick="show('')">
-                                <img src='../pics/manage/cancel.png' />
-                            </div>
-                        </div>
-                        <form id="custForm">
-                            <input type="text" class="searchInput" id='naming' placeholder="Поиск по имени" />
-                            <fieldset class="fset">
-                                <legend>С фото</legend>
-                                <div>
-                                    <input type="radio" id="wiphoto_ordr" name="photo" value="not null" />
-                                    <label for="wiphoto_ordr">Да</label>
-                                </div>
-
-                                <div>
-                                    <input type="radio" id="wophoto_ordr" name="photo" value="null" />
-                                    <label for="wophoto_ordr">Нет</label>
-                                </div>
-                            </fieldset>
-                            <fieldset class="fset">
-                                <legend>Активность</legend>
-                                <div>
-                                    <input type="radio" id="active_ordr" name="active" value="true" />
-                                    <label for="active_ordr">Да</label>
-                                </div>
-
-                                <div>
-                                    <input type="radio" id="inactive_ordr" name="active" value="false" />
-                                    <label for="inactive_ordr">Нет</label>
-                                </div>
-                            </fieldset>
-                            <div class="edits">
-                                <button onclick='openAddWindow()'><img src='../pics/manage/add.png' /></button>
-                            </div>
-                            <button type="submit" class="btnPurp">Найти</button>
-                        </form>
-                    </div>
-
-                    <div class="manageItem" onclick="show('Услуги')">
-                        <p>Услуги</p>
-                    </div>
-
-                    <div id="invisSERVICE" style="display:none;">
-                        <div class="manageItemHeader">
-                            <div class="manageItem1">
-                                <p>Услуги</p>
-                            </div>
-                            <div class="cancel" onClick="show('')">
-                                <img src='../pics/manage/cancel.png' />
-                            </div>
-                        </div>
-                        <form id="servForm">
-                            <input type="text" class="searchInput" id='service' placeholder="Поиск по виду" />
-
-                            <fieldset class="fset">
-                                <legend>Тип</legend>
-
-                                <div>
-                                    <input type="radio" id="cats_serv" name="type" value="Коты" />
-                                    <label for="cats_serv">Коты</label>
-                                </div>
-
-                                <div>
-                                    <input type="radio" id="dogs_serv" name="type" value="Собаки" />
-                                    <label for="dogs_serv">Собаки</label>
-                                </div>
-                            </fieldset>
-                            <fieldset class="fset">
-                                <legend>Цена</legend>
-
-                                <div>
-                                    <input type="radio" id="do20" name="price" value="20" />
-                                    <label for="do20">До 20р</label>
-                                </div>
-
-                                <div>
-                                    <input type="radio" id="do40" name="price" value="40" />
-                                    <label for="do40">До 40р</label>
-                                </div>
-                                <div>
-                                    <input type="radio" id="do60" name="price" value="60" />
-                                    <label for="do60">До 60р</label>
-                                </div>
-                            </fieldset>
-                            <fieldset class="fset">
-                                <legend>Активность</legend>
-
-                                <div>
-                                    <input type="radio" id="active_serv" name="active" value="true" />
-                                    <label for="active_serv">Да</label>
-                                </div>
-
-                                <div>
-                                    <input type="radio" id="inactive_serv" name="active" value="false" />
-                                    <label for="inactive_serv">Нет</label>
-                                </div>
-                            </fieldset>
-                            <div class="edits">
-                                <button onclick='openAddWindow()'><img src='../pics/manage/add.png' /></button>
-                            </div>
-                            <button type="submit" class="btnPurp">Найти</button>
-                    </div>
-                    </form>
-
-                    <div class="manageItem" onclick="show('Заявки')">
-                        <p>Заявки</p>
-                    </div>
-
-                    <div id="invisORDER" style="display:none;">
-                        <div class="manageItemHeader">
-                            <div class="manageItem1">
-                                <p>Заявки</p>
-                            </div>
-                            <div class="cancel" onClick="show('')">
-                                <img src='../pics/manage/cancel.png' />
-                            </div>
-                        </div>
-                        <form id="ordForm">
-                            <fieldset class="fset">
-                                <legend>Тип</legend>
-
-                                <div>
-                                    <input type="radio" id="cats_ord" name="type" value="Коты" />
-                                    <label for="cats_ord">Коты</label>
-                                </div>
-                                <div>
-                                    <input type="radio" id="dogs_ord" name="type" value="Собаки" />
-                                    <label for="dogs_ord">Собаки</label>
-                                </div>
-                            </fieldset>
-
-                            <fieldset class="fset">
-                                <legend>Дата</legend>
-
-                                <div>
-                                    <input type="radio" id="data1" name="data" value=" 1" />
-                                    <label for="data1">За последний месяц</label>
-                                </div>
-                                <div>
-                                    <input type="radio" id="data2" name="data" value="3" />
-                                    <label for="data2">За последних 3 месяца</label>
-                                </div>
-                                <div>
-                                    <input type="radio" id="data3" name="data" value="6" />
-                                    <label for="data3">За последних полгода</label>
-                                </div>
-                            </fieldset>
-
-                            <fieldset class="fset">
-                                <legend>Статус</legend>
-
-                                <div>
-                                    <input type="radio" id="active_ord" name="active" value="true" />
-                                    <label for="active_ord">Принят</label>
-                                </div>
-
-                                <div>
-                                    <input type="radio" id="inactive_ord" name="active" value="false" />
-                                    <label for="inactive_ord">Не принят</label>
-                                </div>
-                            </fieldset>
-                            <div class="edits">
-                                <button onclick='openAddWindow()'><img src='../pics/manage/add.png' /></button>
-                            </div>
-                            <button type="submit" class="btnPurp">Найти</button>
-                        </form>
-                    </div>
-
-                    <div class="manageItem" onclick="show('Типы услуг')">
-                        <p>Типы услуг</p>
-                    </div>
-
-                    <div id="invisSALON" style="display:none;">
-                        <div class="manageItemHeader">
-                            <div class="manageItem1">
-                                <p>Типы услуг</p>
-                            </div>
-                            <div class="cancel" onClick="show('')">
-                                <img src='../pics/manage/cancel.png' />
-                            </div>
-                        </div>
-                        <form id="servtForm">
-                            <input type="text" class="searchInput" id='typeName' placeholder="Поиск по названию" />
-
-                            <fieldset class="fset">
-                                <legend>Активность</legend>
-
-                                <div>
-                                    <input type="radio" id="active_servt" name="active" value="true" />
-                                    <label for="active_servt">Да</label>
-                                </div>
-
-                                <div>
-                                    <input type="radio" id="inactive_servt" name="active" value="false" />
-                                    <label for="inactive_servt">Нет</label>
-                                </div>
-                            </fieldset>
-                            <div class="edits">
-                                <button onclick='openAddWindow()'><img src='../pics/manage/add.png' /></button>
-                            </div>
-                            <button type="submit" class="btnPurp">Найти</button>
-                        </form>
+                    <div class="manageItem" onclick="openAddWindow('Фото')">
+                        <button class="btnPurp" onclick="">Добавить фото</button>
                     </div>
                 </div>
             </div>
             <div class="col-lg-9 col-md-12 col-sm-12">
-                <div class="infoTableDIV" id='table'>
+                <div class="infoTableDIV" id="photoTable">
                     <tr>
-                        <h4 style="margin-top:10px">Выберите таблицу</h4>
+                        <h4 style="margin-top:10px">Выберите пункт меню</h4>
                     </tr>
                 </div>
             </div>

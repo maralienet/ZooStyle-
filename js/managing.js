@@ -1,4 +1,5 @@
 const managements = document.getElementById('managements')
+const photoManagements = document.getElementById('photoManagements')
 const manageItems = document.getElementsByClassName('manageItem')
 const users = document.getElementById('invisUSERS')
 const service = document.getElementById('invisSERVICE')
@@ -16,7 +17,10 @@ function show(type) {
             table: type
         },
         success: function (rp) {
-            document.getElementById('table').innerHTML = rp;
+        if(type==='Лучшие' || type==='Остальные')
+            document.getElementById('photoTable').innerHTML = rp
+        else
+            document.getElementById('table').innerHTML = rp
         }
     })
     switch (type) {
@@ -24,7 +28,6 @@ function show(type) {
             for (let i = 0; i < manageItems.length; i++) {
                 manageItems[i].style.display = 'none';
             }
-
             users.style.display = 'block'
             break
         }
@@ -32,7 +35,6 @@ function show(type) {
             for (let i = 0; i < manageItems.length; i++) {
                 manageItems[i].style.display = 'none';
             }
-
             master.style.display = 'block'
             break
         }
@@ -40,7 +42,6 @@ function show(type) {
             for (let i = 0; i < manageItems.length; i++) {
                 manageItems[i].style.display = 'none';
             }
-
             customer.style.display = 'block'
             break
         }
@@ -48,7 +49,6 @@ function show(type) {
             for (let i = 0; i < manageItems.length; i++) {
                 manageItems[i].style.display = 'none';
             }
-
             service.style.display = 'block'
             break
         }
@@ -56,18 +56,24 @@ function show(type) {
             for (let i = 0; i < manageItems.length; i++) {
                 manageItems[i].style.display = 'none';
             }
-
             order.style.display = 'block'
-
             break
         }
         case 'Типы услуг': {
             for (let i = 0; i < manageItems.length; i++) {
                 manageItems[i].style.display = 'none';
             }
-
             salon.style.display = 'block'
-
+            break
+        }
+        case 'Лучшие': {
+            $('.bp').css('color','#5d548e')
+            $('.op').css('color','black')
+            break
+        }
+        case 'Остальные': {
+            $('.op').css('color','#5d548e')
+            $('.bp').css('color','black')
             break
         }
         default: {
@@ -81,6 +87,8 @@ function show(type) {
             master.style.display = 'none'
             customer.style.display = 'none'
             salon.style.display = 'none'
+            $('.bp').css('color','white')
+            $('.op').css('color','white')
             clearForm()
             break
         }
@@ -381,12 +389,16 @@ function openAddWindow(table){
             $('.addServ').show();
             break
         }
-        case 'Заявки':{
-            $('.addOrder').show();
+        case 'Типы услуг':{
+            $('.addServt').show();
             break
         }
         case 'Типы услуг':{
             $('.addServt').show();
+            break
+        }
+        case 'Фото':{
+            $(".addPhoto").show()
             break
         }
     }
@@ -424,6 +436,7 @@ $('.addUser form').on('submit',function(e){
 let photo = '';
 $('.input-file input[type=file]').on('change', function () {
   photo = this.files[0];
+  photo.name = photo.name.replace(/ /g, "_");
   $(this).next().html(photo.name);
 })
 $('.addMaster form').on('submit',function(e){
@@ -460,13 +473,85 @@ $('.addMaster form').on('submit',function(e){
 $('.addCust form').on('submit',function(e){
     e.preventDefault()
     let errorPhone = document.getElementById('sayErrorPhoneC')
-    let errorPhoto = document.getElementById('sayErrorPhotoC')
+    let errorPass = document.getElementById('sayErrorPassC')
     checkPhoneNum($('.addCust form .phonenum').val(),errorPhone)
-    if(errorPhone.innerHTML==='' && errorPhoto.innerHTML===''){
+    if(errorPhone.innerHTML==='' && errorPass.innerHTML===''){
         var formData = new FormData(this)
-        formData.append('table', 'Masters')   
-        formData.append('file', photo)
-        formData.append('pass', createPass(formData.get("name"),formData.get("surname")))   
+        formData.append('table', 'Customers')
+        $.ajax({
+            url: 'code/managementAdmin.php',
+            method: 'post',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (rp) {
+                if(rp=='OK'){
+                    location.reload()
+                    closeForm()
+                }
+                else
+                    console.log(rp)
+            },
+            error: function () {
+              console.log('error!')
+            }
+        })
+    }
+})
+$('.addServ form').on('submit',function(e){
+    e.preventDefault()
+    var formData = new FormData(this)
+    formData.append('table', 'Services')
+    $.ajax({
+        url: 'code/managementAdmin.php',
+        method: 'post',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (rp) {
+            if(rp=='OK'){
+                location.reload()
+                closeForm()
+            }
+            else
+                console.log(rp)
+        },
+        error: function () {
+            console.log('error!')
+        }
+    })
+})
+$('.addServt form').on('submit',function(e){
+    e.preventDefault()
+    var formData = new FormData(this)
+    formData.append('table', 'ServicesTypes')
+    $.ajax({
+        url: 'code/managementAdmin.php',
+        method: 'post',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (rp) {
+            if(rp=='OK'){
+                location.reload()
+                closeForm()
+            }
+            else
+                console.log(rp)
+        },
+        error: function () {
+            console.log('error!')
+        }
+    })
+})
+$('.addPhoto form').on('submit',function(e){
+    e.preventDefault()
+    let errorPhoto = document.getElementById('sayErrorPhotoP')
+    checkPhoto(errorPhoto)
+    if(errorPhoto.innerHTML===''){
+        var formData = new FormData(this)
+        formData.append('table', 'Gallery')   
+        formData.append('file', photo) 
         $.ajax({
             url: 'code/managementAdmin.php',
             method: 'post',

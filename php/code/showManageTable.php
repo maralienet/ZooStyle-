@@ -100,8 +100,8 @@ function showTable($table)
                             $active = 'Активен';
                         if ($row['photo'] != null)
                             $photo = $row['photo'];
-                        if($photo)
-                        echo '
+                        if ($photo)
+                            echo '
                         <tr>
                             <td headers="Имя">' . $row['custName'] . '</td>
                             <td headers="Скидка">' . $row['sale'] . '</td>
@@ -110,7 +110,7 @@ function showTable($table)
                             <td><button class="deleteBtn" onclick="deleteRecord(' . $row['userId'] . ',`Customers`)"><img src="../../pics/me/trash.png "/></button></td>
                         </tr>';
                         else
-                        echo '
+                            echo '
                         <tr>
                             <td headers="Имя">' . $row['custName'] . '</td>
                             <td headers="Скидка">' . $row['sale'] . '</td>
@@ -249,8 +249,44 @@ function showTable($table)
                 </table>';
                 break;
             }
-        default: {
-                echo '<tr><h4 style="margin-top:10px">Выберите таблицу</h4></tr>';
+        case 'Лучшие': {
+                $sql = "SELECT path,role FROM Gallery
+                where role='best'";
+                $res = $conn->query($sql);
+                if ($res->num_rows > 0) {
+                    echo '<div class="photoTable">
+                        ';
+                    while ($row = $res->fetch_assoc()) {
+                        echo '
+                        <div class="photo">
+                            <img src="'.$row['path'].'">
+                        </div>';
+                    }
+                    echo "</div>";
+                } else echo '
+                <div class="photoTable">
+                    <center><h4 style="margin-top:10px">Фото не добавлены.</h4></center>
+                </div>';
+                break;
+            }
+        case 'Остальные': {
+                $sql = "SELECT path,role FROM Gallery
+                where role='all'";
+                $res = $conn->query($sql);
+                if ($res->num_rows > 0) {
+                    echo '<div class="photoTable">
+                        ';
+                    while ($row = $res->fetch_assoc()) {
+                        echo '
+                        <div class="photo">
+                            <img src="'.$row['path'].'">
+                        </div>';
+                    }
+                    echo "</div>";
+                } else echo '
+                <div class="photoTable">
+                    <center><h4 style="margin-top:10px">Фото не добавлены.</h4></center>
+                </div>';
                 break;
             }
     }

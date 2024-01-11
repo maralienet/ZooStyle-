@@ -557,19 +557,19 @@ if (isset($_POST['table'])) {
                 break;
             }
         case 'Customers': {
-
+                inserCust($_POST['phonenum'], $_POST['pass'], $_POST['name']);
                 break;
             }
         case 'Services': {
-
-                break;
-            }
-        case 'Orders': {
-
+                inserServ($_POST['name'], $_POST['type'], $_POST['price'], $_POST['servtId']);
                 break;
             }
         case 'ServicesTypes': {
-
+                inserServt($_POST['name'], $_POST['descr']);
+                break;
+            }
+        case 'Gallery': {
+                inserPhoto($_POST['petType'], $_POST['role']);
                 break;
             }
     }
@@ -610,10 +610,72 @@ function inserMaster($phone, $pass, $name, $surname, $post, $servtId)
                 ('$name','$surname','$post','$folder',$servtId,$uid)";
             if ($conn->query($sql1))
                 echo 'OK';
-            else
-                echo $sql1;
         }
     } else
         echo 'Нет такого пользователя';
+    $conn->close();
+}
+function inserCust($phone, $pass, $name)
+{
+    require("conn.php");
+    $sql = "INSERT INTO `Users`(`phone`, `password`, `role`) VALUES 
+        ('$phone','$pass','Заказчик')";
+    $a = $conn->query($sql);
+    $query = "SELECT userId from Users where phone=$phone";
+    $uid = null;
+    $result = $conn->query($query);
+    if ($result->num_rows > 0)
+        while ($row = $result->fetch_assoc())
+            $uid = $row["userId"];
+    if ($uid != null) {
+        $sql1 = "INSERT INTO `Customers`(`custName`, `userId`) VALUES 
+        ('$name',$uid)";
+        if ($conn->query($sql1))
+            echo 'OK';
+    } else
+        echo 'Нет такого пользователя';
+    $conn->close();
+}
+function inserServ($name, $type, $price, $servtId)
+{
+    require("conn.php");
+    $sql = "INSERT INTO `Services`(`servName`, `petType`, `price`, `servtId`) VALUES 
+    ('$name','$type',$price,$servtId)";
+    if ($conn->query($sql))
+        echo 'OK';
+    else
+        echo $conn->error;
+    $conn->close();
+}
+function inserServt($name, $descr)
+{
+    require("conn.php");
+    $sql = "INSERT INTO `ServicesTypes`(`servtName`, `descript`) VALUES 
+    ('$name','$descr')";
+    if ($conn->query($sql))
+        echo 'OK';
+    else
+        echo $conn->error;
+    $conn->close();
+}
+function inserPhoto($petType, $role)
+{
+    require("conn.php");
+    $filename = $_FILES["file"]["name"];
+    $filename = str_replace(' ', '_', $filename);
+    $tempname = $_FILES["file"]["tmp_name"];
+    $tempname = str_replace(' ', '_', $tempname);
+    $folder = "../../pics/gallery/" . $filename;
+    if (!file_exists(dirname($folder))) {
+        mkdir(dirname($folder), 0777, true);
+    }
+    if (move_uploaded_file($tempname, $folder)) {
+        $sql = "INSERT INTO `Gallery`(`path`, `role`, `petType`) VALUES 
+        ('$folder','$role','$petType')";
+        if ($conn->query($sql))
+            echo 'OK';
+        else
+            echo $conn->error;
+    }
     $conn->close();
 }
