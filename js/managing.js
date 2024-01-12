@@ -17,10 +17,10 @@ function show(type) {
             table: type
         },
         success: function (rp) {
-        if(type==='Лучшие' || type==='Остальные')
-            document.getElementById('photoTable').innerHTML = rp
-        else
-            document.getElementById('table').innerHTML = rp
+            if (type === 'Лучшие' || type === 'Остальные')
+                document.getElementById('photoTable').innerHTML = rp
+            else
+                document.getElementById('table').innerHTML = rp
         }
     })
     switch (type) {
@@ -67,13 +67,13 @@ function show(type) {
             break
         }
         case 'Лучшие': {
-            $('.bp').css('color','#5d548e')
-            $('.op').css('color','black')
+            $('.bp').css('color', '#5d548e')
+            $('.op').css('color', 'black')
             break
         }
         case 'Остальные': {
-            $('.op').css('color','#5d548e')
-            $('.bp').css('color','black')
+            $('.op').css('color', '#5d548e')
+            $('.bp').css('color', 'black')
             break
         }
         default: {
@@ -87,8 +87,8 @@ function show(type) {
             master.style.display = 'none'
             customer.style.display = 'none'
             salon.style.display = 'none'
-            $('.bp').css('color','white')
-            $('.op').css('color','white')
+            $('.bp').css('color', 'white')
+            $('.op').css('color', 'white')
             clearForm()
             break
         }
@@ -102,27 +102,27 @@ function clearForm() {
     $('#typeName').val('')
 
     let roleRadios = document.getElementsByName('role');
-    for(let i = 0; i < roleRadios.length; i++) {
+    for (let i = 0; i < roleRadios.length; i++) {
         roleRadios[i].checked = false
     }
     let activeRadios = document.getElementsByName('active');
-    for(let i = 0; i < activeRadios.length; i++) {
+    for (let i = 0; i < activeRadios.length; i++) {
         activeRadios[i].checked = false
     }
     let photoRadios = document.getElementsByName('photo');
-    for(let i = 0; i < photoRadios.length; i++) {
+    for (let i = 0; i < photoRadios.length; i++) {
         photoRadios[i].checked = false
     }
     let typeRadios = document.getElementsByName('type');
-    for(let i = 0; i < typeRadios.length; i++) {
+    for (let i = 0; i < typeRadios.length; i++) {
         typeRadios[i].checked = false
     }
     let priceRadios = document.getElementsByName('price');
-    for(let i = 0; i < priceRadios.length; i++) {
+    for (let i = 0; i < priceRadios.length; i++) {
         priceRadios[i].checked = false
     }
     let dataRadios = document.getElementsByName('data');
-    for(let i = 0; i < dataRadios.length; i++) {
+    for (let i = 0; i < dataRadios.length; i++) {
         dataRadios[i].checked = false
     }
 }
@@ -171,7 +171,7 @@ $('.phoneInput').on('keypress', function (e) {
     return true
 });
 
-document.getElementById('usersForm').addEventListener('submit', function(e) {
+document.getElementById('usersForm').addEventListener('submit', function (e) {
     e.preventDefault();
     var formData = new FormData(this);
     let phonenum = $('.phonenum').val()
@@ -188,12 +188,12 @@ document.getElementById('usersForm').addEventListener('submit', function(e) {
             document.getElementById('table').innerHTML = rp;
         },
         error: function () {
-          console.log('error!')
+            console.log('error!')
         }
-      })
+    })
 });
 
-document.getElementById('masterForm').addEventListener('submit', function(e) {
+document.getElementById('masterForm').addEventListener('submit', function (e) {
     e.preventDefault();
     var formData = new FormData(this);
     let surname = $('#surname').val()
@@ -209,12 +209,12 @@ document.getElementById('masterForm').addEventListener('submit', function(e) {
             document.getElementById('table').innerHTML = rp;
         },
         error: function () {
-          console.log('error!')
+            console.log('error!')
         }
-      })
+    })
 });
 
-document.getElementById('custForm').addEventListener('submit', function(e) {
+document.getElementById('custForm').addEventListener('submit', function (e) {
     e.preventDefault();
     var formData = new FormData(this);
     let naming = $('#naming').val()
@@ -230,18 +230,18 @@ document.getElementById('custForm').addEventListener('submit', function(e) {
             document.getElementById('table').innerHTML = rp;
         },
         error: function () {
-          console.log('error!')
+            console.log('error!')
         }
-      })
+    })
 });
 
-document.getElementById('servForm').addEventListener('submit', function(e) {
+document.getElementById('servForm').addEventListener('submit', function (e) {
     e.preventDefault();
     var formData = new FormData(this);
     let service = $('#service').val()
     formData.append('service', service)
     formData.append('form', 'Услуги')
-    
+
     $.ajax({
         url: 'code/managementAdmin.php',
         method: 'post',
@@ -252,16 +252,16 @@ document.getElementById('servForm').addEventListener('submit', function(e) {
             document.getElementById('table').innerHTML = rp;
         },
         error: function () {
-          console.log('error!')
+            console.log('error!')
         }
-      })
+    })
 });
 
-document.getElementById('ordForm').addEventListener('submit', function(e) {
+document.getElementById('ordForm').addEventListener('submit', function (e) {
     e.preventDefault();
     var formData = new FormData(this);
     formData.append('form', 'Заявки')
-    
+
     $.ajax({
         url: 'code/managementAdmin.php',
         method: 'post',
@@ -272,18 +272,18 @@ document.getElementById('ordForm').addEventListener('submit', function(e) {
             document.getElementById('table').innerHTML = rp;
         },
         error: function () {
-          console.log('error!')
+            console.log('error!')
         }
-      })
+    })
 });
 
-document.getElementById('servtForm').addEventListener('submit', function(e) {
+document.getElementById('servtForm').addEventListener('submit', function (e) {
     e.preventDefault();
     var formData = new FormData(this);
     let typeName = $('#typeName').val()
     formData.append('typeName', typeName)
     formData.append('form', 'Типы услуг')
-    
+
     $.ajax({
         url: 'code/managementAdmin.php',
         method: 'post',
@@ -294,16 +294,16 @@ document.getElementById('servtForm').addEventListener('submit', function(e) {
             document.getElementById('table').innerHTML = rp;
         },
         error: function () {
-          console.log('error!')
+            console.log('error!')
         }
-      })
+    })
 });
 
 let tablesVisible = false
 let editTablesVisible = false
 let photosVisible = false
-function tables(){
-    if(!tablesVisible){
+function tables() {
+    if (!tablesVisible) {
         $('.tables').slideDown()
         $('.editTables').slideUp()
         $('.photos').slideUp()
@@ -312,10 +312,10 @@ function tables(){
     }
     else
         $('.tables').slideUp()
-    tablesVisible=!tablesVisible
+    tablesVisible = !tablesVisible
 }
-function editTables(){
-    if(!editTablesVisible){
+function editTables() {
+    if (!editTablesVisible) {
         $('.editTables').slideDown()
         $('.tables').slideUp()
         $('.photos').slideUp()
@@ -324,10 +324,10 @@ function editTables(){
     }
     else
         $('.editTables').slideUp()
-    editTablesVisible=!editTablesVisible
+    editTablesVisible = !editTablesVisible
 }
-function photos(){
-    if(!photosVisible){
+function photos() {
+    if (!photosVisible) {
         $('.photos').slideDown()
         $('.editTables').slideUp()
         $('.tables').slideUp()
@@ -336,19 +336,38 @@ function photos(){
     }
     else
         $('.photos').slideUp()
-    photosVisible=!photosVisible
+    photosVisible = !photosVisible
 }
 
 let tabInfo = {
     id: '',
     table: ''
 }
-function deleteRecord(id,table){
-    tabInfo.id=id
-    tabInfo.table=table
+function deleteRecord(id, table) {
+    tabInfo.id = id
+    tabInfo.table = table
     $('.notifyWindowDel').slideDown()
 }
-function deleteConfirm(){
+function editRecord(id, table) {
+    $.ajax({
+        url: 'code/editRecord.php',
+        method: 'post',
+        data: {
+            id: tabInfo.id,
+            table: tabInfo.table
+        },
+        success: function (rp) {
+            if (rp !== 'ERROR') {
+                $('.editWindow').show()
+                $('.editWindow').html(rp)
+            }
+        },
+        error: function () {
+            console.log('error!')
+        }
+    })
+}
+function deleteConfirm() {
     $('.notifyWindowDel').slideUp()
     $.ajax({
         url: 'code/deleteAccount.php',
@@ -358,12 +377,12 @@ function deleteConfirm(){
             table: tabInfo.table
         },
         success: function (rp) {
-            console.log( rp)
-            if(rp=='OK')
+            console.log(rp)
+            if (rp == 'OK')
                 location.reload()
         },
         error: function () {
-          console.log('error!')
+            console.log('error!')
         }
     })
 }
@@ -371,47 +390,47 @@ function hideWindow() {
     $('.notifyWindowDel').slideUp()
 }
 
-function openAddWindow(table){
-    switch(table){
-        case 'Пользователи':{
+function openAddWindow(table) {
+    switch (table) {
+        case 'Пользователи': {
             $('.addUser').show();
             break
         }
-        case 'Мастера':{
+        case 'Мастера': {
             $('.addMaster').show();
             break
         }
-        case 'Заказчики':{
+        case 'Заказчики': {
             $('.addCust').show();
             break
         }
-        case 'Услуги':{
+        case 'Услуги': {
             $('.addServ').show();
             break
         }
-        case 'Типы услуг':{
+        case 'Типы услуг': {
             $('.addServt').show();
             break
         }
-        case 'Типы услуг':{
+        case 'Типы услуг': {
             $('.addServt').show();
             break
         }
-        case 'Фото':{
+        case 'Фото': {
             $(".addPhoto").show()
             break
         }
     }
 }
 
-$('.addUser form').on('submit',function(e){
+$('.addUser form').on('submit', function (e) {
     e.preventDefault()
     let errorPhone = document.getElementById('sayErrorPhoneA')
     let errorPass = document.getElementById('sayErrorPass')
-    checkPhoneNum($('.addUser form .phonenum').val(),errorPhone)
-    if(errorPass.innerHTML==='' && errorPhone.innerHTML===''){
+    checkPhoneNum($('.addUser form .phonenum').val(), errorPhone)
+    if (errorPass.innerHTML === '' && errorPhone.innerHTML === '') {
         var formData = new FormData(this)
-        formData.append('table', 'Users')   
+        formData.append('table', 'Users')
         $.ajax({
             url: 'code/managementAdmin.php',
             method: 'post',
@@ -419,45 +438,7 @@ $('.addUser form').on('submit',function(e){
             processData: false,
             contentType: false,
             success: function (rp) {
-                if(rp=='OK'){
-                    location.reload()
-                    closeForm()
-                }
-                else
-                console.log(rp)
-            },
-            error: function () {
-              console.log('error!')
-            }
-          })
-    }
-})
-
-let photo = '';
-$('.input-file input[type=file]').on('change', function () {
-  photo = this.files[0];
-  photo.name = photo.name.replace(/ /g, "_");
-  $(this).next().html(photo.name);
-})
-$('.addMaster form').on('submit',function(e){
-    e.preventDefault()
-    let errorPhone = document.getElementById('sayErrorPhoneM')
-    let errorPhoto = document.getElementById('sayErrorPhotoM')
-    checkPhoneNum($('.addMaster form .phonenum').val(),errorPhone)
-    checkPhoto(errorPhoto)
-    if(errorPhone.innerHTML==='' && errorPhoto.innerHTML===''){
-        var formData = new FormData(this)
-        formData.append('table', 'Masters')   
-        formData.append('file', photo)
-        formData.append('pass', createPass(formData.get("name"),formData.get("surname")))   
-        $.ajax({
-            url: 'code/managementAdmin.php',
-            method: 'post',
-            data: formData,
-            processData: false,
-            contentType: false,
-            success: function (rp) {
-                if(rp=='OK'){
+                if (rp == 'OK') {
                     location.reload()
                     closeForm()
                 }
@@ -465,17 +446,55 @@ $('.addMaster form').on('submit',function(e){
                     console.log(rp)
             },
             error: function () {
-              console.log('error!')
+                console.log('error!')
             }
-          })
+        })
     }
 })
-$('.addCust form').on('submit',function(e){
+
+let photo = '';
+$('.input-file input[type=file]').on('change', function () {
+    photo = this.files[0];
+    photo.name = photo.name.replace(/ /g, "_");
+    $(this).next().html(photo.name);
+})
+$('.addMaster form').on('submit', function (e) {
+    e.preventDefault()
+    let errorPhone = document.getElementById('sayErrorPhoneM')
+    let errorPhoto = document.getElementById('sayErrorPhotoM')
+    checkPhoneNum($('.addMaster form .phonenum').val(), errorPhone)
+    checkPhoto(errorPhoto)
+    if (errorPhone.innerHTML === '' && errorPhoto.innerHTML === '') {
+        var formData = new FormData(this)
+        formData.append('table', 'Masters')
+        formData.append('file', photo)
+        formData.append('pass', createPass(formData.get("name"), formData.get("surname")))
+        $.ajax({
+            url: 'code/managementAdmin.php',
+            method: 'post',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (rp) {
+                if (rp == 'OK') {
+                    location.reload()
+                    closeForm()
+                }
+                else
+                    console.log(rp)
+            },
+            error: function () {
+                console.log('error!')
+            }
+        })
+    }
+})
+$('.addCust form').on('submit', function (e) {
     e.preventDefault()
     let errorPhone = document.getElementById('sayErrorPhoneC')
     let errorPass = document.getElementById('sayErrorPassC')
-    checkPhoneNum($('.addCust form .phonenum').val(),errorPhone)
-    if(errorPhone.innerHTML==='' && errorPass.innerHTML===''){
+    checkPhoneNum($('.addCust form .phonenum').val(), errorPhone)
+    if (errorPhone.innerHTML === '' && errorPass.innerHTML === '') {
         var formData = new FormData(this)
         formData.append('table', 'Customers')
         $.ajax({
@@ -485,7 +504,7 @@ $('.addCust form').on('submit',function(e){
             processData: false,
             contentType: false,
             success: function (rp) {
-                if(rp=='OK'){
+                if (rp == 'OK') {
                     location.reload()
                     closeForm()
                 }
@@ -493,12 +512,12 @@ $('.addCust form').on('submit',function(e){
                     console.log(rp)
             },
             error: function () {
-              console.log('error!')
+                console.log('error!')
             }
         })
     }
 })
-$('.addServ form').on('submit',function(e){
+$('.addServ form').on('submit', function (e) {
     e.preventDefault()
     var formData = new FormData(this)
     formData.append('table', 'Services')
@@ -509,7 +528,7 @@ $('.addServ form').on('submit',function(e){
         processData: false,
         contentType: false,
         success: function (rp) {
-            if(rp=='OK'){
+            if (rp == 'OK') {
                 location.reload()
                 closeForm()
             }
@@ -521,7 +540,7 @@ $('.addServ form').on('submit',function(e){
         }
     })
 })
-$('.addServt form').on('submit',function(e){
+$('.addServt form').on('submit', function (e) {
     e.preventDefault()
     var formData = new FormData(this)
     formData.append('table', 'ServicesTypes')
@@ -532,7 +551,7 @@ $('.addServt form').on('submit',function(e){
         processData: false,
         contentType: false,
         success: function (rp) {
-            if(rp=='OK'){
+            if (rp == 'OK') {
                 location.reload()
                 closeForm()
             }
@@ -544,14 +563,14 @@ $('.addServt form').on('submit',function(e){
         }
     })
 })
-$('.addPhoto form').on('submit',function(e){
+$('.addPhoto form').on('submit', function (e) {
     e.preventDefault()
     let errorPhoto = document.getElementById('sayErrorPhotoP')
     checkPhoto(errorPhoto)
-    if(errorPhoto.innerHTML===''){
+    if (errorPhoto.innerHTML === '') {
         var formData = new FormData(this)
-        formData.append('table', 'Gallery')   
-        formData.append('file', photo) 
+        formData.append('table', 'Gallery')
+        formData.append('file', photo)
         $.ajax({
             url: 'code/managementAdmin.php',
             method: 'post',
@@ -559,7 +578,7 @@ $('.addPhoto form').on('submit',function(e){
             processData: false,
             contentType: false,
             success: function (rp) {
-                if(rp=='OK'){
+                if (rp == 'OK') {
                     location.reload()
                     closeForm()
                 }
@@ -567,22 +586,22 @@ $('.addPhoto form').on('submit',function(e){
                     console.log(rp)
             },
             error: function () {
-              console.log('error!')
+                console.log('error!')
             }
-          })
+        })
     }
 })
 
-function closeForm(){
+function closeForm() {
     $('.addForm').hide()
     $('input').val('')
     $('select').val('')
     $('.input-file span').html('Выберите файл')
-    photo=''
+    photo = ''
     $('input[type="file"]').val(null)
     let errs = Array.from(document.getElementsByClassName('sayError'))
     errs.forEach(err => {
-        err.innerHTML=''
+        err.innerHTML = ''
     })
 }
 
@@ -603,68 +622,46 @@ $('.pass').on('input', function (e) {
     let hasLetter = /[a-zA-Z]/.test(password);
     let hasSpecialChar = /[!@#$%^&*_+=-`~]/.test(password)
 
-    if (password.length < 6) 
-        error.html('Пароль должен быть длиннее 6 символов'  )  
+    if (password.length < 6)
+        error.html('Пароль должен быть длиннее 6 символов')
     else if (!hasNumber || !hasSpecialChar || !hasLetter)
         error.html('Пароль должен содержать хотя бы одну букву, цифру и спец. символ')
     else if (password.length >= 6 && hasNumber && hasSpecialChar && hasLetter)
         error.html('')
 })
-function checkPhoneNum(phonenum,error) {
+function checkPhoneNum(phonenum, error) {
     if (phonenum.length !== 13)
         error.innerHTML = ('Номер в неверном формате')
     else
         error.innerHTML = ''
 }
 function checkPhoto(error) {
-    if (photo==='')
+    if (photo === '')
         error.innerHTML = ('Фото не выбрано')
     else
         error.innerHTML = ''
 }
-function transliterate(word){
+function transliterate(word) {
     var answer = ""
     var converter = {
         'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd', 'е': 'e', 'ё': 'e',
-        'ж': 'zh', 'з': 'z', 'и': 'i', 'й': 'y', 'к': 'k', 'л': 'l', 'м': 'm', 
-        'н': 'n', 'о': 'o', 'п': 'p', 'р': 'r', 'с': 's', 'т': 't', 'у': 'u', 
-        'ф': 'f', 'х': 'h', 'ц': 'c', 'ч': 'ch', 'ш': 'sh', 'щ': 'sch', 'ъ': '', 
+        'ж': 'zh', 'з': 'z', 'и': 'i', 'й': 'y', 'к': 'k', 'л': 'l', 'м': 'm',
+        'н': 'n', 'о': 'o', 'п': 'p', 'р': 'r', 'с': 's', 'т': 't', 'у': 'u',
+        'ф': 'f', 'х': 'h', 'ц': 'c', 'ч': 'ch', 'ш': 'sh', 'щ': 'sch', 'ъ': '',
         'ы': 'y', 'ь': '', 'э': 'e', 'ю': 'yu', 'я': 'ya'
     }
-    for (var i = 0; i < word.length; ++i){
+    for (var i = 0; i < word.length; ++i) {
         if (converter[word[i]] == undefined)
             answer += word[i]
-        else 
+        else
             answer += converter[word[i]]
-    }   
+    }
     return answer
 }
 
-function createPass(name, surname){
+function createPass(name, surname) {
     var nameLatin = transliterate(name.toLowerCase());
     var surnameLatin = transliterate(surname.toLowerCase());
     return nameLatin[0] + surnameLatin
 }
 
-// $(document).ready(function(){
-//     $(document).on('dblclick', '.infoTable td', function(){
-//         var originalContent = $(this).text();
-        
-//         $(this).addClass("cellEditing");
-//         $(this).html("<input type='text' value='" + originalContent + "' />");
-//         $(this).children().first().focus();
-
-//         $(this).children().first().keypress(function (e) {
-//             if (e.which == 13) {
-//                 var newContent = $(this).val();
-//                 $(this).parent().text(newContent);
-//                 $(this).parent().removeClass("cellEditing");
-//             }
-//         });
-        
-//     $(this).children().first().blur(function(){
-//         $(this).parent().text(originalContent);
-//         $(this).parent().removeClass("cellEditing");
-//     });
-//     });
-// });

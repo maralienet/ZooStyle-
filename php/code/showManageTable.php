@@ -30,7 +30,10 @@ function showTable($table)
                             <td headers="Пароль">' . $row['password'] . '</td>
                             <td headers="Роль">' . $row['role'] . '</td>
                             <td headers="Активность">' . $active . '</td>
-                            <td><button class="deleteBtn" onclick="deleteRecord(' . $row['userId'] . ',`Users`)"><img src="../../pics/me/trash.png "/></button></td>
+                            <td style="display:flex;">
+                                <button class="deleteBtn" onclick="deleteRecord(' . $row['userId'] . ',`Users`)"><img src="../../pics/me/trash.png "/></button>
+                                <button class="editBtn" onclick="editRecord(' . $row['userId'] . ',`Users`)"><img src="../../pics/me/pencil.png "/></button>
+                            </td>
                         </tr>
                         ';
                     }
@@ -70,8 +73,11 @@ function showTable($table)
                             <td headers="Услуга">' . $row['servtName'] . '</td>
                             <td headers="Активность">' . $active . '</td>
                             <td headers="Фото" style="width:150px;height:100px;overflow:hidden"><img src="' . $row['photo'] . '" style="width:100%;height:100%;object-fit:cover;"></td>
-                            <td><button class="deleteBtn" onclick="deleteRecord(' . $row['userId'] . ',`Masters`)"><img src="../../pics/me/trash.png "/></button></td>
-                        </tr>';
+                            <td style="display:flex;">
+                                <button class="deleteBtn" onclick="deleteRecord(' . $row['userId'] . ',`Masters`)"><img src="../../pics/me/trash.png "/></button>
+                                <button class="editBtn" onclick="editRecord(' . $row['userId'] . ',`Masters`)"><img src="../../pics/me/pencil.png "/></button>
+                            </td>
+                            </tr>';
                     }
                     echo "</table>";
                 } else echo '
@@ -107,7 +113,10 @@ function showTable($table)
                             <td headers="Скидка">' . $row['sale'] . '</td>
                             <td headers="Активность">' . $active . '</td>
                             <td headers="Фото" style="width:150px;height:100px;overflow:hidden"><img src="' . $photo . '" style="width:100%;height:100%;object-fit:cover;"></td>
-                            <td><button class="deleteBtn" onclick="deleteRecord(' . $row['userId'] . ',`Customers`)"><img src="../../pics/me/trash.png "/></button></td>
+                            <td style="display:flex;">
+                                <button class="deleteBtn" onclick="deleteRecord(' . $row['userId'] . ',`Customers`)"><img src="../../pics/me/trash.png "/></button>
+                                <button class="editBtn" onclick="editRecord(' . $row['userId'] . ',`Customers`)"><img src="../../pics/me/pencil.png "/></button>
+                            </td>
                         </tr>';
                         else
                             echo '
@@ -116,9 +125,11 @@ function showTable($table)
                             <td headers="Скидка">' . $row['sale'] . '</td>
                             <td headers="Активность">' . $active . '</td>
                             <td headers="Фото">Не добавлено</td>
-                            <td><button class="deleteBtn" onclick="deleteRecord(' . $row['userId'] . ',`Customers`)"><img src="../../pics/me/trash.png "/></button></td>
-                         </tr>
-                        ';
+                            <td style="display:flex;">
+                                <button class="deleteBtn" onclick="deleteRecord(' . $row['userId'] . ',`Customers`)"><img src="../../pics/me/trash.png "/></button>
+                                <button class="editBtn" onclick="editRecord(' . $row['userId'] . ',`Customers`)"><img src="../../pics/me/pencil.png "/></button>
+                            </td>
+                        </tr>';
                     }
                     echo "</table>";
                 } else echo '
@@ -153,9 +164,11 @@ function showTable($table)
                             <td headers="Тип животного">' . $row['petType'] . '</td>
                             <td headers="Цена">' . $row['price']  . '</td>
                             <td headers="Активность">' . $active . '</td>
-                            <td><button class="deleteBtn" onclick="deleteRecord(' . $row['servId'] . ',`Services`)"><img src="../../pics/me/trash.png "/></button></td>
-                        </tr>
-                        ';
+                            <td style="display:flex;">
+                                <button class="deleteBtn" onclick="deleteRecord(' . $row['servId'] . ',`Services`)"><img src="../../pics/me/trash.png "/></button>
+                                <button class="editBtn" onclick="editRecord(' . $row['servId'] . ',`Services`)"><img src="../../pics/me/pencil.png "/></button>
+                            </td>
+                        </tr>';
                     }
                     echo "</table>";
                 } else echo '
@@ -209,7 +222,10 @@ function showTable($table)
                                     </div>
                                 </td>
                                 <td headers='Активность'> $active</td>
-                                <td><button class='deleteBtn' onclick='deleteRecord(" . $row['orderId'] . ",`Orders`)'><img src='../../pics/me/trash.png'/></button></td>
+                                <td style='display:flex;'>
+                                    <button class='deleteBtn' onclick='deleteRecord(" . $row['orderId'] . ",`Orders`)'><img src='../../pics/me/trash.png '/></button>
+                                    <button class='editBtn' onclick='editRecord(" . $row['orderId'] . ",`Orders`)'><img src='../../pics/me/pencil.png '/></button>
+                                </td>
                             </tr>";
                     }
                     echo "</table>";
@@ -240,6 +256,10 @@ function showTable($table)
                             <td headers="Описание" style="width: 572px !important; word-wrap: break-word; padding: 7px">' . $row['descript'] . '</td>
                             <td headers="Активность">' . $active . '</td>
                             <td><button class="deleteBtn" onclick="deleteRecord(' . $row['servtId'] . ',`ServicesTypes`)"><img src="../../pics/me/trash.png"/></button></td>
+                            <td style="display:flex;">
+                                <button class="deleteBtn" onclick="deleteRecord(' . $row['servtId'] . ',`ServicesTypes`)"><img src="../../pics/me/trash.png "/></button>
+                                <button class="editBtn" onclick="editRecord(' . $row['servtId'] . ',`ServicesTypes`)"><img src="../../pics/me/pencil.png "/></button>
+                            </td>
                         </tr>';
                     }
                     echo "</table>";
@@ -259,7 +279,7 @@ function showTable($table)
                     while ($row = $res->fetch_assoc()) {
                         echo '
                         <div class="photo">
-                            <img src="'.$row['path'].'">
+                            <img src="' . $row['path'] . '">
                         </div>';
                     }
                     echo "</div>";
@@ -279,7 +299,7 @@ function showTable($table)
                     while ($row = $res->fetch_assoc()) {
                         echo '
                         <div class="photo">
-                            <img src="'.$row['path'].'">
+                            <img src="' . $row['path'] . '">
                         </div>';
                     }
                     echo "</div>";

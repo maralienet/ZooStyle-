@@ -74,7 +74,6 @@
         <div class="row manage">
             <div class="edits">
                 <button onclick="tables()"><span>Просмотр таблиц</span><img src='../pics/manage/table.png' /></button>
-                <button onclick="editTables()"><span>Изменение таблиц</span><img src='../pics/me/pencil.png' /></button>
                 <button onclick="photos()"><span>Добавить фото в галерею</span><img src='../pics/manage/photo.png' /></button>
                 <button onclick="exit()"><span>Выйти</span><img src='../pics/me/exit.png' /></button>
             </div>
@@ -85,6 +84,9 @@
                 <button onclick="deleteConfirm()">Да</button>
                 <button onclick="hideWindow()">Нет</button>
             </div>
+        </div>
+        <div class="editWindow">
+            
         </div>
         <div class="addForm addUser" style="display: none">
             <form>
@@ -575,18 +577,6 @@
             </div>
         </div>
 
-        <div class="row editTables" style='display:none;'>
-            <div class="col-lg-3 col-md-12 col-sm-12">
-
-            </div>
-            <div class="col-lg-9 col-md-12 col-sm-12">
-                <div class="infoTableDIV">
-                    <tr>
-                        <h4 style="margin-top:10px">Выберите таблицу</h4>
-                    </tr>
-                </div>
-            </div>
-        </div>
         <div class="addForm addPhoto" style="display: none">
             <form enctype="multipart/form-data">
                 <h4>
@@ -698,5 +688,4 @@
     <script src="../js/managing.js"></script>
     <script src="../js/checkRegister.js"></script>
 </body>
-
 </html>

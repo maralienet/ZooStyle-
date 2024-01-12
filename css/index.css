@@ -1297,7 +1297,7 @@ center {
 .infoTableDIV .infoTable tr:nth-child(odd) {
     background: #a899f24d;
 }
-.infoTableDIV .infoTable .deleteBtn{
+.infoTableDIV .infoTable .deleteBtn,.infoTableDIV .infoTable .editBtn{
     height: 50px;
     width: 50px;
     display: flex;
@@ -1310,7 +1310,11 @@ center {
     height: 35px;
     width: auto;
 }
-.infoTableDIV .infoTable .deleteBtn:hover img{
+.infoTableDIV .infoTable .editBtn img{
+    height: 25px;
+    width: auto;
+}
+.infoTableDIV .infoTable .deleteBtn:hover img,.infoTableDIV .infoTable .editBtn:hover img{
     filter: contrast(30%);
 }
 .infoTableDIV .photoTable{
