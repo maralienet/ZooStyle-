@@ -180,7 +180,7 @@ function showEditWin()
                     break;
                 }
             case 'Orders': {
-                    $sql = "SELECT orderId,mastName,mastSurname,orderDate,ServicesTypes.servtId,status,Orders.active FROM Orders
+                    $sql = "SELECT orderId,mastName,mastSurname,orderDate,ServicesTypes.servtId,Orders.mastId,status,Orders.active FROM Orders
                     join Masters on Masters.mastId=Orders.mastId
                     join Services on Services.servId=Orders.servId
                     join ServicesTypes on ServicesTypes.servtId=Services.servtId 
@@ -189,6 +189,7 @@ function showEditWin()
                     if ($res->num_rows > 0)
                         while ($row = $res->fetch_assoc()) {
                             $currentServtId = $row['servtId'];
+                            $currentMastId = $row['mastId'];
                             echo '<form class="editOrder">
                         <h4>
                             <center>Изменение заказа</center>
@@ -197,22 +198,22 @@ function showEditWin()
                             <input class="form-input" name="date" type="date" id="orderDate" value="' . $row['orderDate'] . '"/>
                             <label for="orderDate">Дата</label>
                         </div>
+                        <input class="form-input" name="id" type="hidden"  value="' . $row['orderId'] . '"/>
                         <span>Мастер</span>
                         <div class="form-group input-container">
-                            <select class="formSelect Select__control" name="servtId">';
-                            $sql1 = "SELECT Masters.userId as userId,mastName, mastSurname, Masters.servtId, Users.active FROM Masters
+                            <select class="formSelect Select__control" name="mastId">';
+                            $sql1 = "SELECT mastId,mastName, mastSurname, Masters.servtId, Users.active FROM Masters
                             join ServicesTypes on ServicesTypes.servtId = Masters.servtId
                             join Users on Users.userId = Masters.userId
                             where Users.active=true and Masters.servtId=$currentServtId";
                             $result = $conn->query($sql1);
                             if ($result->num_rows > 0)
                                 while ($row = $result->fetch_assoc()) {
-                                    $selected = $row["servtId"] == $currentServtId ? ' selected' : '';
-                                    echo "<option value='" . $row["servtId"] . "' " . $selected . ">" . $row["mastName"] . " " . $row["mastSurname"] . "</option>";
+                                    $selected = $row["mastId"] == $currentMastId ? ' selected' : '';
+                                    echo "<option value='" . $row["mastId"] . "' " . $selected . ">" . $row["mastName"] . " " . $row["mastSurname"] . "</option>";
                                 }
                             echo '</select>                   
                         </div>
-                        <input class="form-input" name="id" type="hidden"  value="' . $row['userId'] . '"/>
                         <button class="btnSimp" type="submit">
                             Изменить
                         </button>
@@ -224,7 +225,32 @@ function showEditWin()
                     break;
                 }
             case 'ServicesTypes': {
-
+                    $sql = "SELECT servtId,servtName,descript,active FROM ServicesTypes 
+                WHERE servtId=$id";
+                    $res = $conn->query($sql);
+                    if ($res->num_rows > 0)
+                        while ($row = $res->fetch_assoc()) {
+                            echo '<form class="editServt">
+                        <h4>
+                            <center>Изменение типа услуги</center>
+                        </h4>
+                        <div class="form-group input-container">
+                            <input class="form-input" name="name" type="text"  value="' . $row['servtName'] . '"/>
+                            <label for="name">Название</label>
+                        </div>
+                        <div class="form-group input-container">
+                            <textarea class="form-input" name="descr" id="descr">' . $row['descript'] . '</textarea>
+                            <label for="descr">Описание</label>
+                        </div>
+                        <input class="form-input" name="id" type="hidden"  value="' . $row['servtId'] . '"/>
+                        <button class="btnSimp" type="submit">
+                            Изменить
+                        </button>
+                        </form>
+                        <div onclick="closeForm()">
+                            <img class="close" src="../pics/manage/add.png">
+                        </div>';
+                        }
                     break;
                 }
         }
@@ -253,14 +279,14 @@ function editing()
                     editServ($id);
                     break;
                 }
-                // case 'Order': {
-                //         editOrder();
-                //         break;
-                //     }
-                // case 'ServicesTypes': {
-                //         editServt();
-                //         break;
-                //     }
+            case 'Orders': {
+                    editOrder($id);
+                    break;
+                }
+            case 'ServicesTypes': {
+                    editServt($id);
+                    break;
+                }
         }
     }
 }
@@ -375,31 +401,19 @@ function editServ($id)
         echo 'OK';
     $conn->close();
 }
-function editOrder($id, $name, $descr)
+function editOrder($id)
 {
     require("conn.php");
     $changed = 0;
-    $name = isset($_POST["name"]) ? $_POST["name"] : null;
-    $type = isset($_POST["type"]) ? $_POST["type"] : null;
-    $price = isset($_POST["price"]) ? $_POST["price"] : null;
-    $servtId = isset($_POST["servtId"]) ? $_POST["servtId"] : null;
-    if ($name) {
-        $sql = "UPDATE `Services` SET `servName`='$name' where servId=$id";
+    $date = isset($_POST["date"]) ? $_POST["date"] : null;
+    $mastId = isset($_POST["mastId"]) ? $_POST["mastId"] : null;
+    if ($date) {
+        $sql = "UPDATE `Orders` SET `orderDate`='$date' where orderId=$id";
         if ($conn->query($sql))
             $changed++;
     }
-    if ($type) {
-        $sql = "UPDATE `Services` SET `petType`='$type' where servId=$id";
-        if ($conn->query($sql))
-            $changed++;
-    }
-    if ($price) {
-        $sql = "UPDATE `Services` SET `price`=$price where servId=$id";
-        if ($conn->query($sql))
-            $changed++;
-    }
-    if ($servtId) {
-        $sql = "UPDATE `Services` SET `servtId`=$servtId where servId=$id";
+    if ($mastId) {
+        $sql = "UPDATE `Orders` SET `mastId`=$mastId where orderId=$id";
         if ($conn->query($sql))
             $changed++;
     }
@@ -407,9 +421,23 @@ function editOrder($id, $name, $descr)
         echo 'OK';
     $conn->close();
 }
-function editServt($id, $name, $descr)
+function editServt($id)
 {
     require("conn.php");
-
+    $changed = 0;
+    $name = isset($_POST["name"]) ? $_POST["name"] : null;
+    $descr = isset($_POST["descr"]) ? $_POST["descr"] : null;
+    if ($name) {
+        $sql = "UPDATE `ServicesTypes` SET `servtName`='$name' where servtId=$id";
+        if ($conn->query($sql))
+            $changed++;
+    }
+    if ($descr) {
+        $sql = "UPDATE `ServicesTypes` SET `descript`=$descr where servtId=$id";
+        if ($conn->query($sql))
+            $changed++;
+    }
+    if ($changed > 0)
+        echo 'OK';
     $conn->close();
 }

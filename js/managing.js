@@ -763,17 +763,6 @@ $('.editForm').on('submit', '.editService', function (e) {
     })
 })
 
-function setMinDate() {
-    let today = new Date()
-    let dd = String(today.getDate()).padStart(2, '0')
-    let mm = String(today.getMonth() + 1).padStart(2, '0')
-    let yyyy = today.getFullYear()
-
-    today = yyyy + '-' + mm + '-' + dd
-    $('.editForm #orderDate').attr('min', today)
-}
-setMinDate();
-
 $('.editForm').on('submit', '.editOrder', function (e) {
     e.preventDefault()
     var formData = new FormData(this)
@@ -787,6 +776,29 @@ $('.editForm').on('submit', '.editOrder', function (e) {
         contentType: false,
         success: function (rp) {
             console.log(rp)
+            if (rp === 'OK') {
+                closeForm()
+                location.reload()
+            }
+        },
+        error: function () {
+            console.log('error!')
+        }
+    })
+})
+
+$('.editForm').on('submit', '.editServt', function (e) {
+    e.preventDefault()
+    var formData = new FormData(this)
+    formData.append('function', 'editing')
+    formData.append('table', 'ServicesTypes')
+    $.ajax({
+        url: 'code/editRecord.php',
+        method: 'post',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (rp) {
             if (rp === 'OK') {
                 closeForm()
                 location.reload()
