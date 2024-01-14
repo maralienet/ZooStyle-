@@ -501,7 +501,7 @@ $('.addUser form').on('submit', function (e) {
     }
 })
 
-let photo = '';
+let photo = null;
 $('.input-file input[type=file]').on('change', function () {
     photo = this.files[0];
     photo.name = photo.name.replace(/ /g, "_");
@@ -692,11 +692,93 @@ $('.editForm').on('submit', '.editUser', function (e) {
         })
     }
 })
+
 $('.editForm').on('submit', '.editMaster', function (e) {
     e.preventDefault()
     var formData = new FormData(this)
     formData.append('function', 'editing')
     formData.append('table', 'Masters')
+    $.ajax({
+        url: 'code/editRecord.php',
+        method: 'post',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (rp) {
+            if (rp === 'OK') {
+                closeForm()
+                location.reload()
+            }
+        },
+        error: function () {
+            console.log('error!')
+        }
+    })
+})
+
+$('.editForm').on('submit', '.editCustomer', function (e) {
+    e.preventDefault()
+    var formData = new FormData(this)
+    formData.append('function', 'editing')
+    formData.append('table', 'Customers')
+    $.ajax({
+        url: 'code/editRecord.php',
+        method: 'post',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (rp) {
+            if (rp === 'OK') {
+                closeForm()
+                location.reload()
+            }
+        },
+        error: function () {
+            console.log('error!')
+        }
+    })
+})
+
+$('.editForm').on('submit', '.editService', function (e) {
+    e.preventDefault()
+    var formData = new FormData(this)
+    formData.append('function', 'editing')
+    formData.append('table', 'Services')
+    $.ajax({
+        url: 'code/editRecord.php',
+        method: 'post',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (rp) {
+            console.log(rp)
+            if (rp === 'OK') {
+                closeForm()
+                location.reload()
+            }
+        },
+        error: function () {
+            console.log('error!')
+        }
+    })
+})
+
+function setMinDate() {
+    let today = new Date()
+    let dd = String(today.getDate()).padStart(2, '0')
+    let mm = String(today.getMonth() + 1).padStart(2, '0')
+    let yyyy = today.getFullYear()
+
+    today = yyyy + '-' + mm + '-' + dd
+    $('.editForm #orderDate').attr('min', today)
+}
+setMinDate();
+
+$('.editForm').on('submit', '.editOrder', function (e) {
+    e.preventDefault()
+    var formData = new FormData(this)
+    formData.append('function', 'editing')
+    formData.append('table', 'Orders')
     $.ajax({
         url: 'code/editRecord.php',
         method: 'post',
@@ -722,7 +804,7 @@ function closeForm() {
     $('input').val('')
     $('select').val('')
     $('.input-file span').html('Выберите файл')
-    photo = ''
+    photo = null
     $('input[type="file"]').val(null)
     let errs = Array.from(document.getElementsByClassName('sayError'))
     errs.forEach(err => {
@@ -761,7 +843,7 @@ function checkPhoneNum(phonenum, error) {
         error.innerHTML = ''
 }
 function checkPhoto(error) {
-    if (photo === '')
+    if (photo === null)
         error.innerHTML = ('Фото не выбрано')
     else
         error.innerHTML = ''
