@@ -316,6 +316,19 @@ svg {
     z-index: 1000;
     display: flex;
 }
+.editForm{
+    height: auto;
+    padding: 30px 0;
+    flex-direction: row;
+    justify-content: center;
+}
+.editForm form{
+    display: flex;
+    flex-direction: column;
+}
+.editForm form .btnSimp{
+    margin-top: 20px;
+}
 
 .editWindow .btns {
     margin-top: 20px;
@@ -1344,7 +1357,7 @@ center {
     z-index: 1000;
     padding: 40px 0;
 }
-.addForm .close{ 
+.close{ 
     margin-left: 20px;
     transform: rotate(45deg);
     width: 30px;
@@ -1358,6 +1371,9 @@ center {
     flex-direction: column;
 }
 .addForm form button{
+    width: 100%;
+}
+.addForm form button,.editForm form button{
     width: 100%;
 }
 .addForm .sayError{
@@ -2037,6 +2053,9 @@ center {
         flex: 100%;
         margin-bottom: 3px;
     }
+    .editWindow {
+        width: 90%;
+    }
 }
 
 @media (max-width: 535px) {
@@ -2171,7 +2190,7 @@ center {
         height: 250px;
     }
 
-    .addForm .close{
+    .close{
         width: 20px;
     }
     .addForm h4{

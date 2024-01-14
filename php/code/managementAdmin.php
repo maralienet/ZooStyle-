@@ -86,9 +86,11 @@ function filterUser($role, $active)
                 <td headers="Пароль">' . $row['password'] . '</td>
                 <td headers="Роль">' . $row['role'] . '</td>
                 <td headers="Активность">' . $active . '</td>
-                <td><button class="deleteBtn" onclick="deleteRecord(' . $row['userId'] . ',`Users`)"><img src="../../pics/me/trash.png "/></button></td>
-            </tr>
-            ';
+                <td style="display:flex;">
+                    <button class="deleteBtn" onclick="deleteRecord(' . $row['userId'] . ',`Users`)"><img src="../../pics/me/trash.png "/></button>
+                    <button class="editBtn" onclick="editRecord(' . $row['userId'] . ',`Users`)"><img src="../../pics/me/pencil.png "/></button>
+                </td>
+            </tr>';
         }
         echo "</table>";
     } else echo '
@@ -128,11 +130,14 @@ function filterMaster($active)
                 <td headers="Услуга">' . $row['servtName'] . '</td>
                 <td headers="Активность">' . $active . '</td>
                 <td headers="Фото" style="width:150px;height:100px;overflow:hidden"><img src="' . $row['photo'] . '" style="width:100%;height:100%;object-fit:cover;"></td>
-                <td><button class="deleteBtn" onclick="deleteRecord(' . $row['userId'] . ',`Masters`)"><img src="../../pics/me/trash.png "/></button></td>
+                <td style="display:flex;">
+                    <button class="deleteBtn" onclick="deleteRecord(' . $row['userId'] . ',`Masters`)"><img src="../../pics/me/trash.png "/></button>
+                    <button class="editBtn" onclick="editRecord(' . $row['userId'] . ',`Masters`)"><img src="../../pics/me/pencil.png "/></button>
+                </td>
             </tr>';
         }
         echo "</table>";
-    } else echo '
+    } else echo $conn->error.'
     <table class="infoTable">
         <tr><h4 style="margin-top:10px">Мастера не найдены.</h4></tr>
     </table>';
@@ -175,7 +180,10 @@ function filterCust($hasphoto, $active)
                 <td headers="Скидка">' . $row['sale'] . '</td>
                 <td headers="Активность">' . $active . '</td>
                 <td headers="Фото" style="width:150px;height:100px;overflow:hidden"><img src="' . $photo . '" style="width:100%;height:100%;object-fit:cover;"></td>
-                <td><button class="deleteBtn" onclick="deleteRecord(' . $row['userId'] . ',`Customers`)"><img src="../../pics/me/trash.png "/></button></td>
+                <td style="display:flex;">
+                    <button class="deleteBtn" onclick="deleteRecord(' . $row['userId'] . ',`Customers`)"><img src="../../pics/me/trash.png "/></button>
+                    <button class="editBtn" onclick="editRecord(' . $row['userId'] . ',`Customers`)"><img src="../../pics/me/pencil.png "/></button>
+                </td>
             </tr>';
             else
                 echo '
@@ -184,7 +192,10 @@ function filterCust($hasphoto, $active)
                 <td headers="Скидка">' . $row['sale'] . '</td>
                 <td headers="Активность">' . $active . '</td>
                 <td headers="Фото">Не добавлено</td>
-                <td><button class="deleteBtn" onclick="deleteRecord(' . $row['userId'] . ',`Customers`)"><img src="../../pics/me/trash.png "/></button></td>
+                <td style="display:flex;">
+                    <button class="deleteBtn" onclick="deleteRecord(' . $row['userId'] . ',`Customers`)"><img src="../../pics/me/trash.png "/></button>
+                    <button class="editBtn" onclick="editRecord(' . $row['userId'] . ',`Customers`)"><img src="../../pics/me/pencil.png "/></button>
+                </td>
              </tr>
             ';
         }
@@ -231,7 +242,10 @@ function filterServ($type, $price, $active)
                 <td headers="Тип животного">' . $row['petType'] . '</td>
                 <td headers="Цена">' . $row['price']  . '</td>
                 <td headers="Активность">' . $active . '</td>
-                <td><button class="deleteBtn" onclick="deleteRecord(' . $row['servId'] . ',`Services`)"><img src="../../pics/me/trash.png "/></button></td>
+                <td style="display:flex;">
+                    <button class="deleteBtn" onclick="deleteRecord(' . $row['servId'] . ',`Services`)"><img src="../../pics/me/trash.png "/></button>
+                    <button class="editBtn" onclick="editRecord(' . $row['servId'] . ',`Services`)"><img src="../../pics/me/pencil.png "/></button>
+                </td>
             </tr>
             ';
         }
@@ -271,7 +285,7 @@ function filterOrders($type, $data, $active)
                 <th>Мастер</th>
                 <th>Дата</th>
                 <th>Статус</th>
-                <th></th>
+                <th style='width: 80px;'></th>
                 <th>Активность</th>
                 <th style='width:70px !important;'></th>
             </tr>";
@@ -291,14 +305,17 @@ function filterOrders($type, $data, $active)
                     <td headers='Мастер'>" . $row["mastName"] . " " . $row["mastSurname"] . "</td>
                     <td headers='Дата'>" . $row["orderDate"] . "</td>
                     <td headers='Статус'>$status</td>
-                    <td style='width: 80px;'>
+                    <td>
                         <div class='column'>
-                        <button class='btnSimp accept' onmouseover='changeImage(this, `../../pics/manage/ok_hover.png`)' onmouseout='changeImage(this, `../../pics/manage/ok.png`)' onclick='acceptOrder(" . $row["orderId"] . ")'><img src='../../pics/manage/ok.png'></button>
-                        <button class='btnSimp deny' onmouseover='changeImage(this, `../../pics/manage/add_hover.png`)' onmouseout='changeImage(this, `../../pics/manage/add.png`)' onclick='cancelOrder(" . $row["orderId"] . ")'><img src='../../pics/manage/add.png' style='transform: rotate(45deg);'></button>                        
+                        <button class='btnSimp accept' onmouseover='changeImage(this, `../../pics/manage/ok_hover.png`)' onmouseout='changeImage(this, `../../pics/manage/ok.png`)' onclick='acceptOrder(" . $row["orderId"] . ",true)'><img src='../../pics/manage/ok.png'></button>
+                        <button class='btnSimp deny' onmouseover='changeImage(this, `../../pics/manage/add_hover.png`)' onmouseout='changeImage(this, `../../pics/manage/add.png`)' onclick='cancelOrder(" . $row["orderId"] . ",true)'><img src='../../pics/manage/add.png' style='transform: rotate(45deg);'></button>                        
                         </div>
                     </td>
                     <td headers='Активность'> $active</td>
-                    <td><button class='deleteBtn' onclick='deleteRecord(" . $row['orderId'] . ",`Orders`)'><img src='../../pics/me/trash.png'/></button></td>
+                    <td style='display:flex;'>
+                        <button class='deleteBtn' onclick='deleteRecord(" . $row['orderId'] . ",`Orders`)'><img src='../../pics/me/trash.png'/></button>
+                        <button class='editBtn' onclick='editRecord(" . $row['orderId'] . ",`Orders`)'><img src='../../pics/me/pencil.png'/></button>
+                    </td>   
                 </tr>";
         }
         echo "</table>";
@@ -331,7 +348,10 @@ function filterTypes($active)
                 <td headers="Название">' . $row['servtName'] . '</td>
                 <td headers="Описание" style="width: 572px !important; word-wrap: break-word; padding: 7px">' . $row['descript'] . '</td>
                 <td headers="Активность">' . $active . '</td>
-                <td><button class="deleteBtn" onclick="deleteRecord(' . $row['servtId'] . ',`ServicesTypes`)"><img src="../../pics/me/trash.png"/></button></td>
+                <td style="display:flex;">
+                    <button class="deleteBtn" onclick="deleteRecord(' . $row['servtId'] . ',`ServicesTypes`)"><img src="../../pics/me/trash.png "/></button>
+                    <button class="editBtn" onclick="editRecord(' . $row['servtId'] . ',`ServicesTypes`)"><img src="../../pics/me/pencil.png "/></button>
+                </td>
             </tr>';
         }
         echo "</table>";
@@ -546,7 +566,6 @@ function search($text, $table)
 <?php
 if (isset($_POST['table'])) {
     $table = $_POST['table'];
-    $sql = '';
     switch ($table) {
         case 'Users': {
                 insertUser($_POST['phonenum'], $_POST['pass'], $_POST['role']);

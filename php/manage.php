@@ -85,8 +85,8 @@
                 <button onclick="hideWindow()">Нет</button>
             </div>
         </div>
-        <div class="editWindow">
-            
+        <div class="editWindow editForm" style="display: none">
+
         </div>
         <div class="addForm addUser" style="display: none">
             <form>
@@ -145,7 +145,7 @@
                     <select class="formSelect Select__control" name="servtId" required>
                         <?php
                         require("code/conn.php");
-                        $sql = "SELECT servtId,servtName FROM ServicesTypes";
+                        $sql = "SELECT servtId,servtName FROM ServicesTypes where active=1";
                         $result = $conn->query($sql);
                         if ($result->num_rows > 0)
                             while ($row = $result->fetch_assoc())
@@ -229,7 +229,7 @@
                     <select class="formSelect Select__control" name="servtId" required>
                         <?php
                         require("code/conn.php");
-                        $sql = "SELECT servtId,servtName FROM ServicesTypes";
+                        $sql = "SELECT servtId,servtName FROM ServicesTypes where active=1";
                         $result = $conn->query($sql);
                         if ($result->num_rows > 0)
                             while ($row = $result->fetch_assoc())
@@ -249,16 +249,17 @@
         <div class="addForm addServt" style="display: none">
             <form>
                 <h4>
-                    <center>Добавление услуги</center>
+                    <center>Добавление типа услуги</center>
                 </h4>
                 <div class="form-group input-container">
                     <input class="form-input" name='name' type="text" required />
                     <label for="name">Название</label>
                 </div>
                 <div class="form-group input-container">
-                    <textarea class="form-input" name='descr' required></textarea>
+                    <textarea class="form-input" name='descr' id='descr' required></textarea>
                     <label for="descr">Описание</label>
                 </div>
+                <span class="sayError sayErrorDescr"></span>
 
                 <button class="btnSimp" type="submit">
                     Добавить
@@ -320,6 +321,7 @@
                                 <button onclick='openAddWindow("Пользователи")'><img src='../pics/manage/add.png' /></button>
                             </div>
                             <button type="submit" class="btnPurp">Найти</button>
+                            <button type="reset" class="btnPurp">Сбросить</button>
                         </form>
                     </div>
 
@@ -355,6 +357,7 @@
                                 <button onclick='openAddWindow("Мастера")'><img src='../pics/manage/add.png' /></button>
                             </div>
                             <button type="submit" class="btnPurp">Найти</button>
+                            <button type="reset" class="btnPurp">Сбросить</button>
                         </form>
                     </div>
 
@@ -401,6 +404,7 @@
                                 <button onclick='openAddWindow("Заказчики")'><img src='../pics/manage/add.png' /></button>
                             </div>
                             <button type="submit" class="btnPurp">Найти</button>
+                            <button type="reset" class="btnPurp">Сбросить</button>
                         </form>
                     </div>
 
@@ -467,6 +471,7 @@
                                 <button onclick='openAddWindow("Услуги")'><img src='../pics/manage/add.png' /></button>
                             </div>
                             <button type="submit" class="btnPurp">Найти</button>
+                            <button type="reset" class="btnPurp">Сбросить</button>
                     </div>
                     </form>
 
@@ -528,6 +533,7 @@
                                 </div>
                             </fieldset>
                             <button type="submit" class="btnPurp">Найти</button>
+                            <button type="reset" class="btnPurp">Сбросить</button>
                         </form>
                     </div>
 
@@ -564,6 +570,7 @@
                                 <button onclick='openAddWindow("Типы услуг")'><img src='../pics/manage/add.png' /></button>
                             </div>
                             <button type="submit" class="btnPurp">Найти</button>
+                            <button type="reset" class="btnPurp">Сбросить</button>
                         </form>
                     </div>
                 </div>
@@ -613,13 +620,13 @@
         <div class="row photos" style='display:none;'>
             <div class="col-lg-3 col-md-12 col-sm-12">
                 <div class="managements" id='photoManagements'>
-                    <div class="manageItem" onclick="show('Лучшие')">
-                        <p class='bp'>Лучшие фото</p>
+                    <div class="manageItem bp" onclick="show('Лучшие')">
+                        <p>Лучшие фото</p>
                     </div>
-                    <div class="manageItem" onclick="show('Остальные')">
-                        <p class='op'>Остальные фото</p>
+                    <div class="manageItem op" onclick="show('Остальные')">
+                        <p>Остальные фото</p>
                     </div>
-                    <div class="manageItem" onclick="openAddWindow('Фото')">
+                    <div class="manageItem op" onclick="openAddWindow('Фото')">
                         <button class="btnPurp" onclick="">Добавить фото</button>
                     </div>
                 </div>

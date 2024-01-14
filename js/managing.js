@@ -25,55 +25,55 @@ function show(type) {
     })
     switch (type) {
         case 'Пользователи': {
-            for (let i = 0; i < manageItems.length; i++) {
-                manageItems[i].style.display = 'none';
-            }
+            for (let i = 0; i < manageItems.length; i++)
+                if (!manageItems[i].classList.contains('op') && !manageItems[i].classList.contains('bp'))
+                    manageItems[i].style.display = 'none'
             users.style.display = 'block'
             break
         }
         case 'Мастера': {
-            for (let i = 0; i < manageItems.length; i++) {
-                manageItems[i].style.display = 'none';
-            }
+            for (let i = 0; i < manageItems.length; i++)
+                if (!manageItems[i].classList.contains('op') && !manageItems[i].classList.contains('bp'))
+                    manageItems[i].style.display = 'none'
             master.style.display = 'block'
             break
         }
         case 'Заказчики': {
-            for (let i = 0; i < manageItems.length; i++) {
-                manageItems[i].style.display = 'none';
-            }
+            for (let i = 0; i < manageItems.length; i++)
+                if (!manageItems[i].classList.contains('op') && !manageItems[i].classList.contains('bp'))
+                    manageItems[i].style.display = 'none'
             customer.style.display = 'block'
             break
         }
         case 'Услуги': {
-            for (let i = 0; i < manageItems.length; i++) {
-                manageItems[i].style.display = 'none';
-            }
+            for (let i = 0; i < manageItems.length; i++)
+                if (!manageItems[i].classList.contains('op') && !manageItems[i].classList.contains('bp'))
+                    manageItems[i].style.display = 'none';
             service.style.display = 'block'
             break
         }
         case 'Заявки': {
-            for (let i = 0; i < manageItems.length; i++) {
-                manageItems[i].style.display = 'none';
-            }
+            for (let i = 0; i < manageItems.length; i++)
+                if (!manageItems[i].classList.contains('op') && !manageItems[i].classList.contains('bp'))
+                    manageItems[i].style.display = 'none';
             order.style.display = 'block'
             break
         }
         case 'Типы услуг': {
-            for (let i = 0; i < manageItems.length; i++) {
-                manageItems[i].style.display = 'none';
-            }
+            for (let i = 0; i < manageItems.length; i++)
+                if (!manageItems[i].classList.contains('op') && !manageItems[i].classList.contains('bp'))
+                    manageItems[i].style.display = 'none';
             salon.style.display = 'block'
             break
         }
         case 'Лучшие': {
-            $('.bp').css('color', '#5d548e')
-            $('.op').css('color', 'black')
+            $('.bp p').css('color', '#5d548e')
+            $('.op p').css('color', 'black')
             break
         }
         case 'Остальные': {
-            $('.op').css('color', '#5d548e')
-            $('.bp').css('color', 'black')
+            $('.op p').css('color', '#5d548e')
+            $('.bp p').css('color', 'black')
             break
         }
         default: {
@@ -87,8 +87,6 @@ function show(type) {
             master.style.display = 'none'
             customer.style.display = 'none'
             salon.style.display = 'none'
-            $('.bp').css('color', 'white')
-            $('.op').css('color', 'white')
             clearForm()
             break
         }
@@ -127,7 +125,7 @@ function clearForm() {
     }
 }
 
-function acceptOrder(id) {
+function acceptOrder(id, adm = false) {
     $.ajax({
         url: 'code/managementMaster.php',
         method: 'post',
@@ -136,12 +134,14 @@ function acceptOrder(id) {
             status: 'accept'
         },
         success: function (rp) {
-            $("tr[data-id='" + id + "']").find("td").eq(3).text(rp);
-            console.log(22)
+            if (adm)
+                $("tr[data-id='" + id + "']").find("td").eq(6).text(rp);
+            else
+                $("tr[data-id='" + id + "']").find("td").eq(3).text(rp);
         }
     })
 }
-function cancelOrder(id) {
+function cancelOrder(id, adm = false) {
     $.ajax({
         url: 'code/managementMaster.php',
         method: 'post',
@@ -150,8 +150,10 @@ function cancelOrder(id) {
             status: 'cancel'
         },
         success: function (rp) {
-            $("tr[data-id='" + id + "']").find("td").eq(3).text(rp);
-            console.log(11)
+            if (adm)
+                $("tr[data-id='" + id + "']").find("td").eq(6).text(rp);
+            else
+                $("tr[data-id='" + id + "']").find("td").eq(3).text(rp);
         }
     })
 }
@@ -186,9 +188,18 @@ document.getElementById('usersForm').addEventListener('submit', function (e) {
         contentType: false,
         success: function (rp) {
             document.getElementById('table').innerHTML = rp;
+        }
+    })
+});
+document.getElementById('usersForm').addEventListener('reset', function (e) {
+    $.ajax({
+        url: 'code/showManageTable.php',
+        method: 'post',
+        data: {
+            table: 'Пользователи'
         },
-        error: function () {
-            console.log('error!')
+        success: function (rp) {
+            document.getElementById('table').innerHTML = rp;
         }
     })
 });
@@ -207,9 +218,18 @@ document.getElementById('masterForm').addEventListener('submit', function (e) {
         contentType: false,
         success: function (rp) {
             document.getElementById('table').innerHTML = rp;
+        }
+    })
+});
+document.getElementById('masterForm').addEventListener('reset', function (e) {
+    $.ajax({
+        url: 'code/showManageTable.php',
+        method: 'post',
+        data: {
+            table: 'Мастера'
         },
-        error: function () {
-            console.log('error!')
+        success: function (rp) {
+            document.getElementById('table').innerHTML = rp;
         }
     })
 });
@@ -231,6 +251,18 @@ document.getElementById('custForm').addEventListener('submit', function (e) {
         },
         error: function () {
             console.log('error!')
+        }
+    })
+});
+document.getElementById('custForm').addEventListener('reset', function (e) {
+    $.ajax({
+        url: 'code/showManageTable.php',
+        method: 'post',
+        data: {
+            table: 'Заказчики'
+        },
+        success: function (rp) {
+            document.getElementById('table').innerHTML = rp;
         }
     })
 });
@@ -256,6 +288,18 @@ document.getElementById('servForm').addEventListener('submit', function (e) {
         }
     })
 });
+document.getElementById('servForm').addEventListener('reset', function (e) {
+    $.ajax({
+        url: 'code/showManageTable.php',
+        method: 'post',
+        data: {
+            table: 'Услуги'
+        },
+        success: function (rp) {
+            document.getElementById('table').innerHTML = rp;
+        }
+    })
+});
 
 document.getElementById('ordForm').addEventListener('submit', function (e) {
     e.preventDefault();
@@ -273,6 +317,18 @@ document.getElementById('ordForm').addEventListener('submit', function (e) {
         },
         error: function () {
             console.log('error!')
+        }
+    })
+});
+document.getElementById('ordForm').addEventListener('reset', function (e) {
+    $.ajax({
+        url: 'code/showManageTable.php',
+        method: 'post',
+        data: {
+            table: 'Заявки'
+        },
+        success: function (rp) {
+            document.getElementById('table').innerHTML = rp;
         }
     })
 });
@@ -295,6 +351,18 @@ document.getElementById('servtForm').addEventListener('submit', function (e) {
         },
         error: function () {
             console.log('error!')
+        }
+    })
+});
+document.getElementById('servtForm').addEventListener('submit', function (e) {
+    $.ajax({
+        url: 'code/showManageTable.php',
+        method: 'post',
+        data: {
+            table: 'Типы услуг'
+        },
+        success: function (rp) {
+            document.getElementById('table').innerHTML = rp;
         }
     })
 });
@@ -347,25 +415,6 @@ function deleteRecord(id, table) {
     tabInfo.id = id
     tabInfo.table = table
     $('.notifyWindowDel').slideDown()
-}
-function editRecord(id, table) {
-    $.ajax({
-        url: 'code/editRecord.php',
-        method: 'post',
-        data: {
-            id: tabInfo.id,
-            table: tabInfo.table
-        },
-        success: function (rp) {
-            if (rp !== 'ERROR') {
-                $('.editWindow').show()
-                $('.editWindow').html(rp)
-            }
-        },
-        error: function () {
-            console.log('error!')
-        }
-    })
 }
 function deleteConfirm() {
     $('.notifyWindowDel').slideUp()
@@ -542,26 +591,30 @@ $('.addServ form').on('submit', function (e) {
 })
 $('.addServt form').on('submit', function (e) {
     e.preventDefault()
-    var formData = new FormData(this)
-    formData.append('table', 'ServicesTypes')
-    $.ajax({
-        url: 'code/managementAdmin.php',
-        method: 'post',
-        data: formData,
-        processData: false,
-        contentType: false,
-        success: function (rp) {
-            if (rp == 'OK') {
-                location.reload()
-                closeForm()
+    if ($('#descr').val().length < 255) {
+        var formData = new FormData(this)
+        formData.append('table', 'ServicesTypes')
+        $.ajax({
+            url: 'code/managementAdmin.php',
+            method: 'post',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (rp) {
+                if (rp == 'OK') {
+                    location.reload()
+                    closeForm()
+                }
+                else
+                    console.log(rp)
+            },
+            error: function () {
+                console.log('error!')
             }
-            else
-                console.log(rp)
-        },
-        error: function () {
-            console.log('error!')
-        }
-    })
+        })
+    }
+    else
+        $('.sayErrorDescr').html('Длина текста должна быть меньше 255 символов')
 })
 $('.addPhoto form').on('submit', function (e) {
     e.preventDefault()
@@ -592,8 +645,80 @@ $('.addPhoto form').on('submit', function (e) {
     }
 })
 
+function editRecord(id, table) {
+    $.ajax({
+        url: 'code/editRecord.php',
+        method: 'post',
+        data: {
+            id: id,
+            table: table,
+            function: 'showEditWin'
+        },
+        success: function (rp) {
+            if (rp !== 'ERROR') {
+                $('.editForm').show()
+                $('.editForm').html(rp)
+            }
+        },
+        error: function () {
+            console.log('error!')
+        }
+    })
+}
+$('.editForm').on('submit', '.editUser', function (e) {
+    e.preventDefault()
+    let errorPhone = $('.editUser .sayErrorPhone')
+    let errorPass = $('.editUser .sayErrorPass')
+    checkPhoneNum($('.editUser .phonenum'), errorPhone)
+    if (errorPhone.html() === '' && errorPass.html() === '') {
+        var formData = new FormData(this)
+        formData.append('function', 'editing')
+        formData.append('table', 'Users')
+        $.ajax({
+            url: 'code/editRecord.php',
+            method: 'post',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (rp) {
+                if (rp === 'OK') {
+                    closeForm()
+                    location.reload()
+                }
+            },
+            error: function () {
+                console.log('error!')
+            }
+        })
+    }
+})
+$('.editForm').on('submit', '.editMaster', function (e) {
+    e.preventDefault()
+    var formData = new FormData(this)
+    formData.append('function', 'editing')
+    formData.append('table', 'Masters')
+    $.ajax({
+        url: 'code/editRecord.php',
+        method: 'post',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (rp) {
+            console.log(rp)
+            if (rp === 'OK') {
+                closeForm()
+                location.reload()
+            }
+        },
+        error: function () {
+            console.log('error!')
+        }
+    })
+})
+
 function closeForm() {
     $('.addForm').hide()
+    $('.editForm').hide()
     $('input').val('')
     $('select').val('')
     $('.input-file span').html('Выберите файл')

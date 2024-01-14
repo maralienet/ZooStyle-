@@ -195,7 +195,7 @@ function showTable($table)
                             <th>Мастер</th>
                             <th>Дата</th>
                             <th>Статус</th>
-                            <th></th>
+                            <th style='width: 80px;'></th>
                             <th>Активность</th>
                             <th style='width:70px !important;'></th>
                         </tr>";
@@ -207,7 +207,7 @@ function showTable($table)
                         if ($row['active'] == 1)
                             $active = 'Активен';
 
-                        echo "<tr class='bodyRows'>
+                        echo "<tr class='bodyRows' data-id='" . $row["orderId"] . "'>
                                 <td headers='Вид услуги'>" . $row["servtName"] . "</td>
                                 <td headers='Услуга'>" . $row["servName"] . "</td>
                                 <td headers='Тип животного'>" . $row["petType"] . " </td>
@@ -215,10 +215,10 @@ function showTable($table)
                                 <td headers='Мастер'>" . $row["mastName"] . " " . $row["mastSurname"] . "</td>
                                 <td headers='Дата'>" . $row["orderDate"] . "</td>
                                 <td headers='Статус'>$status</td>
-                                <td style='width: 80px;'>
+                                <td>
                                     <div class='column'>
-                                    <button class='btnSimp accept' onmouseover='changeImage(this, `../../pics/manage/ok_hover.png`)' onmouseout='changeImage(this, `../../pics/manage/ok.png`)' onclick='acceptOrder(" . $row["orderId"] . ")'><img src='../../pics/manage/ok.png'></button>
-                                    <button class='btnSimp deny' onmouseover='changeImage(this, `../../pics/manage/add_hover.png`)' onmouseout='changeImage(this, `../../pics/manage/add.png`)' onclick='cancelOrder(" . $row["orderId"] . ")'><img src='../../pics/manage/add.png' style='transform: rotate(45deg);'></button>                        
+                                    <button class='btnSimp accept' onmouseover='changeImage(this, `../../pics/manage/ok_hover.png`)' onmouseout='changeImage(this, `../../pics/manage/ok.png`)' onclick='acceptOrder(" . $row["orderId"] . ",true)'><img src='../../pics/manage/ok.png'></button>
+                                    <button class='btnSimp deny' onmouseover='changeImage(this, `../../pics/manage/add_hover.png`)' onmouseout='changeImage(this, `../../pics/manage/add.png`)' onclick='cancelOrder(" . $row["orderId"] . ",true)'><img src='../../pics/manage/add.png' style='transform: rotate(45deg);'></button>                        
                                     </div>
                                 </td>
                                 <td headers='Активность'> $active</td>
@@ -255,7 +255,6 @@ function showTable($table)
                             <td headers="Название">' . $row['servtName'] . '</td>
                             <td headers="Описание" style="width: 572px !important; word-wrap: break-word; padding: 7px">' . $row['descript'] . '</td>
                             <td headers="Активность">' . $active . '</td>
-                            <td><button class="deleteBtn" onclick="deleteRecord(' . $row['servtId'] . ',`ServicesTypes`)"><img src="../../pics/me/trash.png"/></button></td>
                             <td style="display:flex;">
                                 <button class="deleteBtn" onclick="deleteRecord(' . $row['servtId'] . ',`ServicesTypes`)"><img src="../../pics/me/trash.png "/></button>
                                 <button class="editBtn" onclick="editRecord(' . $row['servtId'] . ',`ServicesTypes`)"><img src="../../pics/me/pencil.png "/></button>
