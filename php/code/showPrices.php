@@ -19,6 +19,7 @@ if ($result->num_rows > 0) {
             FROM Services 
             JOIN ServicesTypes ON ServicesTypes.servtId=Services.servtId 
             AND Services.servtId=" . $row['servtId'] . " 
+            where Services.active=1
             GROUP BY petType";
         $res = $conn->query($sql1);
         if ($res->num_rows > 0) {

@@ -368,39 +368,22 @@ document.getElementById('servtForm').addEventListener('submit', function (e) {
 });
 
 let tablesVisible = false
-let editTablesVisible = false
 let photosVisible = false
 function tables() {
     if (!tablesVisible) {
         $('.tables').slideDown()
-        $('.editTables').slideUp()
         $('.photos').slideUp()
-        editTablesVisible = false
         photosVisible = false
     }
     else
         $('.tables').slideUp()
     tablesVisible = !tablesVisible
 }
-function editTables() {
-    if (!editTablesVisible) {
-        $('.editTables').slideDown()
-        $('.tables').slideUp()
-        $('.photos').slideUp()
-        tablesVisible = false
-        photosVisible = false
-    }
-    else
-        $('.editTables').slideUp()
-    editTablesVisible = !editTablesVisible
-}
 function photos() {
     if (!photosVisible) {
         $('.photos').slideDown()
-        $('.editTables').slideUp()
         $('.tables').slideUp()
         tablesVisible = false
-        editTablesVisible = false
     }
     else
         $('.photos').slideUp()

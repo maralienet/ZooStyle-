@@ -4,7 +4,7 @@ if (isset($_POST["type"])) {
     $type = ($_POST["type"]);
     $sql = "SELECT servtName,servName FROM Services
     join ServicesTypes on ServicesTypes.servtId=Services.servtId 
-    where petType='$type'";
+    where petType='$type' and Services.active=1";
     $result = $conn->query($sql);
     $data = '';
     if ($result->num_rows > 0)

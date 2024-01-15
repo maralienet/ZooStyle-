@@ -784,6 +784,7 @@ footer .unvislogo {
 
 .service4 .prices .pris .cost {
     width: 15%;
+    white-space: nowrap;
 }
 
 .service4 .imgs {
